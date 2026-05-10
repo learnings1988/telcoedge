@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <springProperty name="appName" source="spring.application.name"
+    defaultValue="subscriber-api"/>
+        <!-- Console appender with JSON encoder -->
+        <appender name="JSON" class="ch.qos.logback.core.ConsoleAppender">
+            <encoder class="net.logstash.logback.encoder.LoggingEventCompositeJsonEncoder">
+                <providers>
+                    <!-- Timestamp -->
+                    <timestamp>
+                        <fieldName>@timestamp</fieldName>
+                        <pattern>yyyy-MM-dd'T'HH.mm.ss.SSSXXX</pattern>
+                    </timestamp>
+
+                    <!-- Log level -->
+                    <logLevel />
+
+                    <!-- Logger name -->
+                    <loggerName />
+
+                    <!-- Thread name -->
+                    <threadName />
+
+                    <!-- Message -->
+                    <message />
+
+                    <!-- Exception stack trace -->
+                    <stackTrace />
+
+                    <!-- Custom fields -->
+                    <mdc />
+                    <pattern>
+                        <pattern>{"app":"${appName}"}</pattern>
+                    </pattern>
+                </providers>
+            </encoder>
+        </appender>
+
+        <!-- Root logger -->
+        <root level="INFO">
+            <appender-ref ref="JSON"/>
+        </root>
+
+        <logger name="com.telcoedge" level="DEBUG"/>
+
+    </configuration>

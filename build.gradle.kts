@@ -19,8 +19,7 @@ subprojects{
 	
 	extensions.configure<JavaPluginExtension>{
 		toolchain{
-			languageVersion.set(JavaLanguageVersion.of(25))
-			vendor.set(JvmVendorSpec.ADOPTIUM)
+			languageVersion.set(JavaLanguageVersion.of(21))
 		}
 	}
 
