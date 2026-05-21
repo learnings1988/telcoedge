@@ -14,9 +14,9 @@ allprojects{
 }
 
 subprojects{
-	apply(plugin = "java")
-	apply(plugin = "io.spring.dependency-management")
-	
+	plugins.apply("java")
+	plugins.apply("io.spring.dependency-management")
+
 	extensions.configure<JavaPluginExtension>{
 		toolchain{
 			languageVersion.set(JavaLanguageVersion.of(21))
