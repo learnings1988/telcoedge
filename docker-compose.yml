@@ -8,7 +8,7 @@ services:
       POSTGRES_PASSWORD: telcoedge_dev
     ports:
       # Host 5433 avoids conflict with a local PostgreSQL install on 5432 (common on Windows).
-      - "5433:5432"
+      - "5432:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
     healthcheck:
@@ -16,6 +16,22 @@ services:
       interval: 5s
       timeout: 3s
       retries: 5
+
+  subscriber-api:
+    build:
+      context: .
+      dockerfile: subscriber-api/Dockerfile
+    container_name: telcoedge-subscriber-api
+    depends_on:
+      postgres:
+        condition: service_healthy
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/telcoedge
+      SPRING_DATASOURCE_USERNAME: telcoedge
+      SPRING_DATASOURCE_PASSWORD: telcoedge_dev
+    ports:
+      - "8080:8080"
+
 
 volumes:
   postgres_data:

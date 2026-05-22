@@ -1,0 +1,25 @@
+# Dont ship build outputs/IDE/ git into build context
+**/build/
+**/out/
+**/.gradle/
+**/.idea/
+**/.vscode/
+**/.git/
+**/*.iml
+
+# OS junk
+.DS_Store
+Thumbs.db
+
+#Local env /secrets
+.env
+*.local
+
+#Logs
+*.log
+
+#Test / docs
+**/test-results/
+docs/
+phases/
+LEARNING_PLAN.md
