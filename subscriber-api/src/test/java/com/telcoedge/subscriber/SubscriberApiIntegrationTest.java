@@ -51,7 +51,7 @@ class SubscriberApiIntegrationTest {
                 "Second")).isInstanceOf(SubscriberAlreadyExistException.class);
     }
 
-
+    @Test
     void returns404ForUnknownSubscriber(){
         ResponseEntity<String> response = restTemplate.getForEntity(
                 "/api/v1/operators/acme/subscribers/00000000000",
