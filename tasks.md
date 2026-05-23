@@ -12,3 +12,9 @@
 ## Endpoints (when subscriber-api is running)
 - 'http:localhost:8080/api/vi/ping'
 - 'http://localhost:8080/actuator/health'
+
+## Error Responses
+- '409 Conflict' - Duplicate subscriber for same operator
+- '404 Not Found' - Subscriber Not Found
+- '400 Bad Request' - Validation failed (field errors in response)
+- '500 Internal Server Error' - Unexpected Error (Check logs)

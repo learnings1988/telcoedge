@@ -1,31 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.telcoedge.subscriber.SubscriberApiIntegrationTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2026-05-22T02:46:56.579Z" hostname="DESKTOP-UH6MUT8" time="110.355">
+<testsuite name="com.telcoedge.subscriber.SubscriberApiIntegrationTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2026-05-23T16:56:44.439Z" hostname="DESKTOP-UH6MUT8" time="72.756">
   <properties/>
-  <testcase name="createSubscriberAndReadItBack()" classname="com.telcoedge.subscriber.SubscriberApiIntegrationTest" time="3.458"/>
-  <system-out><![CDATA[08:16:58.773 [Test worker] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [com.telcoedge.subscriber.SubscriberApiIntegrationTest]: SubscriberApiIntegrationTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
-08:16:59.163 [Test worker] INFO org.testcontainers.images.PullPolicy -- Image pull policy will be performed by: DefaultPullPolicy()
-08:16:59.193 [Test worker] INFO org.testcontainers.utility.ImageNameSubstitutor -- Image name substitution will be performed by: DefaultImageNameSubstitutor (composite of 'ConfigurationFileImageNameSubstitutor' and 'PrefixingImageNameSubstitutor')
-08:16:59.355 [Test worker] INFO org.testcontainers.DockerClientFactory -- Testcontainers version: 1.20.1
-08:17:01.146 [Test worker] INFO org.testcontainers.dockerclient.DockerClientProviderStrategy -- Loaded org.testcontainers.dockerclient.NpipeSocketClientProviderStrategy from ~/.testcontainers.properties, will try it first
-08:17:03.005 [Test worker] INFO org.testcontainers.dockerclient.DockerClientProviderStrategy -- Found Docker environment with local Npipe socket (npipe:////./pipe/docker_engine)
-08:17:03.009 [Test worker] INFO org.testcontainers.DockerClientFactory -- Docker host IP address is localhost
-08:17:03.111 [Test worker] INFO org.testcontainers.DockerClientFactory -- Connected to docker: 
+  <testcase name="returns409WhenDuplicateSubscriber()" classname="com.telcoedge.subscriber.SubscriberApiIntegrationTest" time="15.438"/>
+  <testcase name="createSubscriberAndReadItBack()" classname="com.telcoedge.subscriber.SubscriberApiIntegrationTest" time="0.397"/>
+  <system-out><![CDATA[22:26:45.016 [Test worker] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [com.telcoedge.subscriber.SubscriberApiIntegrationTest]: SubscriberApiIntegrationTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+22:26:45.234 [Test worker] INFO org.testcontainers.images.PullPolicy -- Image pull policy will be performed by: DefaultPullPolicy()
+22:26:45.252 [Test worker] INFO org.testcontainers.utility.ImageNameSubstitutor -- Image name substitution will be performed by: DefaultImageNameSubstitutor (composite of 'ConfigurationFileImageNameSubstitutor' and 'PrefixingImageNameSubstitutor')
+22:26:45.316 [Test worker] INFO org.testcontainers.DockerClientFactory -- Testcontainers version: 1.20.1
+22:26:46.103 [Test worker] INFO org.testcontainers.dockerclient.DockerClientProviderStrategy -- Loaded org.testcontainers.dockerclient.NpipeSocketClientProviderStrategy from ~/.testcontainers.properties, will try it first
+22:26:47.294 [Test worker] INFO org.testcontainers.dockerclient.DockerClientProviderStrategy -- Found Docker environment with local Npipe socket (npipe:////./pipe/docker_engine)
+22:26:47.298 [Test worker] INFO org.testcontainers.DockerClientFactory -- Docker host IP address is localhost
+22:26:47.378 [Test worker] INFO org.testcontainers.DockerClientFactory -- Connected to docker: 
   Server Version: 27.2.0
   API Version: 1.47
   Operating System: Docker Desktop
   Total Memory: 5884 MB
-08:17:03.708 [Test worker] INFO tc.testcontainers/ryuk:0.8.1 -- Creating container for image: testcontainers/ryuk:0.8.1
-08:17:05.456 [Test worker] INFO org.testcontainers.utility.RegistryAuthLocator -- Credential helper/store (docker-credential-desktop) does not have credentials for https://index.docker.io/v1/
-08:17:09.359 [Test worker] INFO tc.testcontainers/ryuk:0.8.1 -- Container testcontainers/ryuk:0.8.1 is starting: fc5ada39b7f4c69acadde2bf0241f7e80af40810bad29621aafa78d3e73ad51e
-08:17:18.849 [Test worker] INFO tc.testcontainers/ryuk:0.8.1 -- Container testcontainers/ryuk:0.8.1 started in PT15.1411852S
-08:17:18.912 [Test worker] INFO org.testcontainers.utility.RyukResourceReaper -- Ryuk started - will monitor and terminate Testcontainers containers on JVM exit
-08:17:18.913 [Test worker] INFO org.testcontainers.DockerClientFactory -- Checking the system...
-08:17:18.924 [Test worker] INFO org.testcontainers.DockerClientFactory -- ✔︎ Docker server version should be at least 1.6.0
-08:17:20.778 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration com.telcoedge.SubscriberApiApplication for test class com.telcoedge.subscriber.SubscriberApiIntegrationTest
-08:17:23.674 [Test worker] INFO tc.postgres:16-alpine -- Creating container for image: postgres:16-alpine
-08:17:27.377 [Test worker] INFO tc.postgres:16-alpine -- Container postgres:16-alpine is starting: 4cebef9c7fc8b2ff624f27ca378b0e278fd3d959cea25edc0a3278377fcd882d
-08:17:57.129 [Test worker] INFO tc.postgres:16-alpine -- Container postgres:16-alpine started in PT33.4549532S
-08:17:57.131 [Test worker] INFO tc.postgres:16-alpine -- Container is started (JDBC URL: jdbc:postgresql://localhost:60639/test?loggerLevel=OFF)
+22:26:47.760 [Test worker] INFO tc.testcontainers/ryuk:0.8.1 -- Creating container for image: testcontainers/ryuk:0.8.1
+22:26:49.175 [Test worker] INFO org.testcontainers.utility.RegistryAuthLocator -- Credential helper/store (docker-credential-desktop) does not have credentials for https://index.docker.io/v1/
+22:26:52.594 [Test worker] INFO tc.testcontainers/ryuk:0.8.1 -- Container testcontainers/ryuk:0.8.1 is starting: a7342c37e16a3d1e1b5dd570194794c9dd5bec293a1d5a4d327acfd7efaf87a5
+22:26:56.300 [Test worker] INFO tc.testcontainers/ryuk:0.8.1 -- Container testcontainers/ryuk:0.8.1 started in PT8.5397348S
+22:26:56.316 [Test worker] INFO org.testcontainers.utility.RyukResourceReaper -- Ryuk started - will monitor and terminate Testcontainers containers on JVM exit
+22:26:56.317 [Test worker] INFO org.testcontainers.DockerClientFactory -- Checking the system...
+22:26:56.320 [Test worker] INFO org.testcontainers.DockerClientFactory -- ✔︎ Docker server version should be at least 1.6.0
+22:26:56.846 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration com.telcoedge.SubscriberApiApplication for test class com.telcoedge.subscriber.SubscriberApiIntegrationTest
+22:26:57.182 [Test worker] INFO tc.postgres:16-alpine -- Creating container for image: postgres:16-alpine
+22:27:00.768 [Test worker] INFO tc.postgres:16-alpine -- Container postgres:16-alpine is starting: 7fd589ca6c6bdfb0fe99f27b49a9219d6964a0af3066cd5ca445226e5624d4bb
+22:27:12.457 [Test worker] INFO tc.postgres:16-alpine -- Container postgres:16-alpine started in PT15.2744716S
+22:27:12.461 [Test worker] INFO tc.postgres:16-alpine -- Container is started (JDBC URL: jdbc:postgresql://localhost:60770/test?loggerLevel=OFF)
 
   .   ____          _            __ _ _
  /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
@@ -36,34 +37,43 @@
 
  :: Spring Boot ::                (v3.3.4)
 
-{"@timestamp":"2026-05-22T08.18.02.932+05:30","level":"INFO","logger_name":"com.telcoedge.subscriber.SubscriberApiIntegrationTest","thread_name":"Test worker","message":"Starting SubscriberApiIntegrationTest using Java 21.0.11 with PID 8336 (started by shuba in C:\\Users\\shuba\\Documents\\career\\telcoedge\\telcoedge\\subscriber-api)","app":"subscriber-api"}
-{"@timestamp":"2026-05-22T08.18.02.977+05:30","level":"DEBUG","logger_name":"com.telcoedge.subscriber.SubscriberApiIntegrationTest","thread_name":"Test worker","message":"Running with Spring Boot v3.3.4, Spring v6.1.13","app":"subscriber-api"}
-{"@timestamp":"2026-05-22T08.18.02.979+05:30","level":"INFO","logger_name":"com.telcoedge.subscriber.SubscriberApiIntegrationTest","thread_name":"Test worker","message":"No active profile set, falling back to 1 default profile: \"default\"","app":"subscriber-api"}
-{"@timestamp":"2026-05-22T08.18.09.459+05:30","level":"INFO","logger_name":"org.springframework.data.repository.config.RepositoryConfigurationDelegate","thread_name":"Test worker","message":"Bootstrapping Spring Data JPA repositories in DEFAULT mode.","app":"subscriber-api"}
-{"@timestamp":"2026-05-22T08.18.09.738+05:30","level":"INFO","logger_name":"org.springframework.data.repository.config.RepositoryConfigurationDelegate","thread_name":"Test worker","message":"Finished Spring Data repository scanning in 223 ms. Found 1 JPA repository interface.","app":"subscriber-api"}
-{"@timestamp":"2026-05-22T08.18.16.581+05:30","level":"DEBUG","logger_name":"org.springframework.jdbc.datasource.SimpleDriverDataSource","thread_name":"Test worker","message":"Creating new JDBC Driver Connection to [jdbc:postgresql://localhost:60639/test?loggerLevel=OFF]","app":"subscriber-api"}
-{"@timestamp":"2026-05-22T08.18.17.778+05:30","level":"DEBUG","logger_name":"org.springframework.jdbc.datasource.SimpleDriverDataSource","thread_name":"Test worker","message":"Creating new JDBC Driver Connection to [jdbc:postgresql://localhost:60639/test?loggerLevel=OFF]","app":"subscriber-api"}
-{"@timestamp":"2026-05-22T08.18.17.872+05:30","level":"INFO","logger_name":"org.flywaydb.core.FlywayExecutor","thread_name":"Test worker","message":"Database: jdbc:postgresql://localhost:60639/test (PostgreSQL 16.13)","app":"subscriber-api"}
-{"@timestamp":"2026-05-22T08.18.18.047+05:30","level":"INFO","logger_name":"org.flywaydb.core.internal.schemahistory.JdbcTableSchemaHistory","thread_name":"Test worker","message":"Schema history table \"public\".\"flyway_schema_history\" does not exist yet","app":"subscriber-api"}
-{"@timestamp":"2026-05-22T08.18.18.064+05:30","level":"INFO","logger_name":"org.flywaydb.core.internal.command.DbValidate","thread_name":"Test worker","message":"Successfully validated 1 migration (execution time 00:00.101s)","app":"subscriber-api"}
-{"@timestamp":"2026-05-22T08.18.18.123+05:30","level":"INFO","logger_name":"org.flywaydb.core.internal.schemahistory.JdbcTableSchemaHistory","thread_name":"Test worker","message":"Creating Schema History table \"public\".\"flyway_schema_history\" ...","app":"subscriber-api"}
-{"@timestamp":"2026-05-22T08.18.18.223+05:30","level":"DEBUG","logger_name":"org.springframework.jdbc.datasource.SimpleDriverDataSource","thread_name":"Test worker","message":"Creating new JDBC Driver Connection to [jdbc:postgresql://localhost:60639/test?loggerLevel=OFF]","app":"subscriber-api"}
-{"@timestamp":"2026-05-22T08.18.18.407+05:30","level":"INFO","logger_name":"org.flywaydb.core.internal.command.DbMigrate","thread_name":"Test worker","message":"Current version of schema \"public\": << Empty Schema >>","app":"subscriber-api"}
-{"@timestamp":"2026-05-22T08.18.18.458+05:30","level":"INFO","logger_name":"org.flywaydb.core.internal.command.DbMigrate","thread_name":"Test worker","message":"Migrating schema \"public\" to version \"1 - create subscribers table\"","app":"subscriber-api"}
-{"@timestamp":"2026-05-22T08.18.18.617+05:30","level":"INFO","logger_name":"org.flywaydb.core.internal.command.DbMigrate","thread_name":"Test worker","message":"Successfully applied 1 migration to schema \"public\", now at version v1 (execution time 00:00.076s)","app":"subscriber-api"}
-{"@timestamp":"2026-05-22T08.18.19.957+05:30","level":"INFO","logger_name":"org.hibernate.jpa.internal.util.LogHelper","thread_name":"Test worker","message":"HHH000204: Processing PersistenceUnitInfo [name: default]","app":"subscriber-api"}
-{"@timestamp":"2026-05-22T08.18.21.158+05:30","level":"INFO","logger_name":"org.hibernate.Version","thread_name":"Test worker","message":"HHH000412: Hibernate ORM core version 6.5.3.Final","app":"subscriber-api"}
-{"@timestamp":"2026-05-22T08.18.21.665+05:30","level":"INFO","logger_name":"org.hibernate.cache.internal.RegionFactoryInitiator","thread_name":"Test worker","message":"HHH000026: Second-level cache disabled","app":"subscriber-api"}
-{"@timestamp":"2026-05-22T08.18.23.805+05:30","level":"INFO","logger_name":"org.springframework.orm.jpa.persistenceunit.SpringPersistenceUnitInfo","thread_name":"Test worker","message":"No LoadTimeWeaver setup: ignoring JPA class transformer","app":"subscriber-api"}
-{"@timestamp":"2026-05-22T08.18.24.192+05:30","level":"INFO","logger_name":"com.zaxxer.hikari.HikariDataSource","thread_name":"Test worker","message":"HikariPool-1 - Starting...","app":"subscriber-api"}
-{"@timestamp":"2026-05-22T08.18.24.345+05:30","level":"INFO","logger_name":"com.zaxxer.hikari.pool.HikariPool","thread_name":"Test worker","message":"HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@51a73873","app":"subscriber-api"}
-{"@timestamp":"2026-05-22T08.18.24.351+05:30","level":"INFO","logger_name":"com.zaxxer.hikari.HikariDataSource","thread_name":"Test worker","message":"HikariPool-1 - Start completed.","app":"subscriber-api"}
-{"@timestamp":"2026-05-22T08.18.24.868+05:30","level":"WARN","logger_name":"org.hibernate.orm.deprecation","thread_name":"Test worker","message":"HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)","app":"subscriber-api"}
-{"@timestamp":"2026-05-22T08.18.32.094+05:30","level":"INFO","logger_name":"org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator","thread_name":"Test worker","message":"HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)","app":"subscriber-api"}
-{"@timestamp":"2026-05-22T08.18.32.847+05:30","level":"INFO","logger_name":"org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean","thread_name":"Test worker","message":"Initialized JPA EntityManagerFactory for persistence unit 'default'","app":"subscriber-api"}
-{"@timestamp":"2026-05-22T08.18.36.947+05:30","level":"WARN","logger_name":"org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration","thread_name":"Test worker","message":"spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning","app":"subscriber-api"}
-{"@timestamp":"2026-05-22T08.18.41.727+05:30","level":"INFO","logger_name":"org.springframework.boot.actuate.endpoint.web.EndpointLinksResolver","thread_name":"Test worker","message":"Exposing 3 endpoints beneath base path '/actuator'","app":"subscriber-api"}
-{"@timestamp":"2026-05-22T08.18.42.390+05:30","level":"INFO","logger_name":"com.telcoedge.subscriber.SubscriberApiIntegrationTest","thread_name":"Test worker","message":"Started SubscriberApiIntegrationTest in 44.652 seconds (process running for 112.757)","app":"subscriber-api"}
+{"@timestamp":"2026-05-23T22.27.14.549+05:30","level":"INFO","logger_name":"org.hibernate.validator.internal.util.Version","thread_name":"background-preinit","message":"HV000001: Hibernate Validator 8.0.1.Final","app":"subscriber-api"}
+{"@timestamp":"2026-05-23T22.27.14.915+05:30","level":"INFO","logger_name":"com.telcoedge.subscriber.SubscriberApiIntegrationTest","thread_name":"Test worker","message":"Starting SubscriberApiIntegrationTest using Java 21.0.11 with PID 25452 (started by shuba in C:\\Users\\shuba\\Documents\\career\\telcoedge\\telcoedge\\subscriber-api)","app":"subscriber-api"}
+{"@timestamp":"2026-05-23T22.27.14.918+05:30","level":"DEBUG","logger_name":"com.telcoedge.subscriber.SubscriberApiIntegrationTest","thread_name":"Test worker","message":"Running with Spring Boot v3.3.4, Spring v6.1.13","app":"subscriber-api"}
+{"@timestamp":"2026-05-23T22.27.14.920+05:30","level":"INFO","logger_name":"com.telcoedge.subscriber.SubscriberApiIntegrationTest","thread_name":"Test worker","message":"The following 1 profile is active: \"dev\"","app":"subscriber-api"}
+{"@timestamp":"2026-05-23T22.27.18.936+05:30","level":"INFO","logger_name":"org.springframework.data.repository.config.RepositoryConfigurationDelegate","thread_name":"Test worker","message":"Bootstrapping Spring Data JPA repositories in DEFAULT mode.","app":"subscriber-api"}
+{"@timestamp":"2026-05-23T22.27.19.121+05:30","level":"INFO","logger_name":"org.springframework.data.repository.config.RepositoryConfigurationDelegate","thread_name":"Test worker","message":"Finished Spring Data repository scanning in 138 ms. Found 1 JPA repository interface.","app":"subscriber-api"}
+{"@timestamp":"2026-05-23T22.27.21.830+05:30","level":"INFO","logger_name":"org.springframework.boot.web.embedded.tomcat.TomcatWebServer","thread_name":"Test worker","message":"Tomcat initialized with port 0 (http)","app":"subscriber-api"}
+{"@timestamp":"2026-05-23T22.27.21.858+05:30","level":"INFO","logger_name":"org.apache.coyote.http11.Http11NioProtocol","thread_name":"Test worker","message":"Initializing ProtocolHandler [\"http-nio-auto-1\"]","app":"subscriber-api"}
+{"@timestamp":"2026-05-23T22.27.21.867+05:30","level":"INFO","logger_name":"org.apache.catalina.core.StandardService","thread_name":"Test worker","message":"Starting service [Tomcat]","app":"subscriber-api"}
+{"@timestamp":"2026-05-23T22.27.21.869+05:30","level":"INFO","logger_name":"org.apache.catalina.core.StandardEngine","thread_name":"Test worker","message":"Starting Servlet engine: [Apache Tomcat/10.1.30]","app":"subscriber-api"}
+{"@timestamp":"2026-05-23T22.27.22.105+05:30","level":"INFO","logger_name":"org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]","thread_name":"Test worker","message":"Initializing Spring embedded WebApplicationContext","app":"subscriber-api"}
+{"@timestamp":"2026-05-23T22.27.22.108+05:30","level":"INFO","logger_name":"org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext","thread_name":"Test worker","message":"Root WebApplicationContext: initialization completed in 7123 ms","app":"subscriber-api"}
+{"@timestamp":"2026-05-23T22.27.23.678+05:30","level":"DEBUG","logger_name":"org.springframework.jdbc.datasource.SimpleDriverDataSource","thread_name":"Test worker","message":"Creating new JDBC Driver Connection to [jdbc:postgresql://localhost:60770/test?loggerLevel=OFF]","app":"subscriber-api"}
+{"@timestamp":"2026-05-23T22.27.24.560+05:30","level":"DEBUG","logger_name":"org.springframework.jdbc.datasource.SimpleDriverDataSource","thread_name":"Test worker","message":"Creating new JDBC Driver Connection to [jdbc:postgresql://localhost:60770/test?loggerLevel=OFF]","app":"subscriber-api"}
+{"@timestamp":"2026-05-23T22.27.24.637+05:30","level":"INFO","logger_name":"org.flywaydb.core.FlywayExecutor","thread_name":"Test worker","message":"Database: jdbc:postgresql://localhost:60770/test (PostgreSQL 16.13)","app":"subscriber-api"}
+{"@timestamp":"2026-05-23T22.27.24.851+05:30","level":"INFO","logger_name":"org.flywaydb.core.internal.schemahistory.JdbcTableSchemaHistory","thread_name":"Test worker","message":"Schema history table \"public\".\"flyway_schema_history\" does not exist yet","app":"subscriber-api"}
+{"@timestamp":"2026-05-23T22.27.24.859+05:30","level":"INFO","logger_name":"org.flywaydb.core.internal.command.DbValidate","thread_name":"Test worker","message":"Successfully validated 1 migration (execution time 00:00.063s)","app":"subscriber-api"}
+{"@timestamp":"2026-05-23T22.27.24.905+05:30","level":"INFO","logger_name":"org.flywaydb.core.internal.schemahistory.JdbcTableSchemaHistory","thread_name":"Test worker","message":"Creating Schema History table \"public\".\"flyway_schema_history\" ...","app":"subscriber-api"}
+{"@timestamp":"2026-05-23T22.27.24.993+05:30","level":"DEBUG","logger_name":"org.springframework.jdbc.datasource.SimpleDriverDataSource","thread_name":"Test worker","message":"Creating new JDBC Driver Connection to [jdbc:postgresql://localhost:60770/test?loggerLevel=OFF]","app":"subscriber-api"}
+{"@timestamp":"2026-05-23T22.27.25.087+05:30","level":"INFO","logger_name":"org.flywaydb.core.internal.command.DbMigrate","thread_name":"Test worker","message":"Current version of schema \"public\": << Empty Schema >>","app":"subscriber-api"}
+{"@timestamp":"2026-05-23T22.27.25.128+05:30","level":"INFO","logger_name":"org.flywaydb.core.internal.command.DbMigrate","thread_name":"Test worker","message":"Migrating schema \"public\" to version \"1 - create subscribers table\"","app":"subscriber-api"}
+{"@timestamp":"2026-05-23T22.27.25.274+05:30","level":"INFO","logger_name":"org.flywaydb.core.internal.command.DbMigrate","thread_name":"Test worker","message":"Successfully applied 1 migration to schema \"public\", now at version v1 (execution time 00:00.058s)","app":"subscriber-api"}
+{"@timestamp":"2026-05-23T22.27.25.672+05:30","level":"INFO","logger_name":"org.hibernate.jpa.internal.util.LogHelper","thread_name":"Test worker","message":"HHH000204: Processing PersistenceUnitInfo [name: default]","app":"subscriber-api"}
+{"@timestamp":"2026-05-23T22.27.26.090+05:30","level":"INFO","logger_name":"org.hibernate.Version","thread_name":"Test worker","message":"HHH000412: Hibernate ORM core version 6.5.3.Final","app":"subscriber-api"}
+{"@timestamp":"2026-05-23T22.27.26.263+05:30","level":"INFO","logger_name":"org.hibernate.cache.internal.RegionFactoryInitiator","thread_name":"Test worker","message":"HHH000026: Second-level cache disabled","app":"subscriber-api"}
+{"@timestamp":"2026-05-23T22.27.27.484+05:30","level":"INFO","logger_name":"org.springframework.orm.jpa.persistenceunit.SpringPersistenceUnitInfo","thread_name":"Test worker","message":"No LoadTimeWeaver setup: ignoring JPA class transformer","app":"subscriber-api"}
+{"@timestamp":"2026-05-23T22.27.27.618+05:30","level":"INFO","logger_name":"com.zaxxer.hikari.HikariDataSource","thread_name":"Test worker","message":"HikariPool-1 - Starting...","app":"subscriber-api"}
+{"@timestamp":"2026-05-23T22.27.27.717+05:30","level":"INFO","logger_name":"com.zaxxer.hikari.pool.HikariPool","thread_name":"Test worker","message":"HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@c8e99","app":"subscriber-api"}
+{"@timestamp":"2026-05-23T22.27.27.723+05:30","level":"INFO","logger_name":"com.zaxxer.hikari.HikariDataSource","thread_name":"Test worker","message":"HikariPool-1 - Start completed.","app":"subscriber-api"}
+{"@timestamp":"2026-05-23T22.27.27.808+05:30","level":"WARN","logger_name":"org.hibernate.orm.deprecation","thread_name":"Test worker","message":"HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)","app":"subscriber-api"}
+{"@timestamp":"2026-05-23T22.27.30.863+05:30","level":"INFO","logger_name":"org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator","thread_name":"Test worker","message":"HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)","app":"subscriber-api"}
+{"@timestamp":"2026-05-23T22.27.30.994+05:30","level":"INFO","logger_name":"org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean","thread_name":"Test worker","message":"Initialized JPA EntityManagerFactory for persistence unit 'default'","app":"subscriber-api"}
+{"@timestamp":"2026-05-23T22.27.33.487+05:30","level":"WARN","logger_name":"org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration","thread_name":"Test worker","message":"spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning","app":"subscriber-api"}
+{"@timestamp":"2026-05-23T22.27.39.931+05:30","level":"INFO","logger_name":"org.springframework.boot.actuate.endpoint.web.EndpointLinksResolver","thread_name":"Test worker","message":"Exposing 3 endpoints beneath base path '/actuator'","app":"subscriber-api"}
+{"@timestamp":"2026-05-23T22.27.40.539+05:30","level":"INFO","logger_name":"org.apache.coyote.http11.Http11NioProtocol","thread_name":"Test worker","message":"Starting ProtocolHandler [\"http-nio-auto-1\"]","app":"subscriber-api"}
+{"@timestamp":"2026-05-23T22.27.40.621+05:30","level":"INFO","logger_name":"org.springframework.boot.web.embedded.tomcat.TomcatWebServer","thread_name":"Test worker","message":"Tomcat started on port 61323 (http) with context path '/'","app":"subscriber-api"}
+{"@timestamp":"2026-05-23T22.27.40.734+05:30","level":"INFO","logger_name":"com.telcoedge.subscriber.SubscriberApiIntegrationTest","thread_name":"Test worker","message":"Started SubscriberApiIntegrationTest in 28.114 seconds (process running for 59.157)","app":"subscriber-api"}
 Hibernate: 
     select
         se1_0.id 
@@ -74,6 +84,9 @@ Hibernate:
         and se1_0.msisdn=? 
     fetch
         first ? rows only
+{"@timestamp":"2026-05-23T22.27.55.953+05:30","level":"TRACE","logger_name":"org.hibernate.orm.jdbc.bind","thread_name":"Test worker","message":"binding parameter (1:VARCHAR) <- [testtop]","app":"subscriber-api"}
+{"@timestamp":"2026-05-23T22.27.55.954+05:30","level":"TRACE","logger_name":"org.hibernate.orm.jdbc.bind","thread_name":"Test worker","message":"binding parameter (2:VARCHAR) <- [919111000001]","app":"subscriber-api"}
+{"@timestamp":"2026-05-23T22.27.55.955+05:30","level":"TRACE","logger_name":"org.hibernate.orm.jdbc.bind","thread_name":"Test worker","message":"binding parameter (3:INTEGER) <- [1]","app":"subscriber-api"}
 Hibernate: 
     insert 
     into
@@ -82,6 +95,52 @@ Hibernate:
     values
         (?, ?, ?, ?, ?, ?) 
     returning id
+{"@timestamp":"2026-05-23T22.27.56.226+05:30","level":"TRACE","logger_name":"org.hibernate.orm.jdbc.bind","thread_name":"Test worker","message":"binding parameter (1:TIMESTAMP_UTC) <- [2026-05-23T16:57:56.066701800Z]","app":"subscriber-api"}
+{"@timestamp":"2026-05-23T22.27.56.229+05:30","level":"TRACE","logger_name":"org.hibernate.orm.jdbc.bind","thread_name":"Test worker","message":"binding parameter (2:VARCHAR) <- [919111000001]","app":"subscriber-api"}
+{"@timestamp":"2026-05-23T22.27.56.230+05:30","level":"TRACE","logger_name":"org.hibernate.orm.jdbc.bind","thread_name":"Test worker","message":"binding parameter (3:VARCHAR) <- [First]","app":"subscriber-api"}
+{"@timestamp":"2026-05-23T22.27.56.230+05:30","level":"TRACE","logger_name":"org.hibernate.orm.jdbc.bind","thread_name":"Test worker","message":"binding parameter (4:VARCHAR) <- [testtop]","app":"subscriber-api"}
+{"@timestamp":"2026-05-23T22.27.56.231+05:30","level":"TRACE","logger_name":"org.hibernate.orm.jdbc.bind","thread_name":"Test worker","message":"binding parameter (5:VARCHAR) <- [ACTIVE]","app":"subscriber-api"}
+{"@timestamp":"2026-05-23T22.27.56.232+05:30","level":"TRACE","logger_name":"org.hibernate.orm.jdbc.bind","thread_name":"Test worker","message":"binding parameter (6:TIMESTAMP_UTC) <- [2026-05-23T16:57:56.066701800Z]","app":"subscriber-api"}
+Hibernate: 
+    select
+        se1_0.id 
+    from
+        subscribers se1_0 
+    where
+        se1_0.operator_id=? 
+        and se1_0.msisdn=? 
+    fetch
+        first ? rows only
+{"@timestamp":"2026-05-23T22.27.56.600+05:30","level":"TRACE","logger_name":"org.hibernate.orm.jdbc.bind","thread_name":"Test worker","message":"binding parameter (1:VARCHAR) <- [testtop]","app":"subscriber-api"}
+{"@timestamp":"2026-05-23T22.27.56.602+05:30","level":"TRACE","logger_name":"org.hibernate.orm.jdbc.bind","thread_name":"Test worker","message":"binding parameter (2:VARCHAR) <- [919111000001]","app":"subscriber-api"}
+{"@timestamp":"2026-05-23T22.27.56.604+05:30","level":"TRACE","logger_name":"org.hibernate.orm.jdbc.bind","thread_name":"Test worker","message":"binding parameter (3:INTEGER) <- [1]","app":"subscriber-api"}
+Hibernate: 
+    select
+        se1_0.id 
+    from
+        subscribers se1_0 
+    where
+        se1_0.operator_id=? 
+        and se1_0.msisdn=? 
+    fetch
+        first ? rows only
+{"@timestamp":"2026-05-23T22.27.56.846+05:30","level":"TRACE","logger_name":"org.hibernate.orm.jdbc.bind","thread_name":"Test worker","message":"binding parameter (1:VARCHAR) <- [acme]","app":"subscriber-api"}
+{"@timestamp":"2026-05-23T22.27.56.847+05:30","level":"TRACE","logger_name":"org.hibernate.orm.jdbc.bind","thread_name":"Test worker","message":"binding parameter (2:VARCHAR) <- [919876543210]","app":"subscriber-api"}
+{"@timestamp":"2026-05-23T22.27.56.851+05:30","level":"TRACE","logger_name":"org.hibernate.orm.jdbc.bind","thread_name":"Test worker","message":"binding parameter (3:INTEGER) <- [1]","app":"subscriber-api"}
+Hibernate: 
+    insert 
+    into
+        subscribers
+        (created_at, msisdn, name, operator_id, status, updated_at) 
+    values
+        (?, ?, ?, ?, ?, ?) 
+    returning id
+{"@timestamp":"2026-05-23T22.27.56.902+05:30","level":"TRACE","logger_name":"org.hibernate.orm.jdbc.bind","thread_name":"Test worker","message":"binding parameter (1:TIMESTAMP_UTC) <- [2026-05-23T16:57:56.900512200Z]","app":"subscriber-api"}
+{"@timestamp":"2026-05-23T22.27.56.903+05:30","level":"TRACE","logger_name":"org.hibernate.orm.jdbc.bind","thread_name":"Test worker","message":"binding parameter (2:VARCHAR) <- [919876543210]","app":"subscriber-api"}
+{"@timestamp":"2026-05-23T22.27.56.904+05:30","level":"TRACE","logger_name":"org.hibernate.orm.jdbc.bind","thread_name":"Test worker","message":"binding parameter (3:VARCHAR) <- [Aakash kumar]","app":"subscriber-api"}
+{"@timestamp":"2026-05-23T22.27.56.904+05:30","level":"TRACE","logger_name":"org.hibernate.orm.jdbc.bind","thread_name":"Test worker","message":"binding parameter (4:VARCHAR) <- [acme]","app":"subscriber-api"}
+{"@timestamp":"2026-05-23T22.27.56.905+05:30","level":"TRACE","logger_name":"org.hibernate.orm.jdbc.bind","thread_name":"Test worker","message":"binding parameter (5:VARCHAR) <- [ACTIVE]","app":"subscriber-api"}
+{"@timestamp":"2026-05-23T22.27.56.906+05:30","level":"TRACE","logger_name":"org.hibernate.orm.jdbc.bind","thread_name":"Test worker","message":"binding parameter (6:TIMESTAMP_UTC) <- [2026-05-23T16:57:56.900512200Z]","app":"subscriber-api"}
 Hibernate: 
     select
         se1_0.id,
@@ -96,8 +155,10 @@ Hibernate:
     where
         se1_0.operator_id=? 
         and se1_0.msisdn=?
+{"@timestamp":"2026-05-23T22.27.57.120+05:30","level":"TRACE","logger_name":"org.hibernate.orm.jdbc.bind","thread_name":"Test worker","message":"binding parameter (1:VARCHAR) <- [acme]","app":"subscriber-api"}
+{"@timestamp":"2026-05-23T22.27.57.121+05:30","level":"TRACE","logger_name":"org.hibernate.orm.jdbc.bind","thread_name":"Test worker","message":"binding parameter (2:VARCHAR) <- [919876543210]","app":"subscriber-api"}
 ]]></system-out>
-  <system-err><![CDATA[WARNING: A Java agent has been loaded dynamically (C:\Users\shuba\AppData\Local\Temp\cursor-sandbox-cache\71558d357af96bfbb7bfb2dbf7be6fe0\gradle\caches\modules-2\files-2.1\net.bytebuddy\byte-buddy-agent\1.14.19\154da3a65b4f4a909d3e5bdec55d1b2b4cbb6ce1\byte-buddy-agent-1.14.19.jar)
+  <system-err><![CDATA[WARNING: A Java agent has been loaded dynamically (C:\Users\shuba\.gradle\caches\modules-2\files-2.1\net.bytebuddy\byte-buddy-agent\1.14.19\154da3a65b4f4a909d3e5bdec55d1b2b4cbb6ce1\byte-buddy-agent-1.14.19.jar)
 WARNING: If a serviceability tool is in use, please run with -XX:+EnableDynamicAgentLoading to hide this warning
 WARNING: If a serviceability tool is not in use, please run with -Djdk.instrument.traceUsage for more information
 WARNING: Dynamic loading of agents will be disallowed by default in a future release

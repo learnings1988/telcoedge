@@ -14,6 +14,7 @@ dependencies {
 	implementation("org.postgresql:postgresql")
 	implementation("org.flywaydb:flyway-core")
 	implementation("org.flywaydb:flyway-database-postgresql")
+	implementation("org.springframework.boot:spring-boot-starter-validation")
 
 	testImplementation("org.springframework.boot:spring-boot-starter-test:3.3.4")
 	testImplementation("org.springframework.boot:spring-boot-testcontainers:3.3.4")
