@@ -11,6 +11,7 @@ COPY gradle ./gradle
 COPY common/build.gradle.kts ./common/
 COPY core-domain/build.gradle.kts ./core-domain/
 COPY subscriber-api/build.gradle.kts ./subscriber-api/
+COPY charging-engine/build.gradle.kts ./charging-engine/
 
 # run download deps with build files only
 RUN ./gradlew :subscriber-api:denpendencies --no-daemon || true
@@ -19,6 +20,7 @@ RUN ./gradlew :subscriber-api:denpendencies --no-daemon || true
 COPY common/src ./common/src
 COPY core-domain/src ./core-domain/src
 COPY subscriber-api/src ./subscriber-api/src
+COPY charging-engine/src ./charging-engine/src
 
 # Build jar and skip test CI will run test
 RUN ./gradlew :subscriber-api:bootJar --no-daemon -x test
