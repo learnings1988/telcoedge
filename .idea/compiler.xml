@@ -5,6 +5,9 @@
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="telcoedge.charging-engine" options="-parameters" />
+      <module name="telcoedge.charging-engine.main" options="-parameters" />
+      <module name="telcoedge.charging-engine.test" options="-parameters" />
       <module name="telcoedge.subscriber-api" options="-parameters" />
       <module name="telcoedge.subscriber-api.main" options="-parameters" />
       <module name="telcoedge.subscriber-api.test" options="-parameters" />
