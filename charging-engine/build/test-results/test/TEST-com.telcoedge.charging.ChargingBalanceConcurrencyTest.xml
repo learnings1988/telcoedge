@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.telcoedge.charging.ChargingBalanceConcurrencyTest" tests="6" skipped="0" failures="0" errors="0" timestamp="2026-05-26T17:10:29.307Z" hostname="DESKTOP-UH6MUT8" time="0.514">
+  <properties/>
+  <testcase name="measureDeductionThroughPut()" classname="com.telcoedge.charging.ChargingBalanceConcurrencyTest" time="0.336"/>
+  <testcase name="repetition 1 of 5" classname="com.telcoedge.charging.ChargingBalanceConcurrencyTest" time="0.036"/>
+  <testcase name="repetition 2 of 5" classname="com.telcoedge.charging.ChargingBalanceConcurrencyTest" time="0.023"/>
+  <testcase name="repetition 3 of 5" classname="com.telcoedge.charging.ChargingBalanceConcurrencyTest" time="0.014"/>
+  <testcase name="repetition 4 of 5" classname="com.telcoedge.charging.ChargingBalanceConcurrencyTest" time="0.01"/>
+  <testcase name="repetition 5 of 5" classname="com.telcoedge.charging.ChargingBalanceConcurrencyTest" time="0.013"/>
+  <system-out><![CDATA[=== Throughput Measurement ===
+Threads: 10
+Total Operations: 1000000
+Elapsed: 267 ms
+Throughput: 3738751 ops/sec
+Final balance: 9990000.00
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

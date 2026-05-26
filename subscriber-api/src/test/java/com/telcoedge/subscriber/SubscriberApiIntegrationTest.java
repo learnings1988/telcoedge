@@ -40,6 +40,7 @@ class SubscriberApiIntegrationTest {
         Subscriber found = service.findByMsisdn("acme", "919876543210");
         assertThat(found.id()).isEqualTo(created.id());
         assertThat(found.name()).isEqualTo("Aakash kumar");
+
     }
 
     @Test
