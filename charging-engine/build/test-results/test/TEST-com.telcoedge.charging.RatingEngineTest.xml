@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.telcoedge.charging.RatingEngineTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2026-05-27T18:46:00.708Z" hostname="DESKTOP-UH6MUT8" time="0.035">
+  <properties/>
+  <testcase name="shouldChargeDataByMegaBytes()" classname="com.telcoedge.charging.RatingEngineTest" time="0.011"/>
+  <testcase name="shouldChargeSmsPerMessage()" classname="com.telcoedge.charging.RatingEngineTest" time="0.003"/>
+  <testcase name="shouldChargeVoiceByDuration()" classname="com.telcoedge.charging.RatingEngineTest" time="0.008"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
