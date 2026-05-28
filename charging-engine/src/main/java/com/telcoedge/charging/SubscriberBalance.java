@@ -28,4 +28,10 @@ public class SubscriberBalance {
             return true;
         }
     }
+
+    public void credit(BigDecimal amount){
+        synchronized (lockDeduct){
+            balance = balance.add(amount);
+        }
+    }
 }

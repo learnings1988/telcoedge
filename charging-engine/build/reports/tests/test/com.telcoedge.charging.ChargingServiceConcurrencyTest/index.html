@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 <meta http-equiv="x-ua-compatible" content="IE=edge"/>
-<title>Test results - com.telcoedge.charging.BalanceThroughPutBenchMark</title>
+<title>Test results - com.telcoedge.charging.ChargingServiceConcurrencyTest</title>
 <link href="../css/base-style.css" rel="stylesheet" type="text/css"/>
 <link href="../css/style.css" rel="stylesheet" type="text/css"/>
 <script src="../js/report.js" type="text/javascript"></script>
@@ -12,7 +12,7 @@
 <div id="content">
 <div class="breadcrumbs">
 <a class="breadcrumb" href="../index.html">all</a> &gt; 
-<span class="breadcrumb">com.telcoedge.charging.BalanceThroughPutBenchMark</span>
+<span class="breadcrumb">com.telcoedge.charging.ChargingServiceConcurrencyTest</span>
 </div>
 <div class="tab-container">
 <ul class="tabLinks">
@@ -22,7 +22,7 @@
 </ul>
 <div class="tab">
 <h2>Gradle Test Run :charging-engine:test</h2>
-<h1>BalanceThroughPutBenchMark</h1>
+<h1>ChargingServiceConcurrencyTest</h1>
 <div class="tab-container">
 <ul class="tabLinks">
 <li>
@@ -41,7 +41,7 @@
 <tr>
 <td>
 <div class="infoBox">
-<div class="counter">1</div>
+<div class="counter">6</div>
 <p>tests</p>
 </div>
 </td>
@@ -59,7 +59,7 @@
 </td>
 <td>
 <div class="infoBox duration">
-<div class="counter">0.488s</div>
+<div class="counter">0.466s</div>
 <p>duration</p>
 </div>
 </td>
@@ -90,13 +90,24 @@
 </thead>
 <tr>
 <td class="success">
-<a href="compareAllThreeImplementations().html">compareAllThreeImplementations()</a>
+<a href="duplicateCdrsShouldBeChargedExactlyOnce()/index.html">duplicateCdrsShouldBeChargedExactlyOnce()</a>
 </td>
-<td class="path" hidden="">compareAllThreeImplementations()</td>
-<td>1</td>
+<td class="path" hidden="">duplicateCdrsShouldBeChargedExactlyOnce()</td>
+<td>3</td>
 <td>0</td>
 <td>0</td>
-<td>0.482s</td>
+<td>0.219s</td>
+<td class="success">100%</td>
+</tr>
+<tr>
+<td class="success">
+<a href="manyConcurrentUniqueCdrsShouldAllCharge()/index.html">manyConcurrentUniqueCdrsShouldAllCharge()</a>
+</td>
+<td class="path" hidden="">manyConcurrentUniqueCdrsShouldAllCharge()</td>
+<td>3</td>
+<td>0</td>
+<td>0</td>
+<td>0.245s</td>
 <td class="success">100%</td>
 </tr>
 </table>
