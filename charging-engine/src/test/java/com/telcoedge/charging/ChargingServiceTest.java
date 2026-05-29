@@ -21,7 +21,7 @@ public class ChargingServiceTest {
 
     @BeforeEach
     void setUp(){
-        subscriberBalance = new SubscriberBalance("9876543210", new BigDecimal(100));
+        subscriberBalance = new SubscriberBalance("9876543210", new BigDecimal("100"));
         TariffPlan plan = new TariffPlan("basic", "Basic",
                 new BigDecimal("0.01"), new BigDecimal("0.50"), new BigDecimal("1.00"));
 

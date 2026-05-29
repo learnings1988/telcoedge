@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.telcoedge.charging.ChargingBalanceConcurrencyTest" tests="6" skipped="0" failures="0" errors="0" timestamp="2026-05-28T13:28:32.765Z" hostname="DESKTOP-UH6MUT8" time="0.471">
+<testsuite name="com.telcoedge.charging.ChargingBalanceConcurrencyTest" tests="6" skipped="0" failures="0" errors="0" timestamp="2026-05-29T15:25:20.023Z" hostname="DESKTOP-UH6MUT8" time="0.458">
   <properties/>
-  <testcase name="measureDeductionThroughPut()" classname="com.telcoedge.charging.ChargingBalanceConcurrencyTest" time="0.282"/>
-  <testcase name="repetition 1 of 5" classname="com.telcoedge.charging.ChargingBalanceConcurrencyTest" time="0.098"/>
-  <testcase name="repetition 2 of 5" classname="com.telcoedge.charging.ChargingBalanceConcurrencyTest" time="0.019"/>
-  <testcase name="repetition 3 of 5" classname="com.telcoedge.charging.ChargingBalanceConcurrencyTest" time="0.013"/>
-  <testcase name="repetition 4 of 5" classname="com.telcoedge.charging.ChargingBalanceConcurrencyTest" time="0.02"/>
-  <testcase name="repetition 5 of 5" classname="com.telcoedge.charging.ChargingBalanceConcurrencyTest" time="0.013"/>
+  <testcase name="measureDeductionThroughPut()" classname="com.telcoedge.charging.ChargingBalanceConcurrencyTest" time="0.226"/>
+  <testcase name="repetition 1 of 5" classname="com.telcoedge.charging.ChargingBalanceConcurrencyTest" time="0.11"/>
+  <testcase name="repetition 2 of 5" classname="com.telcoedge.charging.ChargingBalanceConcurrencyTest" time="0.027"/>
+  <testcase name="repetition 3 of 5" classname="com.telcoedge.charging.ChargingBalanceConcurrencyTest" time="0.016"/>
+  <testcase name="repetition 4 of 5" classname="com.telcoedge.charging.ChargingBalanceConcurrencyTest" time="0.039"/>
+  <testcase name="repetition 5 of 5" classname="com.telcoedge.charging.ChargingBalanceConcurrencyTest" time="0.022"/>
   <system-out><![CDATA[=== Throughput Measurement ===
 Threads: 10
 Total Operations: 1000000
-Elapsed: 251 ms
-Throughput: 3975108 ops/sec
+Elapsed: 199 ms
+Throughput: 5007584 ops/sec
 Final balance: 9990000.00
 ]]></system-out>
   <system-err><![CDATA[]]></system-err>
