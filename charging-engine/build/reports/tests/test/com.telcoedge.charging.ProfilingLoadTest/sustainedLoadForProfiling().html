@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 <meta http-equiv="x-ua-compatible" content="IE=edge"/>
-<title>Test results - cpuBoundWorkVTNoAdvantage()</title>
+<title>Test results - sustainedLoadForProfiling()</title>
 <link href="../css/base-style.css" rel="stylesheet" type="text/css"/>
 <link href="../css/style.css" rel="stylesheet" type="text/css"/>
 <script src="../js/report.js" type="text/javascript"></script>
@@ -12,8 +12,8 @@
 <div id="content">
 <div class="breadcrumbs">
 <a class="breadcrumb" href="../index.html">all</a> &gt; 
-<a class="breadcrumb" href="index.html">com.telcoedge.charging.VirtualThreadBenchmark</a> &gt; 
-<span class="breadcrumb">cpuBoundWorkVTNoAdvantage()</span>
+<a class="breadcrumb" href="index.html">com.telcoedge.charging.ProfilingLoadTest</a> &gt; 
+<span class="breadcrumb">sustainedLoadForProfiling()</span>
 </div>
 <div class="tab-container">
 <ul class="tabLinks">
@@ -23,7 +23,7 @@
 </ul>
 <div class="tab">
 <h2>Gradle Test Run :charging-engine:test</h2>
-<h1>cpuBoundWorkVTNoAdvantage()</h1>
+<h1>sustainedLoadForProfiling()</h1>
 <div class="tab-container">
 <ul class="tabLinks">
 <li>
@@ -63,7 +63,7 @@
 </td>
 <td>
 <div class="infoBox duration">
-<div class="counter">0.046s</div>
+<div class="counter">12.046s</div>
 <p>duration</p>
 </div>
 </td>
@@ -85,13 +85,18 @@
 <div class="tab">
 <h2>standard output</h2>
 <span class="code">
-<pre id="root-0-test-stdout-cpuBoundWorkVTNoAdvantage()">==== CPU BOUND: VT vs Platform (no) I/O ====
-Platform(10 Threads): 19 ms
-Virtual Threads: 14 ms
-Difference: 1.4x (should be ~1.0x - VT has no advantage for CPU work)
-==================================================================
+<pre id="root-0-test-stdout-sustainedLoadForProfiling()">
+==== Sustained Load Profile ====
+Duration: 10s
+Virtual Threads: 50
+total CDRS processed: 1666666
+ total errors: 155469
+Through Put : 166,667 Cdrs/sec
+Avg Latency: 250.1 us
+
+======================================
 </pre>
-<button class="clipboard-copy-btn" aria-label="Copy to clipboard" data-copy-element-id="root-0-test-stdout-cpuBoundWorkVTNoAdvantage()">Copy</button>
+<button class="clipboard-copy-btn" aria-label="Copy to clipboard" data-copy-element-id="root-0-test-stdout-sustainedLoadForProfiling()">Copy</button>
 </span>
 </div>
 </div>
