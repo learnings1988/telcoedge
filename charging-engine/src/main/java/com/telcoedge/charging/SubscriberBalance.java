@@ -1,11 +1,12 @@
 package com.telcoedge.charging;
 
 import java.math.BigDecimal;
+import java.util.concurrent.locks.ReentrantLock;
 
 public class SubscriberBalance {
     private final String msisdn;
     private BigDecimal balance;
-    private final Object lockDeduct = new Object();
+    private final ReentrantLock lockBalance = new ReentrantLock();
     public SubscriberBalance(String msisdn, BigDecimal balance) {
         this.msisdn = msisdn;
         this.balance = balance;
@@ -16,22 +17,31 @@ public class SubscriberBalance {
     }
 
     public BigDecimal getBalance() {
-        synchronized (lockDeduct) {
+        lockBalance.lock();
+        try {
             return balance;
+        }finally {
+            lockBalance.unlock();
         }
     }
 
     public boolean deduct( BigDecimal amount) {
-        synchronized (lockDeduct) {
-            if (balance.compareTo(amount) < 0) return false;
-            balance = balance.subtract(amount);
-            return true;
-        }
+        lockBalance.lock();
+            try {
+                if (balance.compareTo(amount) < 0) return false;
+                balance = balance.subtract(amount);
+                return true;
+            }finally {
+                lockBalance.unlock();
+            }
     }
 
     public void credit(BigDecimal amount){
-        synchronized (lockDeduct){
+        lockBalance.lock();
+        try{
             balance = balance.add(amount);
+        }finally {
+            lockBalance.unlock();
         }
     }
 }

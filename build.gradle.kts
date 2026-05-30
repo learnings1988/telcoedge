@@ -25,6 +25,7 @@ subprojects{
 
 	tasks.withType<Test>{
 		useJUnitPlatform()
+		jvmArgs("-Djdk.tracePinnedThreads=short")
 		testLogging{
 			events("passed", "failed", "skipped")
 			showStandardStreams = true

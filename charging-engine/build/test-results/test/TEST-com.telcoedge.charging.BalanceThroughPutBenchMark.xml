@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.telcoedge.charging.BalanceThroughPutBenchMark" tests="1" skipped="0" failures="0" errors="0" timestamp="2026-05-29T15:25:19.543Z" hostname="DESKTOP-UH6MUT8" time="0.477">
+<testsuite name="com.telcoedge.charging.BalanceThroughPutBenchMark" tests="1" skipped="0" failures="0" errors="0" timestamp="2026-05-30T12:11:35.817Z" hostname="DESKTOP-UH6MUT8" time="0.457">
   <properties/>
-  <testcase name="compareAllThreeImplementations()" classname="com.telcoedge.charging.BalanceThroughPutBenchMark" time="0.475"/>
+  <testcase name="compareAllThreeImplementations()" classname="com.telcoedge.charging.BalanceThroughPutBenchMark" time="0.455"/>
   <system-out><![CDATA[
 === Balance Deduction throughput Benchmark ===
 Threads: 10 | ops/Thread: 100000 | Total: 1000000
 --------------------------------------------------------
 --------------------------------------------------------
-Synchronized:     5,555,556 ops/sec    (180 ms)
-Atomic:     9,345,794 ops/sec    (107 ms)
-Lock:     8,000,000 ops/sec    (125 ms)
+Synchronized:     6,756,757 ops/sec    (148 ms)
+Atomic:     7,352,941 ops/sec    (136 ms)
+Lock:     8,264,463 ops/sec    (121 ms)
 --------------------------------------------------------
-CAS VS Synchonized: 1.7x faster CAS wins
-Lock VS Synchonized: 1.4x faster Lock wins
+CAS VS Synchonized: 1.1x faster CAS wins
+Lock VS Synchonized: 1.2x faster Lock wins
 ]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
