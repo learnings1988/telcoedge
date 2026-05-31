@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.telcoedge.charging.AllBalanceImplementationsTest" tests="9" skipped="0" failures="0" errors="0" timestamp="2026-05-30T17:53:53.601Z" hostname="DESKTOP-UH6MUT8" time="0.507">
+<testsuite name="com.telcoedge.charging.AllBalanceImplementationsTest" tests="9" skipped="0" failures="0" errors="0" timestamp="2026-05-31T15:06:31.381Z" hostname="DESKTOP-UH6MUT8" time="0.374">
   <properties/>
-  <testcase name="repetition 1 of 3" classname="com.telcoedge.charging.AllBalanceImplementationsTest" time="0.123"/>
-  <testcase name="repetition 2 of 3" classname="com.telcoedge.charging.AllBalanceImplementationsTest" time="0.026"/>
-  <testcase name="repetition 3 of 3" classname="com.telcoedge.charging.AllBalanceImplementationsTest" time="0.014"/>
-  <testcase name="repetition 1 of 3" classname="com.telcoedge.charging.AllBalanceImplementationsTest" time="0.016"/>
-  <testcase name="repetition 2 of 3" classname="com.telcoedge.charging.AllBalanceImplementationsTest" time="0.016"/>
+  <testcase name="repetition 1 of 3" classname="com.telcoedge.charging.AllBalanceImplementationsTest" time="0.119"/>
+  <testcase name="repetition 2 of 3" classname="com.telcoedge.charging.AllBalanceImplementationsTest" time="0.013"/>
   <testcase name="repetition 3 of 3" classname="com.telcoedge.charging.AllBalanceImplementationsTest" time="0.011"/>
-  <testcase name="repetition 1 of 3" classname="com.telcoedge.charging.AllBalanceImplementationsTest" time="0.042"/>
-  <testcase name="repetition 2 of 3" classname="com.telcoedge.charging.AllBalanceImplementationsTest" time="0.027"/>
-  <testcase name="repetition 3 of 3" classname="com.telcoedge.charging.AllBalanceImplementationsTest" time="0.028"/>
+  <testcase name="repetition 1 of 3" classname="com.telcoedge.charging.AllBalanceImplementationsTest" time="0.011"/>
+  <testcase name="repetition 2 of 3" classname="com.telcoedge.charging.AllBalanceImplementationsTest" time="0.01"/>
+  <testcase name="repetition 3 of 3" classname="com.telcoedge.charging.AllBalanceImplementationsTest" time="0.007"/>
+  <testcase name="repetition 1 of 3" classname="com.telcoedge.charging.AllBalanceImplementationsTest" time="0.012"/>
+  <testcase name="repetition 2 of 3" classname="com.telcoedge.charging.AllBalanceImplementationsTest" time="0.016"/>
+  <testcase name="repetition 3 of 3" classname="com.telcoedge.charging.AllBalanceImplementationsTest" time="0.068"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

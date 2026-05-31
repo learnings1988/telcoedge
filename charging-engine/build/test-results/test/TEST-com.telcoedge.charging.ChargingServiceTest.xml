@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.telcoedge.charging.ChargingServiceTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2026-05-30T17:53:56.686Z" hostname="DESKTOP-UH6MUT8" time="0.022">
+<testsuite name="com.telcoedge.charging.ChargingServiceTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2026-05-31T15:06:34.011Z" hostname="DESKTOP-UH6MUT8" time="0.018">
   <properties/>
-  <testcase name="shouldRejectInsufficientBalance()" classname="com.telcoedge.charging.ChargingServiceTest" time="0.004"/>
+  <testcase name="shouldRejectInsufficientBalance()" classname="com.telcoedge.charging.ChargingServiceTest" time="0.005"/>
   <testcase name="shouldReturnDuplicateForSameEventId()" classname="com.telcoedge.charging.ChargingServiceTest" time="0.002"/>
   <testcase name="shouldChargeSuccessfully()" classname="com.telcoedge.charging.ChargingServiceTest" time="0.002"/>
-  <testcase name="shouldReturnSubscriberNotFound()" classname="com.telcoedge.charging.ChargingServiceTest" time="0.008"/>
+  <testcase name="shouldReturnSubscriberNotFound()" classname="com.telcoedge.charging.ChargingServiceTest" time="0.003"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

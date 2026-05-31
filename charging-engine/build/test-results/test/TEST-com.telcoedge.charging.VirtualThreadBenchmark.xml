@@ -1,40 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.telcoedge.charging.VirtualThreadBenchmark" tests="3" skipped="0" failures="0" errors="0" timestamp="2026-05-30T17:54:09.071Z" hostname="DESKTOP-UH6MUT8" time="1.576">
+<testsuite name="com.telcoedge.charging.VirtualThreadBenchmark" tests="3" skipped="0" failures="0" errors="0" timestamp="2026-05-31T15:06:48.751Z" hostname="DESKTOP-UH6MUT8" time="2.274">
   <properties/>
-  <testcase name="platformThreadVsVirtualThreads()" classname="com.telcoedge.charging.VirtualThreadBenchmark" time="1.035"/>
-  <testcase name="scalingTestIncreasingConcurrency()" classname="com.telcoedge.charging.VirtualThreadBenchmark" time="0.49"/>
-  <testcase name="cpuBoundWorkVTNoAdvantage()" classname="com.telcoedge.charging.VirtualThreadBenchmark" time="0.046"/>
+  <testcase name="platformThreadVsVirtualThreads()" classname="com.telcoedge.charging.VirtualThreadBenchmark" time="1.309"/>
+  <testcase name="scalingTestIncreasingConcurrency()" classname="com.telcoedge.charging.VirtualThreadBenchmark" time="0.864"/>
+  <testcase name="cpuBoundWorkVTNoAdvantage()" classname="com.telcoedge.charging.VirtualThreadBenchmark" time="0.095"/>
   <system-out><![CDATA[
 ==== Platform thread vs virtual threads ====
  CDRs: 2000 | Simulated I/O 10ms per second
 ----------------------------------------------------------------
- Platform (200 Threads)    -> 247 ms
- Virtual Threads           -> 114 ms
- Platform (50 Threads)     -> 648 ms
+ Platform (200 Threads)    -> 395 ms
+ Virtual Threads           -> 240 ms
+ Platform (50 Threads)     -> 653 ms
 ----------------------------------------------------------------
-Platform 200 Threads: 247 ms
-Platform 50 Threads: 648 ms
-Virtual Threads: 114 ms
-VT speedup vd 200-pool: 2.2x
-VT speedup vd 50-pool: 5.7x
+Platform 200 Threads: 395 ms
+Platform 50 Threads: 653 ms
+Virtual Threads: 240 ms
+VT speedup vd 200-pool: 1.6x
+VT speedup vd 50-pool: 2.7x
 ----------------------------------------------------------------
 ==== scaling: How VT handles increasing Load ====
 Simulated I/O 10 ms per CDR
 ----------------------------------------------------
-   100 CDRs ->   35 ms | 2,857 CDRs/sec
+   100 CDRs ->   23 ms | 4,348 CDRs/sec
 ----------------------------------------------------------------
-   500 CDRs ->   12 ms | 41,667 CDRs/sec
+   500 CDRs ->   41 ms | 12,195 CDRs/sec
 ----------------------------------------------------------------
-  1000 CDRs ->   29 ms | 34,483 CDRs/sec
+  1000 CDRs ->   34 ms | 29,412 CDRs/sec
 ----------------------------------------------------------------
-  5000 CDRs ->  183 ms | 27,322 CDRs/sec
+  5000 CDRs ->  161 ms | 31,056 CDRs/sec
 ----------------------------------------------------------------
- 10000 CDRs ->  131 ms | 76,336 CDRs/sec
+ 10000 CDRs ->  477 ms | 20,964 CDRs/sec
 ----------------------------------------------------------------
 ==== CPU BOUND: VT vs Platform (no) I/O ====
-Platform(10 Threads): 19 ms
-Virtual Threads: 14 ms
-Difference: 1.4x (should be ~1.0x - VT has no advantage for CPU work)
+Platform(10 Threads): 73 ms
+Virtual Threads: 9 ms
+Difference: 8.1x (should be ~1.0x - VT has no advantage for CPU work)
 ==================================================================
 ]]></system-out>
   <system-err><![CDATA[]]></system-err>

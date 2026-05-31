@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.telcoedge.charging.ProfilingLoadTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2026-05-30T17:53:56.711Z" hostname="DESKTOP-UH6MUT8" time="12.056">
+<testsuite name="com.telcoedge.charging.ProfilingLoadTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2026-05-31T15:06:34.032Z" hostname="DESKTOP-UH6MUT8" time="13.971">
   <properties/>
-  <testcase name="sustainedLoadForProfiling()" classname="com.telcoedge.charging.ProfilingLoadTest" time="12.046"/>
+  <testcase name="sustainedLoadForProfiling()" classname="com.telcoedge.charging.ProfilingLoadTest" time="13.969"/>
   <system-out><![CDATA[
 ==== Sustained Load Profile ====
 Duration: 10s
 Virtual Threads: 50
-total CDRS processed: 1666666
- total errors: 155469
-Through Put : 166,667 Cdrs/sec
-Avg Latency: 250.1 us
+total CDRS processed: 1014915
+ total errors: 0
+Through Put : 101,492 Cdrs/sec
+Avg Latency: 325.2 us
 
 ======================================
 ]]></system-out>
