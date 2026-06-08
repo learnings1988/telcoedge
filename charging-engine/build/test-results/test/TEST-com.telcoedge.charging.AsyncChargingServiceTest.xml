@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.telcoedge.charging.AsyncChargingServiceTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2026-06-04T03:56:02.672Z" hostname="DESKTOP-UH6MUT8" time="0.821">
+<testsuite name="com.telcoedge.charging.AsyncChargingServiceTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2026-06-08T16:33:19.501Z" hostname="DESKTOP-UH6MUT8" time="0.238">
   <properties/>
-  <testcase name="shouldDetectDuplicateAsync()" classname="com.telcoedge.charging.AsyncChargingServiceTest" time="0.338"/>
-  <testcase name="shouldHandleInsufficientBalance()" classname="com.telcoedge.charging.AsyncChargingServiceTest" time="0.134"/>
-  <testcase name="shouldChargeAsynchronously()" classname="com.telcoedge.charging.AsyncChargingServiceTest" time="0.061"/>
-  <testcase name="shouldHandleSubscriberNotFound()" classname="com.telcoedge.charging.AsyncChargingServiceTest" time="0.168"/>
+  <testcase name="shouldDetectDuplicateAsync()" classname="com.telcoedge.charging.AsyncChargingServiceTest" time="0.185"/>
+  <testcase name="shouldHandleInsufficientBalance()" classname="com.telcoedge.charging.AsyncChargingServiceTest" time="0.017"/>
+  <testcase name="shouldChargeAsynchronously()" classname="com.telcoedge.charging.AsyncChargingServiceTest" time="0.014"/>
+  <testcase name="shouldHandleSubscriberNotFound()" classname="com.telcoedge.charging.AsyncChargingServiceTest" time="0.01"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

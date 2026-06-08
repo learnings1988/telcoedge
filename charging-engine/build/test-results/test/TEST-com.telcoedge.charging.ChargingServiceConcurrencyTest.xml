@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.telcoedge.charging.ChargingServiceConcurrencyTest" tests="6" skipped="0" failures="0" errors="0" timestamp="2026-06-04T03:56:10.807Z" hostname="DESKTOP-UH6MUT8" time="3.554">
+<testsuite name="com.telcoedge.charging.ChargingServiceConcurrencyTest" tests="6" skipped="0" failures="0" errors="0" timestamp="2026-06-08T16:33:20.570Z" hostname="DESKTOP-UH6MUT8" time="0.283">
   <properties/>
-  <testcase name="repetition 1 of 3" classname="com.telcoedge.charging.ChargingServiceConcurrencyTest" time="0.683"/>
-  <testcase name="repetition 2 of 3" classname="com.telcoedge.charging.ChargingServiceConcurrencyTest" time="0.372"/>
-  <testcase name="repetition 3 of 3" classname="com.telcoedge.charging.ChargingServiceConcurrencyTest" time="0.986"/>
-  <testcase name="repetition 1 of 3" classname="com.telcoedge.charging.ChargingServiceConcurrencyTest" time="0.652"/>
-  <testcase name="repetition 2 of 3" classname="com.telcoedge.charging.ChargingServiceConcurrencyTest" time="0.181"/>
-  <testcase name="repetition 3 of 3" classname="com.telcoedge.charging.ChargingServiceConcurrencyTest" time="0.585"/>
+  <testcase name="repetition 1 of 3" classname="com.telcoedge.charging.ChargingServiceConcurrencyTest" time="0.05"/>
+  <testcase name="repetition 2 of 3" classname="com.telcoedge.charging.ChargingServiceConcurrencyTest" time="0.032"/>
+  <testcase name="repetition 3 of 3" classname="com.telcoedge.charging.ChargingServiceConcurrencyTest" time="0.054"/>
+  <testcase name="repetition 1 of 3" classname="com.telcoedge.charging.ChargingServiceConcurrencyTest" time="0.07"/>
+  <testcase name="repetition 2 of 3" classname="com.telcoedge.charging.ChargingServiceConcurrencyTest" time="0.035"/>
+  <testcase name="repetition 3 of 3" classname="com.telcoedge.charging.ChargingServiceConcurrencyTest" time="0.025"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

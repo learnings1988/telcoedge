@@ -1,5 +1,10 @@
 import http from 'k6/http';
 import { check } from 'k6';
+import { Counter } from 'k6/metrics';
+
+
+const chargedCount = new Counter('charged_responses');
+const duplicateCount = new Counter('duplicate_responses');
 
 const BASE_URL = __ENV.BASE_URL || 'http://localhost:8080';
 const FIXED_EVENT_ID = 'aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee';
@@ -29,4 +34,7 @@ export default function(){
         'CHARGED or DUPLICATE': (r)=> r.body &&
             (r.body.includes('CHARGED') || r.body.includes('DUPLICATE')),
     });
+
+    if(res.body && res.body.includes('"CHARGED"')) chargedCount.add(1);
+    if(res.body && res.body.includes('"DUPLICATE"')) duplicateCount.add(1);
 }
