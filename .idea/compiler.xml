@@ -17,12 +17,18 @@
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
-      <module name="telcoedge.charging-engine" options="-parameters" />
-      <module name="telcoedge.charging-engine.main" options="-parameters" />
-      <module name="telcoedge.charging-engine.test" options="-parameters" />
-      <module name="telcoedge.subscriber-api" options="-parameters" />
-      <module name="telcoedge.subscriber-api.main" options="-parameters" />
-      <module name="telcoedge.subscriber-api.test" options="-parameters" />
+      <module name="telcoedge.charging-engine" options="--enable-preview -parameters" />
+      <module name="telcoedge.charging-engine.main" options="--enable-preview -parameters" />
+      <module name="telcoedge.charging-engine.test" options="--enable-preview -parameters" />
+      <module name="telcoedge.common" options="--enable-preview" />
+      <module name="telcoedge.common.main" options="--enable-preview" />
+      <module name="telcoedge.common.test" options="--enable-preview" />
+      <module name="telcoedge.core-domain" options="--enable-preview" />
+      <module name="telcoedge.core-domain.main" options="--enable-preview" />
+      <module name="telcoedge.core-domain.test" options="--enable-preview" />
+      <module name="telcoedge.subscriber-api" options="--enable-preview -parameters" />
+      <module name="telcoedge.subscriber-api.main" options="--enable-preview -parameters" />
+      <module name="telcoedge.subscriber-api.test" options="--enable-preview -parameters" />
     </option>
   </component>
 </project>
