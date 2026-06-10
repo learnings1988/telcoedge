@@ -10,6 +10,15 @@ import java.util.Map;
 import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
 
+/**
+ * Phase 1 Dev Baseline(2 core laptop, 50VUs, 1000 MSISDNs)
+ * G1: p99 ~116ms, throughput ~1134 req/s
+ * ZGC: p99 ~83ms, throughput ~1285 req/s
+ * Productiont target: 1K TPS, p99<50ms -- requires prod hardware + phase 2 Persistence
+ * Hotspots: per-subscriber ReentrantLock, Jackson JSON, unbounded processedEvents map.
+ */
+
+
 public class ChargingService {
 
 

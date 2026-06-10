@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.telcoedge.charging.SyncVsAsyncBenchMark" tests="1" skipped="0" failures="0" errors="0" timestamp="2026-06-09T16:34:04.754Z" hostname="DESKTOP-UH6MUT8" time="0.286">
+<testsuite name="com.telcoedge.charging.SyncVsAsyncBenchMark" tests="1" skipped="0" failures="0" errors="0" timestamp="2026-06-10T16:13:26.546Z" hostname="DESKTOP-UH6MUT8" time="0.303">
   <properties/>
-  <testcase name="syncVSAsyncThroughput()" classname="com.telcoedge.charging.SyncVsAsyncBenchMark" time="0.284"/>
+  <testcase name="syncVSAsyncThroughput()" classname="com.telcoedge.charging.SyncVsAsyncBenchMark" time="0.301"/>
   <system-out><![CDATA[
 === Sync vs Async Benchmark (with Simulated I/O) ===
 CDRs processed: 500
 Sync (sequential): 0 ms
-ASync (concurrent): 279 ms
+ASync (concurrent): 292 ms
 =======================
 ]]></system-out>
   <system-err><![CDATA[]]></system-err>
