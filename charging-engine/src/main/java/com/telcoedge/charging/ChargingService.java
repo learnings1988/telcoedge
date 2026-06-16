@@ -1,14 +1,19 @@
 package com.telcoedge.charging;
 
+import com.telcoedge.charging.persistence.*;
 import com.telcoedge.domain.Cdr;
 import com.telcoedge.domain.ChargeResult;
 import com.telcoedge.domain.ChargeStatus;
-
+import com.telcoedge.domain.UsageType;
+import jakarta.transaction.Transactional;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Service;
 import java.math.BigDecimal;
 import java.time.Instant;
-import java.util.Map;
-import java.util.UUID;
-import java.util.concurrent.ConcurrentHashMap;
+import java.util.List;
+import java.util.Optional;
+
 
 /**
  * Phase 1 Dev Baseline(2 core laptop, 50VUs, 1000 MSISDNs)
@@ -18,64 +23,94 @@ import java.util.concurrent.ConcurrentHashMap;
  * Hotspots: per-subscriber ReentrantLock, Jackson JSON, unbounded processedEvents map.
  */
 
-
+@Service
 public class ChargingService {
 
 
+    private static final Logger log = LoggerFactory.getLogger(ChargingService.class);
     private final RatingEngine ratingEngine;
-    private final Map<String, SubscriberBalance> balances;
-    private final Map<String, TariffPlan> tariffPlanMap;
-    private final ConcurrentHashMap<UUID, ChargeResult> processedEvents;
+    private final BalanceRepository balanceRepository;
+    private final UsageEventRepository usageEventRepository;
+    private final IdempotencyKeyRepository idempotencyKeyRepository;
+    private final TariffRateRepository tariffRateRepository;
+    private final SubscriberLookup subscriberLookup;
 
-    public ChargingService(RatingEngine ratingEngine,
-                           Map<String, SubscriberBalance> balances,
-                           Map<String, TariffPlan> tariffPlanMap) {
+    public ChargingService(RatingEngine ratingEngine, BalanceRepository balanceRepository,
+                           UsageEventRepository usageEventRepository,
+                           IdempotencyKeyRepository idempotencyKeyRepository,
+                           TariffRateRepository tariffRateRepository,
+                           SubscriberLookup subscriberLookup) {
         this.ratingEngine = ratingEngine;
-        this.balances = balances;
-        this.tariffPlanMap = tariffPlanMap;
-        this.processedEvents = new ConcurrentHashMap<>();
+        this.balanceRepository = balanceRepository;
+        this.usageEventRepository = usageEventRepository;
+        this.idempotencyKeyRepository = idempotencyKeyRepository;
+        this.tariffRateRepository = tariffRateRepository;
+        this.subscriberLookup = subscriberLookup;
     }
 
+    @Transactional
     public ChargeResult process(Cdr cdr){
-        ChargeResult existing = processedEvents.get(cdr.eventId());
-        if(existing!=null){
-            return buildResult(cdr, existing.amountCharged(), existing.remainingBalance(),
+        Optional<IdempotencyKeyEntity> existingKey =
+                idempotencyKeyRepository.findByEventId(cdr.eventId());
+        if(existingKey.isPresent()){
+            log.debug("Duplicate event with eventId : {} Detected", cdr.eventId());
+            return buildResult(cdr, BigDecimal.ZERO, BigDecimal.ZERO,
                     ChargeStatus.DUPLICATE);
         }
 
-        SubscriberBalance subscriberBalance = balances.get( cdr.msisdn());
-        if(subscriberBalance == null){
-            return buildResult(cdr, BigDecimal.ZERO, BigDecimal.ZERO, ChargeStatus.SUBSCRIBER_NOT_FOUND);
-        }
-
-        TariffPlan plan = tariffPlanMap.get(cdr.operatorId());
-        if(plan == null){
-            return buildResult(cdr, BigDecimal.ZERO, subscriberBalance.getBalance(),
+        Long subscriberId = subscriberLookup.findSubscriberId(cdr.operatorId(), cdr.msisdn());
+        if(subscriberId==null){
+            return buildResult(cdr, BigDecimal.ZERO, BigDecimal.ZERO,
                     ChargeStatus.SUBSCRIBER_NOT_FOUND);
         }
 
-        BigDecimal chargedAmount = ratingEngine.calculateCharge(cdr, plan);
-        boolean success = subscriberBalance.deduct(chargedAmount);
+        List<TariffRateView> rates = tariffRateRepository.findActiveRatesForSubscriber(subscriberId);
 
+        BigDecimal rate = findRateForUsageType(cdr.usageType(), rates);
+
+        BigDecimal chargedAmount = ratingEngine.calculateCharge(cdr.usageType(),
+                cdr.quantity(), rate);
+
+        return doCharge(cdr, subscriberId, chargedAmount, rate);
+    }
+
+
+    private ChargeResult doCharge(Cdr cdr, Long subscriberId, BigDecimal chargeAmount, BigDecimal rate){
+        BalanceEntity balance = balanceRepository.findBySubscriberId(subscriberId).
+                orElseThrow(()-> new IllegalStateException(
+                        STR."No balance recordfor subscriber : \{subscriberId}"));
+
+        boolean success = balance.deduct(chargeAmount);
         if(!success){
-            return buildResult(cdr, chargedAmount, subscriberBalance.getBalance(),
+            return buildResult(cdr, chargeAmount, balance.getAmount(),
                     ChargeStatus.INSUFFICIENT_BALANCE);
         }
 
-        ChargeResult result = buildResult( cdr, chargedAmount, subscriberBalance.getBalance(),
-                ChargeStatus.CHARGED);
+        UsageEventEntity usageEventEntity = new UsageEventEntity(
+                cdr.eventId(), subscriberId, cdr.operatorId(), cdr.usageType(),
+                cdr.quantity(), rate, chargeAmount, balance.getAmount(), "CHARGED",
+                Instant.now()
+        );
 
-        ChargeResult race = processedEvents.putIfAbsent( cdr.eventId(), result);
-        if(race != null){
-            subscriberBalance.credit(chargedAmount);
-            return buildResult(cdr, race.amountCharged(), race.remainingBalance(),
-                    ChargeStatus.DUPLICATE);
-        }
-        return result;
+        usageEventRepository.save(usageEventEntity);
+
+        IdempotencyKeyEntity key = new IdempotencyKeyEntity(cdr.eventId(), "CHARGED");
+
+        idempotencyKeyRepository.save(key);
+
+        return buildResult(cdr, chargeAmount, balance.getAmount(), ChargeStatus.CHARGED);
     }
 
-    private ChargeResult buildResult(Cdr cdr, BigDecimal charged, BigDecimal remaining,
-                                     ChargeStatus status){
+    private BigDecimal findRateForUsageType(UsageType usageType, List<TariffRateView> rates){
+        return rates.stream()
+                .filter( r -> r.getUsageType() == usageType)
+                .map(TariffRateView::getRatePerUnit)
+                .findFirst()
+                .orElse(null);
+    }
+
+    private ChargeResult buildResult(Cdr cdr, BigDecimal charged,
+                                     BigDecimal remaining, ChargeStatus status){
         return new ChargeResult(cdr.eventId(), cdr.msisdn(), charged, remaining, status, Instant.now());
     }
 }

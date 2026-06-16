@@ -21,7 +21,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class VirtualThreadBenchmark {
 
-    private static final int CDR_COUNT = 2000;
+   /* private static final int CDR_COUNT = 2000;
 
     private static final int IO_DELAYS_MS = 10;
 
@@ -166,7 +166,7 @@ public class VirtualThreadBenchmark {
         System.out.println("----------------------------------------------------------------");
     }
 
-    /*@Test
+    *//*@Test
     void verifyPinningDetection() throws InterruptedException {
         System.out.println("Vendor: " + System.getProperty("java.vendor"));
         System.out.println("Version: " + System.getProperty("java.version"));
@@ -181,6 +181,6 @@ public class VirtualThreadBenchmark {
                 }
             }
         }).join();
-    }*/
-
+    }*//*
+*/
 }

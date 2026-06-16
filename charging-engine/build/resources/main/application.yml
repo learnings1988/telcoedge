@@ -2,7 +2,39 @@ spring:
   threads:
     virtual:
       enabled: true
-  autoconfigure:
-    exclude:
-      - org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration
-      - org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaAutoConfiguration
+  datasource:
+    url: jdbc:postgresql://localhost:5433/telcoedge
+    username: telcoedge
+    password: telcoedge_dev
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: true
+        generate_statistics: true
+        session:
+          events:
+            log:
+              LOG_QUERIES_SLOWER_THAN_MS: 25
+    open_in_view: false
+
+  flyway:
+    enabled: true
+    locations: classpath:db/migration
+
+server:
+  port: 8081
+
+logging:
+  level:
+    root: INFO
+    com.telcoedge: DEBUG
+    org.hibernate.SQL: DEBUG
+    org.hibernate.stat: DEBUG
+    org.hibernate.orm.jdbc.bind: TRACE
+
+
+
+

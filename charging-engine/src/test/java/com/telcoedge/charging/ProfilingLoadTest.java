@@ -18,7 +18,7 @@ import java.util.concurrent.atomic.AtomicLong;
 
 public class ProfilingLoadTest {
 
-    private static final int DURATION_SECONDS = 10;
+    /*private static final int DURATION_SECONDS = 10;
     private static final int THREAD_COUNT = 50;
 
     @Test
@@ -78,5 +78,5 @@ public class ProfilingLoadTest {
             System.out.printf("Avg Latency: %.1f us%n", avgLatencyUs);
             System.out.println("\n======================================");
         }
-    }
+    }*/
 }

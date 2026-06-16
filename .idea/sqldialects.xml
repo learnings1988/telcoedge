@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="SqlDialectMappings">
+    <file url="file://$PROJECT_DIR$/charging-engine/src/main/resources/db/migration/V1__create_subscribers_table.sql" dialect="GenericSQL" />
+    <file url="file://$PROJECT_DIR$/charging-engine/src/main/resources/db/migration/V2__create_operators.sql" dialect="GenericSQL" />
+    <file url="file://$PROJECT_DIR$/charging-engine/src/main/resources/db/migration/V3__create_plans_and_tariff_rates.sql" dialect="GenericSQL" />
+    <file url="file://$PROJECT_DIR$/charging-engine/src/main/resources/db/migration/V4__create_balances.sql" dialect="GenericSQL" />
+    <file url="file://$PROJECT_DIR$/charging-engine/src/main/resources/db/migration/V5__create_usage_events.sql" dialect="GenericSQL" />
+    <file url="file://$PROJECT_DIR$/charging-engine/src/main/resources/db/migration/V6__create_idempotency_keys.sql" dialect="GenericSQL" />
+  </component>
+</project>

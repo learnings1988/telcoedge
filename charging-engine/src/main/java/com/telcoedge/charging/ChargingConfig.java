@@ -15,7 +15,7 @@ public class ChargingConfig {
         return new RatingEngine();
     }
 
-    @Bean
+    /*@Bean
     public Map<String, SubscriberBalance> subscriberBalances(){
         Map<String, SubscriberBalance> balances = new ConcurrentHashMap<>();
 
@@ -42,5 +42,5 @@ public class ChargingConfig {
                                            Map<String, SubscriberBalance> subscriberBalances,
                                            Map<String, TariffPlan> tariffPlans ){
         return new ChargingService(ratingEngine, subscriberBalances,tariffPlans);
-    }
+    }*/
 }

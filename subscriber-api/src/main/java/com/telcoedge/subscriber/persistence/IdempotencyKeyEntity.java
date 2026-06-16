@@ -31,11 +31,11 @@ public class IdempotencyKeyEntity {
 
     protected IdempotencyKeyEntity(){}
 
-    public IdempotencyKeyEntity(UUID eventId, String status, Instant createdAt, Instant expiresAt) {
+    public IdempotencyKeyEntity(UUID eventId, String status) {
         this.eventId = eventId;
         this.status = status;
-        this.createdAt = createdAt;
-        this.expiresAt = expiresAt;
+        this.createdAt = Instant.now();
+        this.expiresAt = this.createdAt.plusSeconds(86400);;
     }
 
     public Long getId() {

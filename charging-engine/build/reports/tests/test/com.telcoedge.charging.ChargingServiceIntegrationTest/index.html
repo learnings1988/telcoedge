@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta http-equiv="x-ua-compatible" content="IE=edge"/>
+<title>Test results - com.telcoedge.charging.ChargingServiceIntegrationTest</title>
+<link href="../css/base-style.css" rel="stylesheet" type="text/css"/>
+<link href="../css/style.css" rel="stylesheet" type="text/css"/>
+<script src="../js/report.js" type="text/javascript"></script>
+</head>
+<body>
+<div id="content">
+<div class="breadcrumbs">
+<a class="breadcrumb" href="../index.html">all</a> &gt; 
+<span class="breadcrumb">com.telcoedge.charging.ChargingServiceIntegrationTest</span>
+</div>
+<div class="tab-container">
+<ul class="tabLinks">
+<li>
+<a class="successGroup" href="#">Gradle Test Run :charging-engine:test</a>
+</li>
+</ul>
+<div class="tab">
+<h2>Gradle Test Run :charging-engine:test</h2>
+<h1>ChargingServiceIntegrationTest</h1>
+<div class="tab-container">
+<ul class="tabLinks">
+<li>
+<a class="" href="#">summary</a>
+</li>
+<li>
+<a class="" href="#">standard output</a>
+</li>
+</ul>
+<div class="tab">
+<h2>summary</h2>
+<div>
+<div class="summary">
+<table>
+<tr>
+<td>
+<div class="summaryGroup">
+<table>
+<tr>
+<td>
+<div class="infoBox">
+<div class="counter">5</div>
+<p>tests</p>
+</div>
+</td>
+<td>
+<div class="infoBox">
+<div class="counter">0</div>
+<p>failures</p>
+</div>
+</td>
+<td>
+<div class="infoBox">
+<div class="counter">0</div>
+<p>skipped</p>
+</div>
+</td>
+<td>
+<div class="infoBox duration">
+<div class="counter">1m1.30s</div>
+<p>duration</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</td>
+<td>
+<div class="infoBox success successRate">
+<div class="percent">100%</div>
+<p>successful</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<table class="test-results">
+<thead>
+<tr>
+<th>Child</th>
+<th hidden="">Name</th>
+<th>Tests</th>
+<th>Failures</th>
+<th>Skipped</th>
+<th>Duration</th>
+<th>Success rate</th>
+</tr>
+</thead>
+<tr>
+<td class="success">
+<a href="ChargingPathShouldNotExceedExpectedQueryCount().html">ChargingPathShouldNotExceedExpectedQueryCount()</a>
+</td>
+<td class="path" hidden="">ChargingPathShouldNotExceedExpectedQueryCount()</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0.113s</td>
+<td class="success">100%</td>
+</tr>
+<tr>
+<td class="success">
+<a href="shouldChargeSuccessfully().html">shouldChargeSuccessfully()</a>
+</td>
+<td class="path" hidden="">shouldChargeSuccessfully()</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0.196s</td>
+<td class="success">100%</td>
+</tr>
+<tr>
+<td class="success">
+<a href="shouldRejectDuplicate().html">shouldRejectDuplicate()</a>
+</td>
+<td class="path" hidden="">shouldRejectDuplicate()</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0.305s</td>
+<td class="success">100%</td>
+</tr>
+<tr>
+<td class="success">
+<a href="shouldRejectInsufficientBalance().html">shouldRejectInsufficientBalance()</a>
+</td>
+<td class="path" hidden="">shouldRejectInsufficientBalance()</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>2.238s</td>
+<td class="success">100%</td>
+</tr>
+<tr>
+<td class="success">
+<a href="shouldResultInSubscriberNotFound().html">shouldResultInSubscriberNotFound()</a>
+</td>
+<td class="path" hidden="">shouldResultInSubscriberNotFound()</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0.220s</td>
+<td class="success">100%</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="tab">
+<h2>standard output</h2>
+<span class="code">
+<pre id="root-0-test-stdout-com.telcoedge.charging.ChargingServiceIntegrationTest">23:17:19.233 [Test worker] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [com.telcoedge.charging.ChargingServiceIntegrationTest]: ChargingServiceIntegrationTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+23:17:19.539 [Test worker] INFO org.testcontainers.images.PullPolicy -- Image pull policy will be performed by: DefaultPullPolicy()
+23:17:19.550 [Test worker] INFO org.testcontainers.utility.ImageNameSubstitutor -- Image name substitution will be performed by: DefaultImageNameSubstitutor (composite of 'ConfigurationFileImageNameSubstitutor' and 'PrefixingImageNameSubstitutor')
+23:17:20.537 [Test worker] INFO org.testcontainers.dockerclient.DockerClientProviderStrategy -- Loaded org.testcontainers.dockerclient.NpipeSocketClientProviderStrategy from ~/.testcontainers.properties, will try it first
+23:17:21.586 [Test worker] INFO org.testcontainers.dockerclient.DockerClientProviderStrategy -- Found Docker environment with local Npipe socket (npipe:////./pipe/docker_engine)
+23:17:21.589 [Test worker] INFO org.testcontainers.DockerClientFactory -- Docker host IP address is localhost
+23:17:21.663 [Test worker] INFO org.testcontainers.DockerClientFactory -- Connected to docker: 
+  Server Version: 27.2.0
+  API Version: 1.47
+  Operating System: Docker Desktop
+  Total Memory: 5884 MB
+23:17:22.038 [Test worker] INFO tc.testcontainers/ryuk:0.7.0 -- Creating container for image: testcontainers/ryuk:0.7.0
+23:17:22.997 [Test worker] INFO org.testcontainers.utility.RegistryAuthLocator -- Credential helper/store (docker-credential-desktop) does not have credentials for https://index.docker.io/v1/
+23:17:25.118 [Test worker] INFO tc.testcontainers/ryuk:0.7.0 -- Container testcontainers/ryuk:0.7.0 is starting: 7f3ee65e4f8ac683daad366beabdc3af866de334c17347d1a64b6054ee851115
+23:17:27.972 [Test worker] INFO tc.testcontainers/ryuk:0.7.0 -- Container testcontainers/ryuk:0.7.0 started in PT5.9334635S
+23:17:28.006 [Test worker] INFO org.testcontainers.utility.RyukResourceReaper -- Ryuk started - will monitor and terminate Testcontainers containers on JVM exit
+23:17:28.006 [Test worker] INFO org.testcontainers.DockerClientFactory -- Checking the system...
+23:17:28.008 [Test worker] INFO org.testcontainers.DockerClientFactory -- ✔︎ Docker server version should be at least 1.6.0
+23:17:28.894 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration com.telcoedge.charging.ChargingEngineApplication for test class com.telcoedge.charging.ChargingServiceIntegrationTest
+23:17:29.549 [Test worker] INFO tc.postgres:16-alpine -- Creating container for image: postgres:16-alpine
+23:17:32.504 [Test worker] INFO tc.postgres:16-alpine -- Container postgres:16-alpine is starting: 7798fcebfb6336a2c8fe1f61c13d3b7d457d4de90e67dc05060d76ddcb7d69fd
+23:17:40.895 [Test worker] INFO tc.postgres:16-alpine -- Container postgres:16-alpine started in PT11.3459998S
+23:17:40.897 [Test worker] INFO tc.postgres:16-alpine -- Container is started (JDBC URL: jdbc:postgresql://localhost:61826/test?loggerLevel=OFF)
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v3.3.4)
+
+2026-06-16T23:17:43.111+05:30  INFO 13176 --- [    Test worker] c.t.c.ChargingServiceIntegrationTest     : Starting ChargingServiceIntegrationTest using Java 21.0.11 with PID 13176 (started by shuba in C:\Users\shuba\Documents\career\telcoedge\telcoedge\charging-engine)
+2026-06-16T23:17:43.114+05:30 DEBUG 13176 --- [    Test worker] c.t.c.ChargingServiceIntegrationTest     : Running with Spring Boot v3.3.4, Spring v6.1.13
+2026-06-16T23:17:43.116+05:30  INFO 13176 --- [    Test worker] c.t.c.ChargingServiceIntegrationTest     : No active profile set, falling back to 1 default profile: &quot;default&quot;
+2026-06-16T23:17:47.561+05:30  INFO 13176 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-06-16T23:17:47.977+05:30  INFO 13176 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 359 ms. Found 4 JPA repository interfaces.
+2026-06-16T23:17:52.405+05:30  INFO 13176 --- [    Test worker] org.flywaydb.core.FlywayExecutor         : Database: jdbc:postgresql://localhost:61826/test (PostgreSQL 16.13)
+2026-06-16T23:17:52.590+05:30  INFO 13176 --- [    Test worker] o.f.c.i.s.JdbcTableSchemaHistory         : Schema history table &quot;public&quot;.&quot;flyway_schema_history&quot; does not exist yet
+2026-06-16T23:17:52.605+05:30  INFO 13176 --- [    Test worker] o.f.core.internal.command.DbValidate     : Successfully validated 6 migrations (execution time 00:00.108s)
+2026-06-16T23:17:52.681+05:30  INFO 13176 --- [    Test worker] o.f.c.i.s.JdbcTableSchemaHistory         : Creating Schema History table &quot;public&quot;.&quot;flyway_schema_history&quot; ...
+2026-06-16T23:17:53.062+05:30  INFO 13176 --- [    Test worker] o.f.core.internal.command.DbMigrate      : Current version of schema &quot;public&quot;: &lt;&lt; Empty Schema &gt;&gt;
+2026-06-16T23:17:53.145+05:30  INFO 13176 --- [    Test worker] o.f.core.internal.command.DbMigrate      : Migrating schema &quot;public&quot; to version &quot;1 - create subscribers table&quot;
+2026-06-16T23:17:53.408+05:30  INFO 13176 --- [    Test worker] o.f.core.internal.command.DbMigrate      : Migrating schema &quot;public&quot; to version &quot;2 - create operators&quot;
+2026-06-16T23:17:53.529+05:30  INFO 13176 --- [    Test worker] o.f.core.internal.command.DbMigrate      : Migrating schema &quot;public&quot; to version &quot;3 - create plans and tariff rates&quot;
+2026-06-16T23:17:53.700+05:30  INFO 13176 --- [    Test worker] o.f.core.internal.command.DbMigrate      : Migrating schema &quot;public&quot; to version &quot;4 - create balances&quot;
+2026-06-16T23:17:53.786+05:30  INFO 13176 --- [    Test worker] o.f.core.internal.command.DbMigrate      : Migrating schema &quot;public&quot; to version &quot;5 - create usage events&quot;
+2026-06-16T23:17:53.935+05:30  INFO 13176 --- [    Test worker] o.f.core.internal.command.DbMigrate      : Migrating schema &quot;public&quot; to version &quot;6 - create idempotency keys&quot;
+2026-06-16T23:17:54.053+05:30  INFO 13176 --- [    Test worker] o.f.core.internal.command.DbMigrate      : Successfully applied 6 migrations to schema &quot;public&quot;, now at version v6 (execution time 00:00.433s)
+2026-06-16T23:17:55.040+05:30  INFO 13176 --- [    Test worker] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-06-16T23:17:55.292+05:30  INFO 13176 --- [    Test worker] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.3.Final
+2026-06-16T23:17:55.543+05:30  INFO 13176 --- [    Test worker] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2026-06-16T23:17:56.798+05:30  INFO 13176 --- [    Test worker] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-06-16T23:17:57.161+05:30  INFO 13176 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-06-16T23:17:57.274+05:30  INFO 13176 --- [    Test worker] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@74691677
+2026-06-16T23:17:57.280+05:30  INFO 13176 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-06-16T23:17:57.514+05:30  WARN 13176 --- [    Test worker] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-06-16T23:18:00.939+05:30  INFO 13176 --- [    Test worker] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-06-16T23:18:01.085+05:30  INFO 13176 --- [    Test worker] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-06-16T23:18:02.001+05:30 DEBUG 13176 --- [    Test worker] o.h.stat.internal.StatisticsInitiator    : Statistics initialized [enabled=true]
+2026-06-16T23:18:02.141+05:30  INFO 13176 --- [    Test worker] i.StatisticalLoggingSessionEventListener : Session Metrics {
+    0 nanoseconds spent acquiring 0 JDBC connections;
+    0 nanoseconds spent releasing 0 JDBC connections;
+    0 nanoseconds spent preparing 0 JDBC statements;
+    0 nanoseconds spent executing 0 JDBC statements;
+    0 nanoseconds spent executing 0 JDBC batches;
+    0 nanoseconds spent performing 0 L2C puts;
+    0 nanoseconds spent performing 0 L2C hits;
+    0 nanoseconds spent performing 0 L2C misses;
+    0 nanoseconds spent executing 0 flushes (flushing a total of 0 entities and 0 collections);
+    0 nanoseconds spent executing 0 pre-partial-flushes;
+    0 nanoseconds spent executing 0 partial-flushes (flushing a total of 0 entities and 0 collections)
+}
+2026-06-16T23:18:02.145+05:30  INFO 13176 --- [    Test worker] i.StatisticalLoggingSessionEventListener : Session Metrics {
+    0 nanoseconds spent acquiring 0 JDBC connections;
+    0 nanoseconds spent releasing 0 JDBC connections;
+    0 nanoseconds spent preparing 0 JDBC statements;
+    0 nanoseconds spent executing 0 JDBC statements;
+    0 nanoseconds spent executing 0 JDBC batches;
+    0 nanoseconds spent performing 0 L2C puts;
+    0 nanoseconds spent performing 0 L2C hits;
+    0 nanoseconds spent performing 0 L2C misses;
+    0 nanoseconds spent executing 0 flushes (flushing a total of 0 entities and 0 collections);
+    0 nanoseconds spent executing 0 pre-partial-flushes;
+    0 nanoseconds spent executing 0 partial-flushes (flushing a total of 0 entities and 0 collections)
+}
+2026-06-16T23:18:02.409+05:30  INFO 13176 --- [    Test worker] i.StatisticalLoggingSessionEventListener : Session Metrics {
+    0 nanoseconds spent acquiring 0 JDBC connections;
+    0 nanoseconds spent releasing 0 JDBC connections;
+    0 nanoseconds spent preparing 0 JDBC statements;
+    0 nanoseconds spent executing 0 JDBC statements;
+    0 nanoseconds spent executing 0 JDBC batches;
+    0 nanoseconds spent performing 0 L2C puts;
+    0 nanoseconds spent performing 0 L2C hits;
+    0 nanoseconds spent performing 0 L2C misses;
+    0 nanoseconds spent executing 0 flushes (flushing a total of 0 entities and 0 collections);
+    0 nanoseconds spent executing 0 pre-partial-flushes;
+    0 nanoseconds spent executing 0 partial-flushes (flushing a total of 0 entities and 0 collections)
+}
+2026-06-16T23:18:03.530+05:30  INFO 13176 --- [    Test worker] i.StatisticalLoggingSessionEventListener : Session Metrics {
+    0 nanoseconds spent acquiring 0 JDBC connections;
+    0 nanoseconds spent releasing 0 JDBC connections;
+    0 nanoseconds spent preparing 0 JDBC statements;
+    0 nanoseconds spent executing 0 JDBC statements;
+    0 nanoseconds spent executing 0 JDBC batches;
+    0 nanoseconds spent performing 0 L2C puts;
+    0 nanoseconds spent performing 0 L2C hits;
+    0 nanoseconds spent performing 0 L2C misses;
+    0 nanoseconds spent executing 0 flushes (flushing a total of 0 entities and 0 collections);
+    0 nanoseconds spent executing 0 pre-partial-flushes;
+    0 nanoseconds spent executing 0 partial-flushes (flushing a total of 0 entities and 0 collections)
+}
+2026-06-16T23:18:03.679+05:30  INFO 13176 --- [    Test worker] i.StatisticalLoggingSessionEventListener : Session Metrics {
+    0 nanoseconds spent acquiring 0 JDBC connections;
+    0 nanoseconds spent releasing 0 JDBC connections;
+    0 nanoseconds spent preparing 0 JDBC statements;
+    0 nanoseconds spent executing 0 JDBC statements;
+    0 nanoseconds spent executing 0 JDBC batches;
+    0 nanoseconds spent performing 0 L2C puts;
+    0 nanoseconds spent performing 0 L2C hits;
+    0 nanoseconds spent performing 0 L2C misses;
+    0 nanoseconds spent executing 0 flushes (flushing a total of 0 entities and 0 collections);
+    0 nanoseconds spent executing 0 pre-partial-flushes;
+    0 nanoseconds spent executing 0 partial-flushes (flushing a total of 0 entities and 0 collections)
+}
+2026-06-16T23:18:03.943+05:30  INFO 13176 --- [    Test worker] i.StatisticalLoggingSessionEventListener : Session Metrics {
+    0 nanoseconds spent acquiring 0 JDBC connections;
+    0 nanoseconds spent releasing 0 JDBC connections;
+    0 nanoseconds spent preparing 0 JDBC statements;
+    0 nanoseconds spent executing 0 JDBC statements;
+    0 nanoseconds spent executing 0 JDBC batches;
+    0 nanoseconds spent performing 0 L2C puts;
+    0 nanoseconds spent performing 0 L2C hits;
+    0 nanoseconds spent performing 0 L2C misses;
+    0 nanoseconds spent executing 0 flushes (flushing a total of 0 entities and 0 collections);
+    0 nanoseconds spent executing 0 pre-partial-flushes;
+    0 nanoseconds spent executing 0 partial-flushes (flushing a total of 0 entities and 0 collections)
+}
+2026-06-16T23:18:03.970+05:30  INFO 13176 --- [    Test worker] i.StatisticalLoggingSessionEventListener : Session Metrics {
+    0 nanoseconds spent acquiring 0 JDBC connections;
+    0 nanoseconds spent releasing 0 JDBC connections;
+    0 nanoseconds spent preparing 0 JDBC statements;
+    0 nanoseconds spent executing 0 JDBC statements;
+    0 nanoseconds spent executing 0 JDBC batches;
+    0 nanoseconds spent performing 0 L2C puts;
+    0 nanoseconds spent performing 0 L2C hits;
+    0 nanoseconds spent performing 0 L2C misses;
+    0 nanoseconds spent executing 0 flushes (flushing a total of 0 entities and 0 collections);
+    0 nanoseconds spent executing 0 pre-partial-flushes;
+    0 nanoseconds spent executing 0 partial-flushes (flushing a total of 0 entities and 0 collections)
+}
+2026-06-16T23:18:03.984+05:30  INFO 13176 --- [    Test worker] i.StatisticalLoggingSessionEventListener : Session Metrics {
+    0 nanoseconds spent acquiring 0 JDBC connections;
+    0 nanoseconds spent releasing 0 JDBC connections;
+    0 nanoseconds spent preparing 0 JDBC statements;
+    0 nanoseconds spent executing 0 JDBC statements;
+    0 nanoseconds spent executing 0 JDBC batches;
+    0 nanoseconds spent performing 0 L2C puts;
+    0 nanoseconds spent performing 0 L2C hits;
+    0 nanoseconds spent performing 0 L2C misses;
+    0 nanoseconds spent executing 0 flushes (flushing a total of 0 entities and 0 collections);
+    0 nanoseconds spent executing 0 pre-partial-flushes;
+    0 nanoseconds spent executing 0 partial-flushes (flushing a total of 0 entities and 0 collections)
+}
+2026-06-16T23:18:03.985+05:30  INFO 13176 --- [    Test worker] i.StatisticalLoggingSessionEventListener : Session Metrics {
+    0 nanoseconds spent acquiring 0 JDBC connections;
+    0 nanoseconds spent releasing 0 JDBC connections;
+    0 nanoseconds spent preparing 0 JDBC statements;
+    0 nanoseconds spent executing 0 JDBC statements;
+    0 nanoseconds spent executing 0 JDBC batches;
+    0 nanoseconds spent performing 0 L2C puts;
+    0 nanoseconds spent performing 0 L2C hits;
+    0 nanoseconds spent performing 0 L2C misses;
+    0 nanoseconds spent executing 0 flushes (flushing a total of 0 entities and 0 collections);
+    0 nanoseconds spent executing 0 pre-partial-flushes;
+    0 nanoseconds spent executing 0 partial-flushes (flushing a total of 0 entities and 0 collections)
+}
+2026-06-16T23:18:03.993+05:30  INFO 13176 --- [    Test worker] i.StatisticalLoggingSessionEventListener : Session Metrics {
+    0 nanoseconds spent acquiring 0 JDBC connections;
+    0 nanoseconds spent releasing 0 JDBC connections;
+    0 nanoseconds spent preparing 0 JDBC statements;
+    0 nanoseconds spent executing 0 JDBC statements;
+    0 nanoseconds spent executing 0 JDBC batches;
+    0 nanoseconds spent performing 0 L2C puts;
+    0 nanoseconds spent performing 0 L2C hits;
+    0 nanoseconds spent performing 0 L2C misses;
+    0 nanoseconds spent executing 0 flushes (flushing a total of 0 entities and 0 collections);
+    0 nanoseconds spent executing 0 pre-partial-flushes;
+    0 nanoseconds spent executing 0 partial-flushes (flushing a total of 0 entities and 0 collections)
+}
+2026-06-16T23:18:04.020+05:30  INFO 13176 --- [    Test worker] i.StatisticalLoggingSessionEventListener : Session Metrics {
+    0 nanoseconds spent acquiring 0 JDBC connections;
+    0 nanoseconds spent releasing 0 JDBC connections;
+    0 nanoseconds spent preparing 0 JDBC statements;
+    0 nanoseconds spent executing 0 JDBC statements;
+    0 nanoseconds spent executing 0 JDBC batches;
+    0 nanoseconds spent performing 0 L2C puts;
+    0 nanoseconds spent performing 0 L2C hits;
+    0 nanoseconds spent performing 0 L2C misses;
+    0 nanoseconds spent executing 0 flushes (flushing a total of 0 entities and 0 collections);
+    0 nanoseconds spent executing 0 pre-partial-flushes;
+    0 nanoseconds spent executing 0 partial-flushes (flushing a total of 0 entities and 0 collections)
+}
+2026-06-16T23:18:04.082+05:30  INFO 13176 --- [    Test worker] i.StatisticalLoggingSessionEventListener : Session Metrics {
+    0 nanoseconds spent acquiring 0 JDBC connections;
+    0 nanoseconds spent releasing 0 JDBC connections;
+    0 nanoseconds spent preparing 0 JDBC statements;
+    0 nanoseconds spent executing 0 JDBC statements;
+    0 nanoseconds spent executing 0 JDBC batches;
+    0 nanoseconds spent performing 0 L2C puts;
+    0 nanoseconds spent performing 0 L2C hits;
+    0 nanoseconds spent performing 0 L2C misses;
+    0 nanoseconds spent executing 0 flushes (flushing a total of 0 entities and 0 collections);
+    0 nanoseconds spent executing 0 pre-partial-flushes;
+    0 nanoseconds spent executing 0 partial-flushes (flushing a total of 0 entities and 0 collections)
+}
+2026-06-16T23:18:04.127+05:30  INFO 13176 --- [    Test worker] i.StatisticalLoggingSessionEventListener : Session Metrics {
+    0 nanoseconds spent acquiring 0 JDBC connections;
+    0 nanoseconds spent releasing 0 JDBC connections;
+    0 nanoseconds spent preparing 0 JDBC statements;
+    0 nanoseconds spent executing 0 JDBC statements;
+    0 nanoseconds spent executing 0 JDBC batches;
+    0 nanoseconds spent performing 0 L2C puts;
+    0 nanoseconds spent performing 0 L2C hits;
+    0 nanoseconds spent performing 0 L2C misses;
+    0 nanoseconds spent executing 0 flushes (flushing a total of 0 entities and 0 collections);
+    0 nanoseconds spent executing 0 pre-partial-flushes;
+    0 nanoseconds spent executing 0 partial-flushes (flushing a total of 0 entities and 0 collections)
+}
+2026-06-16T23:18:04.146+05:30  INFO 13176 --- [    Test worker] i.StatisticalLoggingSessionEventListener : Session Metrics {
+    0 nanoseconds spent acquiring 0 JDBC connections;
+    0 nanoseconds spent releasing 0 JDBC connections;
+    0 nanoseconds spent preparing 0 JDBC statements;
+    0 nanoseconds spent executing 0 JDBC statements;
+    0 nanoseconds spent executing 0 JDBC batches;
+    0 nanoseconds spent performing 0 L2C puts;
+    0 nanoseconds spent performing 0 L2C hits;
+    0 nanoseconds spent performing 0 L2C misses;
+    0 nanoseconds spent executing 0 flushes (flushing a total of 0 entities and 0 collections);
+    0 nanoseconds spent executing 0 pre-partial-flushes;
+    0 nanoseconds spent executing 0 partial-flushes (flushing a total of 0 entities and 0 collections)
+}
+2026-06-16T23:18:04.154+05:30  INFO 13176 --- [    Test worker] i.StatisticalLoggingSessionEventListener : Session Metrics {
+    0 nanoseconds spent acquiring 0 JDBC connections;
+    0 nanoseconds spent releasing 0 JDBC connections;
+    0 nanoseconds spent preparing 0 JDBC statements;
+    0 nanoseconds spent executing 0 JDBC statements;
+    0 nanoseconds spent executing 0 JDBC batches;
+    0 nanoseconds spent performing 0 L2C puts;
+    0 nanoseconds spent performing 0 L2C hits;
+    0 nanoseconds spent performing 0 L2C misses;
+    0 nanoseconds spent executing 0 flushes (flushing a total of 0 entities and 0 collections);
+    0 nanoseconds spent executing 0 pre-partial-flushes;
+    0 nanoseconds spent executing 0 partial-flushes (flushing a total of 0 entities and 0 collections)
+}
+2026-06-16T23:18:04.260+05:30  INFO 13176 --- [    Test worker] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-06-16T23:18:04.854+05:30  INFO 13176 --- [    Test worker] i.StatisticalLoggingSessionEventListener : Session Metrics {
+    0 nanoseconds spent acquiring 0 JDBC connections;
+    0 nanoseconds spent releasing 0 JDBC connections;
+    0 nanoseconds spent preparing 0 JDBC statements;
+    0 nanoseconds spent executing 0 JDBC statements;
+    0 nanoseconds spent executing 0 JDBC batches;
+    0 nanoseconds spent performing 0 L2C puts;
+    0 nanoseconds spent performing 0 L2C hits;
+    0 nanoseconds spent performing 0 L2C misses;
+    0 nanoseconds spent executing 0 flushes (flushing a total of 0 entities and 0 collections);
+    0 nanoseconds spent executing 0 pre-partial-flushes;
+    0 nanoseconds spent executing 0 partial-flushes (flushing a total of 0 entities and 0 collections)
+}
+2026-06-16T23:18:04.856+05:30  INFO 13176 --- [    Test worker] i.StatisticalLoggingSessionEventListener : Session Metrics {
+    0 nanoseconds spent acquiring 0 JDBC connections;
+    0 nanoseconds spent releasing 0 JDBC connections;
+    0 nanoseconds spent preparing 0 JDBC statements;
+    0 nanoseconds spent executing 0 JDBC statements;
+    0 nanoseconds spent executing 0 JDBC batches;
+    0 nanoseconds spent performing 0 L2C puts;
+    0 nanoseconds spent performing 0 L2C hits;
+    0 nanoseconds spent performing 0 L2C misses;
+    0 nanoseconds spent executing 0 flushes (flushing a total of 0 entities and 0 collections);
+    0 nanoseconds spent executing 0 pre-partial-flushes;
+    0 nanoseconds spent executing 0 partial-flushes (flushing a total of 0 entities and 0 collections)
+}
+2026-06-16T23:18:05.410+05:30  INFO 13176 --- [    Test worker] i.StatisticalLoggingSessionEventListener : Session Metrics {
+    0 nanoseconds spent acquiring 0 JDBC connections;
+    0 nanoseconds spent releasing 0 JDBC connections;
+    0 nanoseconds spent preparing 0 JDBC statements;
+    0 nanoseconds spent executing 0 JDBC statements;
+    0 nanoseconds spent executing 0 JDBC batches;
+    0 nanoseconds spent performing 0 L2C puts;
+    0 nanoseconds spent performing 0 L2C hits;
+    0 nanoseconds spent performing 0 L2C misses;
+    0 nanoseconds spent executing 0 flushes (flushing a total of 0 entities and 0 collections);
+    0 nanoseconds spent executing 0 pre-partial-flushes;
+    0 nanoseconds spent executing 0 partial-flushes (flushing a total of 0 entities and 0 collections)
+}
+2026-06-16T23:18:05.412+05:30  INFO 13176 --- [    Test worker] i.StatisticalLoggingSessionEventListener : Session Metrics {
+    0 nanoseconds spent acquiring 0 JDBC connections;
+    0 nanoseconds spent releasing 0 JDBC connections;
+    0 nanoseconds spent preparing 0 JDBC statements;
+    0 nanoseconds spent executing 0 JDBC statements;
+    0 nanoseconds spent executing 0 JDBC batches;
+    0 nanoseconds spent performing 0 L2C puts;
+    0 nanoseconds spent performing 0 L2C hits;
+    0 nanoseconds spent performing 0 L2C misses;
+    0 nanoseconds spent executing 0 flushes (flushing a total of 0 entities and 0 collections);
+    0 nanoseconds spent executing 0 pre-partial-flushes;
+    0 nanoseconds spent executing 0 partial-flushes (flushing a total of 0 entities and 0 collections)
+}
+2026-06-16T23:18:05.414+05:30  INFO 13176 --- [    Test worker] i.StatisticalLoggingSessionEventListener : Session Metrics {
+    0 nanoseconds spent acquiring 0 JDBC connections;
+    0 nanoseconds spent releasing 0 JDBC connections;
+    0 nanoseconds spent preparing 0 JDBC statements;
+    0 nanoseconds spent executing 0 JDBC statements;
+    0 nanoseconds spent executing 0 JDBC batches;
+    0 nanoseconds spent performing 0 L2C puts;
+    0 nanoseconds spent performing 0 L2C hits;
+    0 nanoseconds spent performing 0 L2C misses;
+    0 nanoseconds spent executing 0 flushes (flushing a total of 0 entities and 0 collections);
+    0 nanoseconds spent executing 0 pre-partial-flushes;
+    0 nanoseconds spent executing 0 partial-flushes (flushing a total of 0 entities and 0 collections)
+}
+2026-06-16T23:18:05.448+05:30  INFO 13176 --- [    Test worker] i.StatisticalLoggingSessionEventListener : Session Metrics {
+    0 nanoseconds spent acquiring 0 JDBC connections;
+    0 nanoseconds spent releasing 0 JDBC connections;
+    0 nanoseconds spent preparing 0 JDBC statements;
+    0 nanoseconds spent executing 0 JDBC statements;
+    0 nanoseconds spent executing 0 JDBC batches;
+    0 nanoseconds spent performing 0 L2C puts;
+    0 nanoseconds spent performing 0 L2C hits;
+    0 nanoseconds spent performing 0 L2C misses;
+    0 nanoseconds spent executing 0 flushes (flushing a total of 0 entities and 0 collections);
+    0 nanoseconds spent executing 0 pre-partial-flushes;
+    0 nanoseconds spent executing 0 partial-flushes (flushing a total of 0 entities and 0 collections)
+}
+2026-06-16T23:18:05.461+05:30  INFO 13176 --- [    Test worker] i.StatisticalLoggingSessionEventListener : Session Metrics {
+    0 nanoseconds spent acquiring 0 JDBC connections;
+    0 nanoseconds spent releasing 0 JDBC connections;
+    0 nanoseconds spent preparing 0 JDBC statements;
+    0 nanoseconds spent executing 0 JDBC statements;
+    0 nanoseconds spent executing 0 JDBC batches;
+    0 nanoseconds spent performing 0 L2C puts;
+    0 nanoseconds spent performing 0 L2C hits;
+    0 nanoseconds spent performing 0 L2C misses;
+    0 nanoseconds spent executing 0 flushes (flushing a total of 0 entities and 0 collections);
+    0 nanoseconds spent executing 0 pre-partial-flushes;
+    0 nanoseconds spent executing 0 partial-flushes (flushing a total of 0 entities and 0 collections)
+}
+2026-06-16T23:18:05.643+05:30  INFO 13176 --- [    Test worker] i.StatisticalLoggingSessionEventListener : Session Metrics {
+    0 nanoseconds spent acquiring 0 JDBC connections;
+    0 nanoseconds spent releasing 0 JDBC connections;
+    0 nanoseconds spent preparing 0 JDBC statements;
+    0 nanoseconds spent executing 0 JDBC statements;
+    0 nanoseconds spent executing 0 JDBC batches;
+    0 nanoseconds spent performing 0 L2C puts;
+    0 nanoseconds spent performing 0 L2C hits;
+    0 nanoseconds spent performing 0 L2C misses;
+    0 nanoseconds spent executing 0 flushes (flushing a total of 0 entities and 0 collections);
+    0 nanoseconds spent executing 0 pre-partial-flushes;
+    0 nanoseconds spent executing 0 partial-flushes (flushing a total of 0 entities and 0 collections)
+}
+2026-06-16T23:18:05.644+05:30  INFO 13176 --- [    Test worker] i.StatisticalLoggingSessionEventListener : Session Metrics {
+    0 nanoseconds spent acquiring 0 JDBC connections;
+    0 nanoseconds spent releasing 0 JDBC connections;
+    0 nanoseconds spent preparing 0 JDBC statements;
+    0 nanoseconds spent executing 0 JDBC statements;
+    0 nanoseconds spent executing 0 JDBC batches;
+    0 nanoseconds spent performing 0 L2C puts;
+    0 nanoseconds spent performing 0 L2C hits;
+    0 nanoseconds spent performing 0 L2C misses;
+    0 nanoseconds spent executing 0 flushes (flushing a total of 0 entities and 0 collections);
+    0 nanoseconds spent executing 0 pre-partial-flushes;
+    0 nanoseconds spent executing 0 partial-flushes (flushing a total of 0 entities and 0 collections)
+}
+2026-06-16T23:18:06.116+05:30  INFO 13176 --- [    Test worker] i.StatisticalLoggingSessionEventListener : Session Metrics {
+    0 nanoseconds spent acquiring 0 JDBC connections;
+    0 nanoseconds spent releasing 0 JDBC connections;
+    0 nanoseconds spent preparing 0 JDBC statements;
+    0 nanoseconds spent executing 0 JDBC statements;
+    0 nanoseconds spent executing 0 JDBC batches;
+    0 nanoseconds spent performing 0 L2C puts;
+    0 nanoseconds spent performing 0 L2C hits;
+    0 nanoseconds spent performing 0 L2C misses;
+    0 nanoseconds spent executing 0 flushes (flushing a total of 0 entities and 0 collections);
+    0 nanoseconds spent executing 0 pre-partial-flushes;
+    0 nanoseconds spent executing 0 partial-flushes (flushing a total of 0 entities and 0 collections)
+}
+2026-06-16T23:18:10.670+05:30  INFO 13176 --- [    Test worker] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path '/actuator'
+2026-06-16T23:18:11.074+05:30  INFO 13176 --- [    Test worker] c.t.c.ChargingServiceIntegrationTest     : Started ChargingServiceIntegrationTest in 29.886 seconds (process running for 56.376)
+</pre>
+<button class="clipboard-copy-btn" aria-label="Copy to clipboard" data-copy-element-id="root-0-test-stdout-com.telcoedge.charging.ChargingServiceIntegrationTest">Copy</button>
+</span>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<p>
+<div>
+<label class="hidden" id="label-for-line-wrapping-toggle" for="line-wrapping-toggle">Wrap lines
+<input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
+</label>
+</div>Generated by 
+<a href="https://www.gradle.org">Gradle 9.3.0</a> at 16-Jun-2026, 11:18:20 pm</p>
+</div>
+</div>
+</body>
+</html>

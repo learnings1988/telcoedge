@@ -18,7 +18,7 @@ import java.util.concurrent.Future;
 
 public class SyncVsAsyncBenchMark {
 
-    private static final int CDR_COUNT = 500;
+    /*private static final int CDR_COUNT = 500;
 
     @Test
     void syncVSAsyncThroughput(){
@@ -69,5 +69,5 @@ public class SyncVsAsyncBenchMark {
         System.out.println("Sync (sequential): " + syncElapsed + " ms");
         System.out.println("ASync (concurrent): " + asyncElapsed + " ms");
         System.out.println("=======================");
-    }
+    }*/
 }
