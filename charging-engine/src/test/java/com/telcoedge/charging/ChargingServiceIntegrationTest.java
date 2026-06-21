@@ -1,6 +1,7 @@
 package com.telcoedge.charging;
 
 
+import com.telcoedge.charging.dto.UsageHistoryDto;
 import com.telcoedge.charging.persistence.BalanceRepository;
 import com.telcoedge.domain.Cdr;
 import com.telcoedge.domain.ChargeResult;
@@ -16,6 +17,7 @@ import org.springframework.boot.autoconfigure.flyway.FlywayProperties;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.context.TestComponent;
 import org.springframework.boot.testcontainers.service.connection.ServiceConnection;
+import org.springframework.data.domain.Page;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.test.context.DynamicPropertyRegistry;
 import org.springframework.test.context.DynamicPropertySource;
@@ -55,6 +57,9 @@ public class ChargingServiceIntegrationTest {
 
     @Autowired
     private EntityManagerFactory entityManagerFactory;
+
+    @Autowired
+    private UsageHistoryService usageHistoryService;
 
     @BeforeEach
     void seedTestData(){
@@ -142,4 +147,32 @@ public class ChargingServiceIntegrationTest {
 
         stats.setStatisticsEnabled(false);
     }
+
+    @Test
+    void usageHistoryShouldExecuteExactlyTwoQueries(){
+        for(int i=0;i<3;i++){
+            Cdr cdr = new Cdr(UUID.randomUUID(), "acme", "9876543000",
+                    UsageType.VOICE, new BigDecimal("60"), Instant.now(), Instant.now());
+            chargingService.process(cdr);
+        }
+
+        SessionFactory sessionFactory = entityManagerFactory.unwrap(SessionFactory.class);
+        Statistics stats = sessionFactory.getStatistics();
+        stats.setStatisticsEnabled(true);
+        stats.clear();
+
+        Page<UsageHistoryDto> history = usageHistoryService.getHistory("acme",
+                "9876543000", 0,20);
+
+        long totalStatments = stats.getPrepareStatementCount();
+
+        assertThat(totalStatments).
+                as("Expected 3 SQL statements for usage history(subscriber lookup)" +
+                        " + data + count, got %d", totalStatments ).
+                isLessThanOrEqualTo(3);
+
+        assertThat(history.getContent()).hasSize(3);
+        stats.setStatisticsEnabled(false);
+    }
+
 }
