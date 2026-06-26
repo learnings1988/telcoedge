@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.telcoedge.subscriber.persistence.PlanEntityGraphTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2026-06-24T03:52:41.884Z" hostname="DESKTOP-UH6MUT8" time="51.79">
+  <properties/>
+  <testcase name="withoutEntityGraph_triggerNPlusOne()" classname="com.telcoedge.subscriber.persistence.PlanEntityGraphTest" time="2.521"/>
+  <testcase name="withEntityGraph_loadsInSingleQuery()" classname="com.telcoedge.subscriber.persistence.PlanEntityGraphTest" time="0.259"/>
+  <system-out><![CDATA[09:22:42.561 [Test worker] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [com.telcoedge.subscriber.persistence.PlanEntityGraphTest]: PlanEntityGraphTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+09:22:42.761 [Test worker] INFO org.testcontainers.images.PullPolicy -- Image pull policy will be performed by: DefaultPullPolicy()
+09:22:42.773 [Test worker] INFO org.testcontainers.utility.ImageNameSubstitutor -- Image name substitution will be performed by: DefaultImageNameSubstitutor (composite of 'ConfigurationFileImageNameSubstitutor' and 'PrefixingImageNameSubstitutor')
+09:22:42.831 [Test worker] INFO org.testcontainers.DockerClientFactory -- Testcontainers version: 1.20.1
+09:22:43.568 [Test worker] INFO org.testcontainers.dockerclient.DockerClientProviderStrategy -- Loaded org.testcontainers.dockerclient.NpipeSocketClientProviderStrategy from ~/.testcontainers.properties, will try it first
+09:22:44.630 [Test worker] INFO org.testcontainers.dockerclient.DockerClientProviderStrategy -- Found Docker environment with local Npipe socket (npipe:////./pipe/docker_engine)
+09:22:44.634 [Test worker] INFO org.testcontainers.DockerClientFactory -- Docker host IP address is localhost
+09:22:44.686 [Test worker] INFO org.testcontainers.DockerClientFactory -- Connected to docker: 
+  Server Version: 27.2.0
+  API Version: 1.47
+  Operating System: Docker Desktop
+  Total Memory: 5884 MB
+09:22:45.029 [Test worker] INFO tc.testcontainers/ryuk:0.8.1 -- Creating container for image: testcontainers/ryuk:0.8.1
+09:22:45.456 [Test worker] INFO org.testcontainers.utility.RegistryAuthLocator -- Credential helper/store (docker-credential-desktop) does not have credentials for https://index.docker.io/v1/
+09:22:48.076 [Test worker] INFO tc.testcontainers/ryuk:0.8.1 -- Container testcontainers/ryuk:0.8.1 is starting: 22c9317400570017c63b083f581a13205a272b844a50a0ae06a42f079e32cca8
+09:22:50.789 [Test worker] INFO tc.testcontainers/ryuk:0.8.1 -- Container testcontainers/ryuk:0.8.1 started in PT5.7603318S
+09:22:50.833 [Test worker] INFO org.testcontainers.utility.RyukResourceReaper -- Ryuk started - will monitor and terminate Testcontainers containers on JVM exit
+09:22:50.833 [Test worker] INFO org.testcontainers.DockerClientFactory -- Checking the system...
+09:22:50.836 [Test worker] INFO org.testcontainers.DockerClientFactory -- ✔︎ Docker server version should be at least 1.6.0
+09:22:51.276 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration com.telcoedge.SubscriberApiApplication for test class com.telcoedge.subscriber.persistence.PlanEntityGraphTest
+09:22:51.620 [Test worker] INFO tc.postgres:16-alpine -- Creating container for image: postgres:16-alpine
+09:22:55.066 [Test worker] INFO tc.postgres:16-alpine -- Container postgres:16-alpine is starting: 2d3fbc1055443b957790bc568ffa3f3ac7e9b5346eb2acba7a498f286cf84150
+09:23:03.756 [Test worker] INFO tc.postgres:16-alpine -- Container postgres:16-alpine started in PT12.1360087S
+09:23:03.758 [Test worker] INFO tc.postgres:16-alpine -- Container is started (JDBC URL: jdbc:postgresql://localhost:64788/test?loggerLevel=OFF)
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v3.3.4)
+
+{"@timestamp":"2026-06-24T09.23.05.871+05:30","level":"INFO","logger_name":"org.hibernate.validator.internal.util.Version","thread_name":"background-preinit","message":"HV000001: Hibernate Validator 8.0.1.Final","app":"subscriber-api"}
+{"@timestamp":"2026-06-24T09.23.06.018+05:30","level":"INFO","logger_name":"com.telcoedge.subscriber.persistence.PlanEntityGraphTest","thread_name":"Test worker","message":"Starting PlanEntityGraphTest using Java 21.0.11 with PID 18996 (started by shuba in C:\\Users\\shuba\\Documents\\career\\telcoedge\\telcoedge\\subscriber-api)","app":"subscriber-api"}
+{"@timestamp":"2026-06-24T09.23.06.019+05:30","level":"DEBUG","logger_name":"com.telcoedge.subscriber.persistence.PlanEntityGraphTest","thread_name":"Test worker","message":"Running with Spring Boot v3.3.4, Spring v6.1.13","app":"subscriber-api"}
+{"@timestamp":"2026-06-24T09.23.06.022+05:30","level":"INFO","logger_name":"com.telcoedge.subscriber.persistence.PlanEntityGraphTest","thread_name":"Test worker","message":"The following 1 profile is active: \"dev\"","app":"subscriber-api"}
+{"@timestamp":"2026-06-24T09.23.10.476+05:30","level":"INFO","logger_name":"org.springframework.data.repository.config.RepositoryConfigurationDelegate","thread_name":"Test worker","message":"Bootstrapping Spring Data JPA repositories in DEFAULT mode.","app":"subscriber-api"}
+{"@timestamp":"2026-06-24T09.23.10.777+05:30","level":"INFO","logger_name":"org.springframework.data.repository.config.RepositoryConfigurationDelegate","thread_name":"Test worker","message":"Finished Spring Data repository scanning in 274 ms. Found 6 JPA repository interfaces.","app":"subscriber-api"}
+{"@timestamp":"2026-06-24T09.23.14.002+05:30","level":"DEBUG","logger_name":"org.springframework.jdbc.datasource.SimpleDriverDataSource","thread_name":"Test worker","message":"Creating new JDBC Driver Connection to [jdbc:postgresql://localhost:64788/test?loggerLevel=OFF]","app":"subscriber-api"}
+{"@timestamp":"2026-06-24T09.23.15.029+05:30","level":"DEBUG","logger_name":"org.springframework.jdbc.datasource.SimpleDriverDataSource","thread_name":"Test worker","message":"Creating new JDBC Driver Connection to [jdbc:postgresql://localhost:64788/test?loggerLevel=OFF]","app":"subscriber-api"}
+{"@timestamp":"2026-06-24T09.23.15.173+05:30","level":"INFO","logger_name":"org.flywaydb.core.FlywayExecutor","thread_name":"Test worker","message":"Database: jdbc:postgresql://localhost:64788/test (PostgreSQL 16.13)","app":"subscriber-api"}
+{"@timestamp":"2026-06-24T09.23.15.441+05:30","level":"INFO","logger_name":"org.flywaydb.core.internal.schemahistory.JdbcTableSchemaHistory","thread_name":"Test worker","message":"Schema history table \"public\".\"flyway_schema_history\" does not exist yet","app":"subscriber-api"}
+{"@timestamp":"2026-06-24T09.23.15.453+05:30","level":"INFO","logger_name":"org.flywaydb.core.internal.command.DbValidate","thread_name":"Test worker","message":"Successfully validated 6 migrations (execution time 00:00.085s)","app":"subscriber-api"}
+{"@timestamp":"2026-06-24T09.23.15.524+05:30","level":"INFO","logger_name":"org.flywaydb.core.internal.schemahistory.JdbcTableSchemaHistory","thread_name":"Test worker","message":"Creating Schema History table \"public\".\"flyway_schema_history\" ...","app":"subscriber-api"}
+{"@timestamp":"2026-06-24T09.23.15.711+05:30","level":"DEBUG","logger_name":"org.springframework.jdbc.datasource.SimpleDriverDataSource","thread_name":"Test worker","message":"Creating new JDBC Driver Connection to [jdbc:postgresql://localhost:64788/test?loggerLevel=OFF]","app":"subscriber-api"}
+{"@timestamp":"2026-06-24T09.23.15.834+05:30","level":"INFO","logger_name":"org.flywaydb.core.internal.command.DbMigrate","thread_name":"Test worker","message":"Current version of schema \"public\": << Empty Schema >>","app":"subscriber-api"}
+{"@timestamp":"2026-06-24T09.23.15.920+05:30","level":"INFO","logger_name":"org.flywaydb.core.internal.command.DbMigrate","thread_name":"Test worker","message":"Migrating schema \"public\" to version \"1 - create subscribers table\"","app":"subscriber-api"}
+{"@timestamp":"2026-06-24T09.23.16.084+05:30","level":"INFO","logger_name":"org.flywaydb.core.internal.command.DbMigrate","thread_name":"Test worker","message":"Migrating schema \"public\" to version \"2 - create operators\"","app":"subscriber-api"}
+{"@timestamp":"2026-06-24T09.23.16.235+05:30","level":"INFO","logger_name":"org.flywaydb.core.internal.command.DbMigrate","thread_name":"Test worker","message":"Migrating schema \"public\" to version \"3 - create plans and tariff rates\"","app":"subscriber-api"}
+{"@timestamp":"2026-06-24T09.23.16.355+05:30","level":"INFO","logger_name":"org.flywaydb.core.internal.command.DbMigrate","thread_name":"Test worker","message":"Migrating schema \"public\" to version \"4 - create balances\"","app":"subscriber-api"}
+{"@timestamp":"2026-06-24T09.23.16.442+05:30","level":"INFO","logger_name":"org.flywaydb.core.internal.command.DbMigrate","thread_name":"Test worker","message":"Migrating schema \"public\" to version \"5 - create usage events\"","app":"subscriber-api"}
+{"@timestamp":"2026-06-24T09.23.16.533+05:30","level":"INFO","logger_name":"org.flywaydb.core.internal.command.DbMigrate","thread_name":"Test worker","message":"Migrating schema \"public\" to version \"6 - create idempotency keys\"","app":"subscriber-api"}
+{"@timestamp":"2026-06-24T09.23.16.620+05:30","level":"INFO","logger_name":"org.flywaydb.core.internal.command.DbMigrate","thread_name":"Test worker","message":"Successfully applied 6 migrations to schema \"public\", now at version v6 (execution time 00:00.341s)","app":"subscriber-api"}
+{"@timestamp":"2026-06-24T09.23.17.120+05:30","level":"INFO","logger_name":"org.hibernate.jpa.internal.util.LogHelper","thread_name":"Test worker","message":"HHH000204: Processing PersistenceUnitInfo [name: default]","app":"subscriber-api"}
+{"@timestamp":"2026-06-24T09.23.17.358+05:30","level":"INFO","logger_name":"org.hibernate.Version","thread_name":"Test worker","message":"HHH000412: Hibernate ORM core version 6.5.3.Final","app":"subscriber-api"}
+{"@timestamp":"2026-06-24T09.23.17.463+05:30","level":"INFO","logger_name":"org.hibernate.cache.internal.RegionFactoryInitiator","thread_name":"Test worker","message":"HHH000026: Second-level cache disabled","app":"subscriber-api"}
+{"@timestamp":"2026-06-24T09.23.18.522+05:30","level":"INFO","logger_name":"org.springframework.orm.jpa.persistenceunit.SpringPersistenceUnitInfo","thread_name":"Test worker","message":"No LoadTimeWeaver setup: ignoring JPA class transformer","app":"subscriber-api"}
+{"@timestamp":"2026-06-24T09.23.18.698+05:30","level":"INFO","logger_name":"com.zaxxer.hikari.HikariDataSource","thread_name":"Test worker","message":"HikariPool-1 - Starting...","app":"subscriber-api"}
+{"@timestamp":"2026-06-24T09.23.18.872+05:30","level":"INFO","logger_name":"com.zaxxer.hikari.pool.HikariPool","thread_name":"Test worker","message":"HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@71eead09","app":"subscriber-api"}
+{"@timestamp":"2026-06-24T09.23.18.879+05:30","level":"INFO","logger_name":"com.zaxxer.hikari.HikariDataSource","thread_name":"Test worker","message":"HikariPool-1 - Start completed.","app":"subscriber-api"}
+{"@timestamp":"2026-06-24T09.23.18.979+05:30","level":"WARN","logger_name":"org.hibernate.orm.deprecation","thread_name":"Test worker","message":"HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)","app":"subscriber-api"}
+{"@timestamp":"2026-06-24T09.23.22.526+05:30","level":"INFO","logger_name":"org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator","thread_name":"Test worker","message":"HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)","app":"subscriber-api"}
+{"@timestamp":"2026-06-24T09.23.22.652+05:30","level":"INFO","logger_name":"org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean","thread_name":"Test worker","message":"Initialized JPA EntityManagerFactory for persistence unit 'default'","app":"subscriber-api"}
+{"@timestamp":"2026-06-24T09.23.25.228+05:30","level":"WARN","logger_name":"org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration","thread_name":"Test worker","message":"spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning","app":"subscriber-api"}
+{"@timestamp":"2026-06-24T09.23.28.135+05:30","level":"INFO","logger_name":"org.springframework.data.jpa.repository.query.QueryEnhancerFactory","thread_name":"Test worker","message":"Hibernate is in classpath; If applicable, HQL parser will be used.","app":"subscriber-api"}
+{"@timestamp":"2026-06-24T09.23.30.230+05:30","level":"INFO","logger_name":"org.springframework.boot.actuate.endpoint.web.EndpointLinksResolver","thread_name":"Test worker","message":"Exposing 3 endpoints beneath base path '/actuator'","app":"subscriber-api"}
+{"@timestamp":"2026-06-24T09.23.30.511+05:30","level":"INFO","logger_name":"com.telcoedge.subscriber.persistence.PlanEntityGraphTest","thread_name":"Test worker","message":"Started PlanEntityGraphTest in 26.523 seconds (process running for 51.089)","app":"subscriber-api"}
+Hibernate: 
+    select
+        pe1_0.id,
+        pe1_0.active,
+        pe1_0.created_at,
+        pe1_0.description,
+        pe1_0.name,
+        pe1_0.operator_id,
+        pe1_0.updated_at 
+    from
+        plans pe1_0 
+    where
+        pe1_0.operator_id=? 
+        and pe1_0.active
+{"@timestamp":"2026-06-24T09.23.33.108+05:30","level":"TRACE","logger_name":"org.hibernate.orm.jdbc.bind","thread_name":"Test worker","message":"binding parameter (1:VARCHAR) <- [acme]","app":"subscriber-api"}
+Hibernate: 
+    select
+        tr1_0.plan_id,
+        tr1_0.id,
+        tr1_0.created_at,
+        tr1_0.rate_per_unit,
+        tr1_0.updated_at,
+        tr1_0.usage_type 
+    from
+        tariff_rates tr1_0 
+    where
+        tr1_0.plan_id=?
+{"@timestamp":"2026-06-24T09.23.33.172+05:30","level":"TRACE","logger_name":"org.hibernate.orm.jdbc.bind","thread_name":"Test worker","message":"binding parameter (1:BIGINT) <- [1]","app":"subscriber-api"}
+{"@timestamp":"2026-06-24T09.23.33.186+05:30","level":"DEBUG","logger_name":"org.hibernate.sql.results.internal.ResultsHelper","thread_name":"Test worker","message":"Collection fully initialized: [com.telcoedge.subscriber.persistence.PlanEntity.tariffRates#1]","app":"subscriber-api"}
+Hibernate: 
+    select
+        pe1_0.id,
+        pe1_0.active,
+        pe1_0.created_at,
+        pe1_0.description,
+        pe1_0.name,
+        pe1_0.operator_id,
+        tr1_0.plan_id,
+        tr1_0.id,
+        tr1_0.created_at,
+        tr1_0.rate_per_unit,
+        tr1_0.updated_at,
+        tr1_0.usage_type,
+        pe1_0.updated_at 
+    from
+        plans pe1_0 
+    left join
+        tariff_rates tr1_0 
+            on pe1_0.id=tr1_0.plan_id 
+    where
+        pe1_0.operator_id=? 
+        and pe1_0.active=true
+{"@timestamp":"2026-06-24T09.23.33.626+05:30","level":"TRACE","logger_name":"org.hibernate.orm.jdbc.bind","thread_name":"Test worker","message":"binding parameter (1:VARCHAR) <- [acme]","app":"subscriber-api"}
+{"@timestamp":"2026-06-24T09.23.33.636+05:30","level":"DEBUG","logger_name":"org.hibernate.sql.results.internal.ResultsHelper","thread_name":"Test worker","message":"Collection fully initialized: [com.telcoedge.subscriber.persistence.PlanEntity.tariffRates#1]","app":"subscriber-api"}
+]]></system-out>
+  <system-err><![CDATA[WARNING: A Java agent has been loaded dynamically (C:\Users\shuba\.gradle\caches\modules-2\files-2.1\net.bytebuddy\byte-buddy-agent\1.14.19\154da3a65b4f4a909d3e5bdec55d1b2b4cbb6ce1\byte-buddy-agent-1.14.19.jar)
+WARNING: If a serviceability tool is in use, please run with -XX:+EnableDynamicAgentLoading to hide this warning
+WARNING: If a serviceability tool is not in use, please run with -Djdk.instrument.traceUsage for more information
+WARNING: Dynamic loading of agents will be disallowed by default in a future release
+]]></system-err>
+</testsuite>

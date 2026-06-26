@@ -27,8 +27,11 @@ import org.testcontainers.junit.jupiter.Testcontainers;
 
 import java.math.BigDecimal;
 import java.time.Instant;
+import java.time.LocalDate;
+import java.time.ZoneOffset;
 import java.util.UUID;
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.InstanceOfAssertFactories.LOCAL_DATE;
 
 @SpringBootTest
 @Testcontainers
@@ -175,4 +178,37 @@ public class ChargingServiceIntegrationTest {
         stats.setStatisticsEnabled(false);
     }
 
+    @Test
+    void filteredUsageHistoryShouldReturnMatchingEvents(){
+        for(int i=0;i<2;i++){
+            Cdr cdr = new Cdr(UUID.randomUUID(), "acme", "9876543000",
+                    UsageType.VOICE, new BigDecimal("60"), Instant.now(), Instant.now());
+            chargingService.process(cdr);
+        }
+        chargingService.process(new Cdr(UUID.randomUUID(), "acme", "9876543000",
+                UsageType.DATA, new BigDecimal("100"), Instant.now(), Instant.now()));
+
+        Page<UsageHistoryDto> voiceOnly = usageHistoryService.getFilteredHistory(
+                "acme", "9876543000", "VOICE", null, null, null,
+                0 , 20);
+
+        assertThat(voiceOnly.getContent()).hasSize(2);
+        assertThat(voiceOnly.getContent()).
+                allMatch(dto -> UsageType.VOICE.equals(dto.usageType()));
+
+
+        Page<UsageHistoryDto> charged = usageHistoryService.getFilteredHistory(
+                "acme", "9876543000", null, "CHARGED", null, null,
+                0,20);
+
+        assertThat(charged.getContent()).hasSize(3);
+
+        Instant startOfDay = LocalDate.now().atStartOfDay(ZoneOffset.UTC).toInstant();
+        Instant endOfDay = LocalDate.now().plusDays(1).atStartOfDay(ZoneOffset.UTC).toInstant();
+
+        Page<UsageHistoryDto> dataToday = usageHistoryService.getFilteredHistory(
+                "acme", "9876543000", "DATA",null,
+                startOfDay, endOfDay, 0, 20);
+        assertThat(dataToday.getContent()).hasSize(1);
+    }
 }

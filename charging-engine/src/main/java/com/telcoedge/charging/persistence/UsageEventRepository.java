@@ -5,6 +5,7 @@ import com.telcoedge.charging.persistence.UsageEventEntity;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
@@ -12,7 +13,8 @@ import org.springframework.data.repository.query.Param;
 import java.util.Optional;
 import java.util.UUID;
 
-public interface UsageEventRepository extends JpaRepository<UsageEventEntity, Long> {
+public interface UsageEventRepository extends JpaRepository<UsageEventEntity, Long> ,
+        JpaSpecificationExecutor<UsageEventEntity> {
 
     Optional<UsageEventEntity> findByEventId(UUID eventId);
     boolean existsByEventId(UUID eventId);
