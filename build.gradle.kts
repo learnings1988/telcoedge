@@ -18,6 +18,8 @@ subprojects{
 	plugins.apply("java")
 	plugins.apply("io.spring.dependency-management")
 
+	extra["testcontainers.version"] = "1.21.4"
+
 	extensions.configure<JavaPluginExtension>{
 		toolchain{
 			languageVersion.set(JavaLanguageVersion.of(21))
@@ -26,6 +28,7 @@ subprojects{
 
 	tasks.withType<Test>{
 		useJUnitPlatform()
+		systemProperty("testcontainers.ryuk.disabled", "true")
 		jvmArgs("-Djdk.tracePinnedThreads=short ","--enable-preview")
 		testLogging{
 			events("passed", "failed", "skipped")

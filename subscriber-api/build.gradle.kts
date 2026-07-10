@@ -18,8 +18,8 @@ dependencies {
 
 	testImplementation("org.springframework.boot:spring-boot-starter-test:3.3.4")
 	testImplementation("org.springframework.boot:spring-boot-testcontainers:3.3.4")
-	testImplementation("org.testcontainers:junit-jupiter:1.20.1")
-	testImplementation("org.testcontainers:testcontainers:1.20.1")
-	testImplementation("org.testcontainers:postgresql:1.20.1")
+	testImplementation("org.testcontainers:junit-jupiter:1.21.4")
+	testImplementation("org.testcontainers:testcontainers:1.21.4")
+	testImplementation("org.testcontainers:postgresql:1.21.4")
 	testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 }

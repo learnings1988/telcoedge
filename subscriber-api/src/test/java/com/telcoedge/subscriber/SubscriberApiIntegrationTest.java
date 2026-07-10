@@ -3,7 +3,11 @@ package com.telcoedge.subscriber;
 import com.telcoedge.domain.Subscriber;
 import com.telcoedge.domain.SubscriberStatus;
 import com.telcoedge.subscriber.exception.SubscriberAlreadyExistException;
+import com.telcoedge.subscriber.persistence.OperatorEntity;
+import com.telcoedge.subscriber.persistence.OperatorRepository;
 import com.telcoedge.subscriber.service.SubscriberService;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -23,13 +27,20 @@ class SubscriberApiIntegrationTest {
 
     @Container
     @ServiceConnection
-    static PostgreSQLContainer<?> postgres = new PostgreSQLContainer<>("postgres:16-alpine");
+    static PostgreSQLContainer<?> postgres =
+            new PostgreSQLContainer<>("postgres:16-alpine");
 
     @Autowired
     SubscriberService service;
 
+
     @Autowired
     private TestRestTemplate restTemplate;
+
+    @BeforeAll
+    static void seedOperators(@Autowired OperatorRepository operatorRepository){
+        operatorRepository.save(new OperatorEntity("testtop", "Test Operator"));
+    }
 
     @Test
     void createSubscriberAndReadItBack() {

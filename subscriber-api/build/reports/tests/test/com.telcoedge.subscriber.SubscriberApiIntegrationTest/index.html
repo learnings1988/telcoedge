@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta http-equiv="x-ua-compatible" content="IE=edge"/>
+<title>Test results - com.telcoedge.subscriber.SubscriberApiIntegrationTest</title>
+<link href="../css/base-style.css" rel="stylesheet" type="text/css"/>
+<link href="../css/style.css" rel="stylesheet" type="text/css"/>
+<script src="../js/report.js" type="text/javascript"></script>
+</head>
+<body>
+<div id="content">
+<div class="breadcrumbs">
+<a class="breadcrumb" href="../index.html">all</a> &gt; 
+<span class="breadcrumb">com.telcoedge.subscriber.SubscriberApiIntegrationTest</span>
+</div>
+<div class="tab-container">
+<ul class="tabLinks">
+<li>
+<a class="successGroup" href="#">Gradle Test Run :subscriber-api:test</a>
+</li>
+</ul>
+<div class="tab">
+<h2>Gradle Test Run :subscriber-api:test</h2>
+<h1>SubscriberApiIntegrationTest</h1>
+<div class="tab-container">
+<ul class="tabLinks">
+<li>
+<a class="" href="#">summary</a>
+</li>
+<li>
+<a class="" href="#">standard output</a>
+</li>
+</ul>
+<div class="tab">
+<h2>summary</h2>
+<div>
+<div class="summary">
+<table>
+<tr>
+<td>
+<div class="summaryGroup">
+<table>
+<tr>
+<td>
+<div class="infoBox">
+<div class="counter">3</div>
+<p>tests</p>
+</div>
+</td>
+<td>
+<div class="infoBox">
+<div class="counter">0</div>
+<p>failures</p>
+</div>
+</td>
+<td>
+<div class="infoBox">
+<div class="counter">0</div>
+<p>skipped</p>
+</div>
+</td>
+<td>
+<div class="infoBox duration">
+<div class="counter">12.843s</div>
+<p>duration</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</td>
+<td>
+<div class="infoBox success successRate">
+<div class="percent">100%</div>
+<p>successful</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<table class="test-results">
+<thead>
+<tr>
+<th>Child</th>
+<th hidden="">Name</th>
+<th>Tests</th>
+<th>Failures</th>
+<th>Skipped</th>
+<th>Duration</th>
+<th>Success rate</th>
+</tr>
+</thead>
+<tr>
+<td class="success">
+<a href="createSubscriberAndReadItBack().html">createSubscriberAndReadItBack()</a>
+</td>
+<td class="path" hidden="">createSubscriberAndReadItBack()</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0.092s</td>
+<td class="success">100%</td>
+</tr>
+<tr>
+<td class="success">
+<a href="returns404ForUnknownSubscriber().html">returns404ForUnknownSubscriber()</a>
+</td>
+<td class="path" hidden="">returns404ForUnknownSubscriber()</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0.245s</td>
+<td class="success">100%</td>
+</tr>
+<tr>
+<td class="success">
+<a href="returns409WhenDuplicateSubscriber().html">returns409WhenDuplicateSubscriber()</a>
+</td>
+<td class="path" hidden="">returns409WhenDuplicateSubscriber()</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0.636s</td>
+<td class="success">100%</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="tab">
+<h2>standard output</h2>
+<span class="code">
+<pre id="root-0-test-stdout-com.telcoedge.subscriber.SubscriberApiIntegrationTest">20:26:45.579 [Test worker] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [com.telcoedge.subscriber.SubscriberApiIntegrationTest]: SubscriberApiIntegrationTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+20:26:45.629 [Test worker] INFO org.testcontainers.images.PullPolicy -- Image pull policy will be performed by: DefaultPullPolicy()
+20:26:45.632 [Test worker] INFO org.testcontainers.utility.ImageNameSubstitutor -- Image name substitution will be performed by: DefaultImageNameSubstitutor (composite of 'ConfigurationFileImageNameSubstitutor' and 'PrefixingImageNameSubstitutor')
+20:26:45.643 [Test worker] INFO org.testcontainers.DockerClientFactory -- Testcontainers version: 1.21.4
+20:26:46.083 [Test worker] INFO org.testcontainers.dockerclient.DockerClientProviderStrategy -- Found Docker environment with Environment variables, system properties and defaults. Resolved dockerHost=tcp://localhost:2375
+20:26:46.084 [Test worker] INFO org.testcontainers.DockerClientFactory -- Docker host IP address is host.docker.internal
+20:26:46.105 [Test worker] INFO org.testcontainers.DockerClientFactory -- Connected to docker: 
+  Server Version: 29.6.1
+  API Version: 1.55
+  Operating System: Docker Desktop
+  Total Memory: 15687 MB
+  Labels: 
+    com.docker.desktop.address=npipe://\\.\pipe\docker_cli
+20:26:46.164 [Test worker] INFO tc.testcontainers/ryuk:0.12.0 -- Creating container for image: testcontainers/ryuk:0.12.0
+20:26:46.679 [Test worker] INFO tc.testcontainers/ryuk:0.12.0 -- Container testcontainers/ryuk:0.12.0 is starting: f99eff697c3e94aab73ed735716a8701969b9dcb703db84f35fc10a36d057880
+20:26:47.044 [Test worker] INFO tc.testcontainers/ryuk:0.12.0 -- Container testcontainers/ryuk:0.12.0 started in PT0.8793469S
+20:26:47.054 [Test worker] INFO org.testcontainers.utility.RyukResourceReaper -- Ryuk started - will monitor and terminate Testcontainers containers on JVM exit
+20:26:47.054 [Test worker] INFO org.testcontainers.DockerClientFactory -- Checking the system...
+20:26:47.055 [Test worker] INFO org.testcontainers.DockerClientFactory -- ✔︎ Docker server version should be at least 1.6.0
+20:26:47.214 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration com.telcoedge.SubscriberApiApplication for test class com.telcoedge.subscriber.SubscriberApiIntegrationTest
+20:26:47.292 [Test worker] INFO tc.postgres:16-alpine -- Creating container for image: postgres:16-alpine
+20:26:47.392 [Test worker] INFO tc.postgres:16-alpine -- Container postgres:16-alpine is starting: c2fdab8a7f8b456e0d32af4b0b8b05e0e51dc6e9be6a5aa989794e680331859f
+20:26:49.043 [Test worker] INFO tc.postgres:16-alpine -- Container postgres:16-alpine started in PT1.7512283S
+20:26:49.046 [Test worker] INFO tc.postgres:16-alpine -- Container is started (JDBC URL: jdbc:postgresql://host.docker.internal:61672/test?loggerLevel=OFF)
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v3.3.4)
+
+{&quot;@timestamp&quot;:&quot;2026-07-10T20.26.49.680+05:30&quot;,&quot;level&quot;:&quot;INFO&quot;,&quot;logger_name&quot;:&quot;org.hibernate.validator.internal.util.Version&quot;,&quot;thread_name&quot;:&quot;background-preinit&quot;,&quot;message&quot;:&quot;HV000001: Hibernate Validator 8.0.1.Final&quot;,&quot;app&quot;:&quot;subscriber-api&quot;}
+{&quot;@timestamp&quot;:&quot;2026-07-10T20.26.49.733+05:30&quot;,&quot;level&quot;:&quot;INFO&quot;,&quot;logger_name&quot;:&quot;com.telcoedge.subscriber.SubscriberApiIntegrationTest&quot;,&quot;thread_name&quot;:&quot;Test worker&quot;,&quot;message&quot;:&quot;Starting SubscriberApiIntegrationTest using Java 21.0.11 with PID 24092 (started by shubbham goyal in C:\\workspaces\\assisstedLearning\\telcoedge\\subscriber-api)&quot;,&quot;app&quot;:&quot;subscriber-api&quot;}
+{&quot;@timestamp&quot;:&quot;2026-07-10T20.26.49.733+05:30&quot;,&quot;level&quot;:&quot;DEBUG&quot;,&quot;logger_name&quot;:&quot;com.telcoedge.subscriber.SubscriberApiIntegrationTest&quot;,&quot;thread_name&quot;:&quot;Test worker&quot;,&quot;message&quot;:&quot;Running with Spring Boot v3.3.4, Spring v6.1.13&quot;,&quot;app&quot;:&quot;subscriber-api&quot;}
+{&quot;@timestamp&quot;:&quot;2026-07-10T20.26.49.734+05:30&quot;,&quot;level&quot;:&quot;INFO&quot;,&quot;logger_name&quot;:&quot;com.telcoedge.subscriber.SubscriberApiIntegrationTest&quot;,&quot;thread_name&quot;:&quot;Test worker&quot;,&quot;message&quot;:&quot;The following 1 profile is active: \&quot;dev\&quot;&quot;,&quot;app&quot;:&quot;subscriber-api&quot;}
+{&quot;@timestamp&quot;:&quot;2026-07-10T20.26.50.600+05:30&quot;,&quot;level&quot;:&quot;INFO&quot;,&quot;logger_name&quot;:&quot;org.springframework.data.repository.config.RepositoryConfigurationDelegate&quot;,&quot;thread_name&quot;:&quot;Test worker&quot;,&quot;message&quot;:&quot;Bootstrapping Spring Data JPA repositories in DEFAULT mode.&quot;,&quot;app&quot;:&quot;subscriber-api&quot;}
+{&quot;@timestamp&quot;:&quot;2026-07-10T20.26.50.666+05:30&quot;,&quot;level&quot;:&quot;INFO&quot;,&quot;logger_name&quot;:&quot;org.springframework.data.repository.config.RepositoryConfigurationDelegate&quot;,&quot;thread_name&quot;:&quot;Test worker&quot;,&quot;message&quot;:&quot;Finished Spring Data repository scanning in 58 ms. Found 6 JPA repository interfaces.&quot;,&quot;app&quot;:&quot;subscriber-api&quot;}
+{&quot;@timestamp&quot;:&quot;2026-07-10T20.26.51.512+05:30&quot;,&quot;level&quot;:&quot;INFO&quot;,&quot;logger_name&quot;:&quot;org.springframework.boot.web.embedded.tomcat.TomcatWebServer&quot;,&quot;thread_name&quot;:&quot;Test worker&quot;,&quot;message&quot;:&quot;Tomcat initialized with port 0 (http)&quot;,&quot;app&quot;:&quot;subscriber-api&quot;}
+{&quot;@timestamp&quot;:&quot;2026-07-10T20.26.51.527+05:30&quot;,&quot;level&quot;:&quot;INFO&quot;,&quot;logger_name&quot;:&quot;org.apache.coyote.http11.Http11NioProtocol&quot;,&quot;thread_name&quot;:&quot;Test worker&quot;,&quot;message&quot;:&quot;Initializing ProtocolHandler [\&quot;http-nio-auto-1\&quot;]&quot;,&quot;app&quot;:&quot;subscriber-api&quot;}
+{&quot;@timestamp&quot;:&quot;2026-07-10T20.26.51.532+05:30&quot;,&quot;level&quot;:&quot;INFO&quot;,&quot;logger_name&quot;:&quot;org.apache.catalina.core.StandardService&quot;,&quot;thread_name&quot;:&quot;Test worker&quot;,&quot;message&quot;:&quot;Starting service [Tomcat]&quot;,&quot;app&quot;:&quot;subscriber-api&quot;}
+{&quot;@timestamp&quot;:&quot;2026-07-10T20.26.51.533+05:30&quot;,&quot;level&quot;:&quot;INFO&quot;,&quot;logger_name&quot;:&quot;org.apache.catalina.core.StandardEngine&quot;,&quot;thread_name&quot;:&quot;Test worker&quot;,&quot;message&quot;:&quot;Starting Servlet engine: [Apache Tomcat/10.1.30]&quot;,&quot;app&quot;:&quot;subscriber-api&quot;}
+{&quot;@timestamp&quot;:&quot;2026-07-10T20.26.51.630+05:30&quot;,&quot;level&quot;:&quot;INFO&quot;,&quot;logger_name&quot;:&quot;org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]&quot;,&quot;thread_name&quot;:&quot;Test worker&quot;,&quot;message&quot;:&quot;Initializing Spring embedded WebApplicationContext&quot;,&quot;app&quot;:&quot;subscriber-api&quot;}
+{&quot;@timestamp&quot;:&quot;2026-07-10T20.26.51.632+05:30&quot;,&quot;level&quot;:&quot;INFO&quot;,&quot;logger_name&quot;:&quot;org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext&quot;,&quot;thread_name&quot;:&quot;Test worker&quot;,&quot;message&quot;:&quot;Root WebApplicationContext: initialization completed in 1881 ms&quot;,&quot;app&quot;:&quot;subscriber-api&quot;}
+{&quot;@timestamp&quot;:&quot;2026-07-10T20.26.52.110+05:30&quot;,&quot;level&quot;:&quot;DEBUG&quot;,&quot;logger_name&quot;:&quot;org.springframework.jdbc.datasource.SimpleDriverDataSource&quot;,&quot;thread_name&quot;:&quot;Test worker&quot;,&quot;message&quot;:&quot;Creating new JDBC Driver Connection to [jdbc:postgresql://host.docker.internal:61672/test?loggerLevel=OFF]&quot;,&quot;app&quot;:&quot;subscriber-api&quot;}
+{&quot;@timestamp&quot;:&quot;2026-07-10T20.26.52.283+05:30&quot;,&quot;level&quot;:&quot;DEBUG&quot;,&quot;logger_name&quot;:&quot;org.springframework.jdbc.datasource.SimpleDriverDataSource&quot;,&quot;thread_name&quot;:&quot;Test worker&quot;,&quot;message&quot;:&quot;Creating new JDBC Driver Connection to [jdbc:postgresql://host.docker.internal:61672/test?loggerLevel=OFF]&quot;,&quot;app&quot;:&quot;subscriber-api&quot;}
+{&quot;@timestamp&quot;:&quot;2026-07-10T20.26.52.316+05:30&quot;,&quot;level&quot;:&quot;INFO&quot;,&quot;logger_name&quot;:&quot;org.flywaydb.core.FlywayExecutor&quot;,&quot;thread_name&quot;:&quot;Test worker&quot;,&quot;message&quot;:&quot;Database: jdbc:postgresql://host.docker.internal:61672/test (PostgreSQL 16.14)&quot;,&quot;app&quot;:&quot;subscriber-api&quot;}
+{&quot;@timestamp&quot;:&quot;2026-07-10T20.26.52.373+05:30&quot;,&quot;level&quot;:&quot;INFO&quot;,&quot;logger_name&quot;:&quot;org.flywaydb.core.internal.schemahistory.JdbcTableSchemaHistory&quot;,&quot;thread_name&quot;:&quot;Test worker&quot;,&quot;message&quot;:&quot;Schema history table \&quot;public\&quot;.\&quot;flyway_schema_history\&quot; does not exist yet&quot;,&quot;app&quot;:&quot;subscriber-api&quot;}
+{&quot;@timestamp&quot;:&quot;2026-07-10T20.26.52.380+05:30&quot;,&quot;level&quot;:&quot;INFO&quot;,&quot;logger_name&quot;:&quot;org.flywaydb.core.internal.command.DbValidate&quot;,&quot;thread_name&quot;:&quot;Test worker&quot;,&quot;message&quot;:&quot;Successfully validated 6 migrations (execution time 00:00.031s)&quot;,&quot;app&quot;:&quot;subscriber-api&quot;}
+{&quot;@timestamp&quot;:&quot;2026-07-10T20.26.52.412+05:30&quot;,&quot;level&quot;:&quot;INFO&quot;,&quot;logger_name&quot;:&quot;org.flywaydb.core.internal.schemahistory.JdbcTableSchemaHistory&quot;,&quot;thread_name&quot;:&quot;Test worker&quot;,&quot;message&quot;:&quot;Creating Schema History table \&quot;public\&quot;.\&quot;flyway_schema_history\&quot; ...&quot;,&quot;app&quot;:&quot;subscriber-api&quot;}
+{&quot;@timestamp&quot;:&quot;2026-07-10T20.26.52.465+05:30&quot;,&quot;level&quot;:&quot;DEBUG&quot;,&quot;logger_name&quot;:&quot;org.springframework.jdbc.datasource.SimpleDriverDataSource&quot;,&quot;thread_name&quot;:&quot;Test worker&quot;,&quot;message&quot;:&quot;Creating new JDBC Driver Connection to [jdbc:postgresql://host.docker.internal:61672/test?loggerLevel=OFF]&quot;,&quot;app&quot;:&quot;subscriber-api&quot;}
+{&quot;@timestamp&quot;:&quot;2026-07-10T20.26.52.505+05:30&quot;,&quot;level&quot;:&quot;INFO&quot;,&quot;logger_name&quot;:&quot;org.flywaydb.core.internal.command.DbMigrate&quot;,&quot;thread_name&quot;:&quot;Test worker&quot;,&quot;message&quot;:&quot;Current version of schema \&quot;public\&quot;: &lt;&lt; Empty Schema &gt;&gt;&quot;,&quot;app&quot;:&quot;subscriber-api&quot;}
+{&quot;@timestamp&quot;:&quot;2026-07-10T20.26.52.515+05:30&quot;,&quot;level&quot;:&quot;INFO&quot;,&quot;logger_name&quot;:&quot;org.flywaydb.core.internal.command.DbMigrate&quot;,&quot;thread_name&quot;:&quot;Test worker&quot;,&quot;message&quot;:&quot;Migrating schema \&quot;public\&quot; to version \&quot;1 - create subscribers table\&quot;&quot;,&quot;app&quot;:&quot;subscriber-api&quot;}
+{&quot;@timestamp&quot;:&quot;2026-07-10T20.26.52.559+05:30&quot;,&quot;level&quot;:&quot;INFO&quot;,&quot;logger_name&quot;:&quot;org.flywaydb.core.internal.command.DbMigrate&quot;,&quot;thread_name&quot;:&quot;Test worker&quot;,&quot;message&quot;:&quot;Migrating schema \&quot;public\&quot; to version \&quot;2 - create operators\&quot;&quot;,&quot;app&quot;:&quot;subscriber-api&quot;}
+{&quot;@timestamp&quot;:&quot;2026-07-10T20.26.52.607+05:30&quot;,&quot;level&quot;:&quot;INFO&quot;,&quot;logger_name&quot;:&quot;org.flywaydb.core.internal.command.DbMigrate&quot;,&quot;thread_name&quot;:&quot;Test worker&quot;,&quot;message&quot;:&quot;Migrating schema \&quot;public\&quot; to version \&quot;3 - create plans and tariff rates\&quot;&quot;,&quot;app&quot;:&quot;subscriber-api&quot;}
+{&quot;@timestamp&quot;:&quot;2026-07-10T20.26.52.641+05:30&quot;,&quot;level&quot;:&quot;INFO&quot;,&quot;logger_name&quot;:&quot;org.flywaydb.core.internal.command.DbMigrate&quot;,&quot;thread_name&quot;:&quot;Test worker&quot;,&quot;message&quot;:&quot;Migrating schema \&quot;public\&quot; to version \&quot;4 - create balances\&quot;&quot;,&quot;app&quot;:&quot;subscriber-api&quot;}
+{&quot;@timestamp&quot;:&quot;2026-07-10T20.26.52.660+05:30&quot;,&quot;level&quot;:&quot;INFO&quot;,&quot;logger_name&quot;:&quot;org.flywaydb.core.internal.command.DbMigrate&quot;,&quot;thread_name&quot;:&quot;Test worker&quot;,&quot;message&quot;:&quot;Migrating schema \&quot;public\&quot; to version \&quot;5 - create usage events\&quot;&quot;,&quot;app&quot;:&quot;subscriber-api&quot;}
+{&quot;@timestamp&quot;:&quot;2026-07-10T20.26.52.684+05:30&quot;,&quot;level&quot;:&quot;INFO&quot;,&quot;logger_name&quot;:&quot;org.flywaydb.core.internal.command.DbMigrate&quot;,&quot;thread_name&quot;:&quot;Test worker&quot;,&quot;message&quot;:&quot;Migrating schema \&quot;public\&quot; to version \&quot;6 - create idempotency keys\&quot;&quot;,&quot;app&quot;:&quot;subscriber-api&quot;}
+{&quot;@timestamp&quot;:&quot;2026-07-10T20.26.52.710+05:30&quot;,&quot;level&quot;:&quot;INFO&quot;,&quot;logger_name&quot;:&quot;org.flywaydb.core.internal.command.DbMigrate&quot;,&quot;thread_name&quot;:&quot;Test worker&quot;,&quot;message&quot;:&quot;Successfully applied 6 migrations to schema \&quot;public\&quot;, now at version v6 (execution time 00:00.089s)&quot;,&quot;app&quot;:&quot;subscriber-api&quot;}
+{&quot;@timestamp&quot;:&quot;2026-07-10T20.26.52.878+05:30&quot;,&quot;level&quot;:&quot;INFO&quot;,&quot;logger_name&quot;:&quot;org.hibernate.jpa.internal.util.LogHelper&quot;,&quot;thread_name&quot;:&quot;Test worker&quot;,&quot;message&quot;:&quot;HHH000204: Processing PersistenceUnitInfo [name: default]&quot;,&quot;app&quot;:&quot;subscriber-api&quot;}
+{&quot;@timestamp&quot;:&quot;2026-07-10T20.26.52.929+05:30&quot;,&quot;level&quot;:&quot;INFO&quot;,&quot;logger_name&quot;:&quot;org.hibernate.Version&quot;,&quot;thread_name&quot;:&quot;Test worker&quot;,&quot;message&quot;:&quot;HHH000412: Hibernate ORM core version 6.5.3.Final&quot;,&quot;app&quot;:&quot;subscriber-api&quot;}
+{&quot;@timestamp&quot;:&quot;2026-07-10T20.26.52.966+05:30&quot;,&quot;level&quot;:&quot;INFO&quot;,&quot;logger_name&quot;:&quot;org.hibernate.cache.internal.RegionFactoryInitiator&quot;,&quot;thread_name&quot;:&quot;Test worker&quot;,&quot;message&quot;:&quot;HHH000026: Second-level cache disabled&quot;,&quot;app&quot;:&quot;subscriber-api&quot;}
+{&quot;@timestamp&quot;:&quot;2026-07-10T20.26.53.247+05:30&quot;,&quot;level&quot;:&quot;INFO&quot;,&quot;logger_name&quot;:&quot;org.springframework.orm.jpa.persistenceunit.SpringPersistenceUnitInfo&quot;,&quot;thread_name&quot;:&quot;Test worker&quot;,&quot;message&quot;:&quot;No LoadTimeWeaver setup: ignoring JPA class transformer&quot;,&quot;app&quot;:&quot;subscriber-api&quot;}
+{&quot;@timestamp&quot;:&quot;2026-07-10T20.26.53.279+05:30&quot;,&quot;level&quot;:&quot;INFO&quot;,&quot;logger_name&quot;:&quot;com.zaxxer.hikari.HikariDataSource&quot;,&quot;thread_name&quot;:&quot;Test worker&quot;,&quot;message&quot;:&quot;HikariPool-1 - Starting...&quot;,&quot;app&quot;:&quot;subscriber-api&quot;}
+{&quot;@timestamp&quot;:&quot;2026-07-10T20.26.53.305+05:30&quot;,&quot;level&quot;:&quot;INFO&quot;,&quot;logger_name&quot;:&quot;com.zaxxer.hikari.pool.HikariPool&quot;,&quot;thread_name&quot;:&quot;Test worker&quot;,&quot;message&quot;:&quot;HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@59b8a801&quot;,&quot;app&quot;:&quot;subscriber-api&quot;}
+{&quot;@timestamp&quot;:&quot;2026-07-10T20.26.53.307+05:30&quot;,&quot;level&quot;:&quot;INFO&quot;,&quot;logger_name&quot;:&quot;com.zaxxer.hikari.HikariDataSource&quot;,&quot;thread_name&quot;:&quot;Test worker&quot;,&quot;message&quot;:&quot;HikariPool-1 - Start completed.&quot;,&quot;app&quot;:&quot;subscriber-api&quot;}
+{&quot;@timestamp&quot;:&quot;2026-07-10T20.26.53.331+05:30&quot;,&quot;level&quot;:&quot;WARN&quot;,&quot;logger_name&quot;:&quot;org.hibernate.orm.deprecation&quot;,&quot;thread_name&quot;:&quot;Test worker&quot;,&quot;message&quot;:&quot;HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)&quot;,&quot;app&quot;:&quot;subscriber-api&quot;}
+{&quot;@timestamp&quot;:&quot;2026-07-10T20.26.54.676+05:30&quot;,&quot;level&quot;:&quot;INFO&quot;,&quot;logger_name&quot;:&quot;org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator&quot;,&quot;thread_name&quot;:&quot;Test worker&quot;,&quot;message&quot;:&quot;HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)&quot;,&quot;app&quot;:&quot;subscriber-api&quot;}
+{&quot;@timestamp&quot;:&quot;2026-07-10T20.26.54.751+05:30&quot;,&quot;level&quot;:&quot;INFO&quot;,&quot;logger_name&quot;:&quot;org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean&quot;,&quot;thread_name&quot;:&quot;Test worker&quot;,&quot;message&quot;:&quot;Initialized JPA EntityManagerFactory for persistence unit 'default'&quot;,&quot;app&quot;:&quot;subscriber-api&quot;}
+{&quot;@timestamp&quot;:&quot;2026-07-10T20.26.55.264+05:30&quot;,&quot;level&quot;:&quot;WARN&quot;,&quot;logger_name&quot;:&quot;org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration&quot;,&quot;thread_name&quot;:&quot;Test worker&quot;,&quot;message&quot;:&quot;spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning&quot;,&quot;app&quot;:&quot;subscriber-api&quot;}
+{&quot;@timestamp&quot;:&quot;2026-07-10T20.26.56.006+05:30&quot;,&quot;level&quot;:&quot;INFO&quot;,&quot;logger_name&quot;:&quot;org.springframework.data.jpa.repository.query.QueryEnhancerFactory&quot;,&quot;thread_name&quot;:&quot;Test worker&quot;,&quot;message&quot;:&quot;Hibernate is in classpath; If applicable, HQL parser will be used.&quot;,&quot;app&quot;:&quot;subscriber-api&quot;}
+{&quot;@timestamp&quot;:&quot;2026-07-10T20.26.56.593+05:30&quot;,&quot;level&quot;:&quot;INFO&quot;,&quot;logger_name&quot;:&quot;org.springframework.boot.actuate.endpoint.web.EndpointLinksResolver&quot;,&quot;thread_name&quot;:&quot;Test worker&quot;,&quot;message&quot;:&quot;Exposing 3 endpoints beneath base path '/actuator'&quot;,&quot;app&quot;:&quot;subscriber-api&quot;}
+{&quot;@timestamp&quot;:&quot;2026-07-10T20.26.56.676+05:30&quot;,&quot;level&quot;:&quot;INFO&quot;,&quot;logger_name&quot;:&quot;org.apache.coyote.http11.Http11NioProtocol&quot;,&quot;thread_name&quot;:&quot;Test worker&quot;,&quot;message&quot;:&quot;Starting ProtocolHandler [\&quot;http-nio-auto-1\&quot;]&quot;,&quot;app&quot;:&quot;subscriber-api&quot;}
+{&quot;@timestamp&quot;:&quot;2026-07-10T20.26.56.688+05:30&quot;,&quot;level&quot;:&quot;INFO&quot;,&quot;logger_name&quot;:&quot;org.springframework.boot.web.embedded.tomcat.TomcatWebServer&quot;,&quot;thread_name&quot;:&quot;Test worker&quot;,&quot;message&quot;:&quot;Tomcat started on port 61686 (http) with context path '/'&quot;,&quot;app&quot;:&quot;subscriber-api&quot;}
+{&quot;@timestamp&quot;:&quot;2026-07-10T20.26.56.710+05:30&quot;,&quot;level&quot;:&quot;INFO&quot;,&quot;logger_name&quot;:&quot;com.telcoedge.subscriber.SubscriberApiIntegrationTest&quot;,&quot;thread_name&quot;:&quot;Test worker&quot;,&quot;message&quot;:&quot;Started SubscriberApiIntegrationTest in 7.607 seconds (process running for 12.053)&quot;,&quot;app&quot;:&quot;subscriber-api&quot;}
+Hibernate: 
+    insert 
+    into
+        operators
+        (active, code, created_at, name) 
+    values
+        (?, ?, ?, ?) 
+    returning id
+{&quot;@timestamp&quot;:&quot;2026-07-10T20.26.56.841+05:30&quot;,&quot;level&quot;:&quot;TRACE&quot;,&quot;logger_name&quot;:&quot;org.hibernate.orm.jdbc.bind&quot;,&quot;thread_name&quot;:&quot;Test worker&quot;,&quot;message&quot;:&quot;binding parameter (1:BOOLEAN) &lt;- [true]&quot;,&quot;app&quot;:&quot;subscriber-api&quot;}
+{&quot;@timestamp&quot;:&quot;2026-07-10T20.26.56.842+05:30&quot;,&quot;level&quot;:&quot;TRACE&quot;,&quot;logger_name&quot;:&quot;org.hibernate.orm.jdbc.bind&quot;,&quot;thread_name&quot;:&quot;Test worker&quot;,&quot;message&quot;:&quot;binding parameter (2:VARCHAR) &lt;- [testtop]&quot;,&quot;app&quot;:&quot;subscriber-api&quot;}
+{&quot;@timestamp&quot;:&quot;2026-07-10T20.26.56.842+05:30&quot;,&quot;level&quot;:&quot;TRACE&quot;,&quot;logger_name&quot;:&quot;org.hibernate.orm.jdbc.bind&quot;,&quot;thread_name&quot;:&quot;Test worker&quot;,&quot;message&quot;:&quot;binding parameter (3:TIMESTAMP_UTC) &lt;- [2026-07-10T14:56:56.818520Z]&quot;,&quot;app&quot;:&quot;subscriber-api&quot;}
+{&quot;@timestamp&quot;:&quot;2026-07-10T20.26.56.844+05:30&quot;,&quot;level&quot;:&quot;TRACE&quot;,&quot;logger_name&quot;:&quot;org.hibernate.orm.jdbc.bind&quot;,&quot;thread_name&quot;:&quot;Test worker&quot;,&quot;message&quot;:&quot;binding parameter (4:VARCHAR) &lt;- [Test Operator]&quot;,&quot;app&quot;:&quot;subscriber-api&quot;}
+</pre>
+<button class="clipboard-copy-btn" aria-label="Copy to clipboard" data-copy-element-id="root-0-test-stdout-com.telcoedge.subscriber.SubscriberApiIntegrationTest">Copy</button>
+</span>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<p>
+<div>
+<label class="hidden" id="label-for-line-wrapping-toggle" for="line-wrapping-toggle">Wrap lines
+<input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
+</label>
+</div>Generated by 
+<a href="https://www.gradle.org">Gradle 9.3.0</a> at 10-Jul-2026, 8:27:02 pm</p>
+</div>
+</div>
+</body>
+</html>
