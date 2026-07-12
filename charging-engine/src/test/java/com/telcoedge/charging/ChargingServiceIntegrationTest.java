@@ -2,6 +2,7 @@ package com.telcoedge.charging;
 
 
 import com.telcoedge.charging.dto.UsageHistoryDto;
+import com.telcoedge.charging.persistence.BalanceEntity;
 import com.telcoedge.charging.persistence.BalanceRepository;
 import com.telcoedge.domain.Cdr;
 import com.telcoedge.domain.ChargeResult;
@@ -210,5 +211,69 @@ public class ChargingServiceIntegrationTest {
                 "acme", "9876543000", "DATA",null,
                 startOfDay, endOfDay, 0, 20);
         assertThat(dataToday.getContent()).hasSize(1);
+    }
+
+    @Test
+    void fullChargingPathWithAllOptimizations(){
+        SessionFactory sessionFactory = entityManagerFactory.unwrap(SessionFactory.class);
+        Statistics stats = sessionFactory.getStatistics();
+        stats.setStatisticsEnabled(true);
+        stats.clear();
+
+        //1. chargeSuccessfully
+        Cdr cdr = new Cdr(UUID.randomUUID(), "acme", "9876543000",
+                UsageType.VOICE, new BigDecimal("60"), Instant.now(), Instant.now());
+
+        ChargeResult result = chargingService.process(cdr);
+        assertThat( result.status()).isEqualTo(ChargeStatus.CHARGED);
+        assertThat(result.amountCharged().compareTo(new BigDecimal("0.60")))
+                .isZero();
+
+        long chargeStatements = stats.getPrepareStatementCount();
+        assertThat(chargeStatements)
+                .as("Charging Path must use <= 8 SQL statements, got %d", chargeStatements)
+                .isLessThanOrEqualTo(8);
+
+
+        //Duplicate Detection
+        stats.clear();
+        ChargeResult dup = chargingService.process(cdr);
+        assertThat(dup.status()).isEqualTo(ChargeStatus.DUPLICATE);
+
+
+        //usage history DTO Projection on N+1
+        stats.clear();
+        Page<UsageHistoryDto> history = usageHistoryService.getHistory(
+                "acme", "9876543000", 0, 20);
+
+        assertThat( history.getContent()).isNotEmpty();
+        long historyStatements = stats.getPrepareStatementCount();
+        assertThat(historyStatements)
+                .as("Usage History Must use <=3 SQL statements (lookup+data+count), got %d", historyStatements)
+                .isLessThanOrEqualTo(3);
+
+
+        //Dynamic filter specification based
+        stats.clear();
+        Page<UsageHistoryDto> historyFiltered = usageHistoryService.getFilteredHistory(
+                "acme", "9876543000","VOICE","CHARGED", null,
+                null,0,20);
+
+        assertThat(historyFiltered.getContent()).isNotEmpty();
+        assertThat(historyFiltered.getContent())
+                .allMatch(dto -> UsageType.VOICE.equals(dto.usageType()));
+
+
+        //Verify Auditing
+        BalanceEntity balanceEntity = balanceRepository.findBySubscriberId(
+                jdbcTemplate.queryForObject(
+                  "SELECT id FROM subscribers WHERE msisdn = '9876543000'", Long.class
+                )).orElseThrow();
+
+        assertThat(balanceEntity.getCreatedAt()).isNotNull();
+        assertThat(balanceEntity.getUpdatedAt()).isNotNull();
+        assertThat(balanceEntity.getUpdatedAt()).isAfterOrEqualTo(balanceEntity.getCreatedAt());
+
+        stats.setStatisticsEnabled(false);
     }
 }

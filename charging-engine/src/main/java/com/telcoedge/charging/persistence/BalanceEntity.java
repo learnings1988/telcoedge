@@ -8,7 +8,7 @@ import java.time.Instant;
 
 @Entity
 @Table(name = "balances")
-public class BalanceEntity {
+public class BalanceEntity extends AuditableEntity{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,11 +23,6 @@ public class BalanceEntity {
     @Version
     private int version;
 
-    @Column(name = "created_at" , nullable = false, updatable = false)
-    private Instant createdAt;
-
-    @Column(name = "updated_at", nullable = false)
-    private Instant updatedAt;
 
     protected BalanceEntity (){}
 
@@ -36,17 +31,8 @@ public class BalanceEntity {
         this.amount = amount;
     }
 
-    @PrePersist
-    void onCreate(){
-        Instant now = Instant.now();
-        createdAt = now;
-        updatedAt =now;
-    }
 
-    @PreUpdate
-    void onUpdate(){
-        this.updatedAt = Instant.now();
-    }
+
 
     public boolean deduct(BigDecimal charge){
         if(amount.compareTo(charge)<0){
@@ -72,11 +58,4 @@ public class BalanceEntity {
         return version;
     }
 
-    public Instant getCreatedAt() {
-        return createdAt;
-    }
-
-    public Instant getUpdatedAt() {
-        return updatedAt;
-    }
 }

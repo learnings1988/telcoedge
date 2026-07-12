@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta http-equiv="x-ua-compatible" content="IE=edge"/>
+<title>Test results - usageHistoryShouldExecuteExactlyTwoQueries()</title>
+<link href="../css/base-style.css" rel="stylesheet" type="text/css"/>
+<link href="../css/style.css" rel="stylesheet" type="text/css"/>
+<script src="../js/report.js" type="text/javascript"></script>
+</head>
+<body>
+<div id="content">
+<div class="breadcrumbs">
+<a class="breadcrumb" href="../index.html">all</a> &gt; 
+<a class="breadcrumb" href="index.html">com.telcoedge.charging.ChargingServiceIntegrationTest</a> &gt; 
+<span class="breadcrumb">usageHistoryShouldExecuteExactlyTwoQueries()</span>
+</div>
+<div class="tab-container">
+<ul class="tabLinks">
+<li>
+<a class="successGroup" href="#">Gradle Test Run :charging-engine:test</a>
+</li>
+</ul>
+<div class="tab">
+<h2>Gradle Test Run :charging-engine:test</h2>
+<h1>usageHistoryShouldExecuteExactlyTwoQueries()</h1>
+<div class="tab-container">
+<ul class="tabLinks">
+<li>
+<a class="" href="#">summary</a>
+</li>
+<li>
+<a class="" href="#">standard output</a>
+</li>
+</ul>
+<div class="tab">
+<h2>summary</h2>
+<div>
+<div class="summary">
+<table>
+<tr>
+<td>
+<div class="summaryGroup">
+<table>
+<tr>
+<td>
+<div class="infoBox">
+<div class="counter">1</div>
+<p>tests</p>
+</div>
+</td>
+<td>
+<div class="infoBox">
+<div class="counter">0</div>
+<p>failures</p>
+</div>
+</td>
+<td>
+<div class="infoBox">
+<div class="counter">0</div>
+<p>skipped</p>
+</div>
+</td>
+<td>
+<div class="infoBox duration">
+<div class="counter">0.288s</div>
+<p>duration</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</td>
+<td>
+<div class="infoBox success successRate">
+<div class="percent">100%</div>
+<p>successful</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="tab">
+<h2>standard output</h2>
+<span class="code">
+<pre id="root-0-test-stdout-usageHistoryShouldExecuteExactlyTwoQueries()">2026-07-12T09:02:06.152+05:30 DEBUG 17152 --- [    Test worker] org.hibernate.SQL                        : 
+    select
+        ike1_0.id,
+        ike1_0.created_at,
+        ike1_0.event_id,
+        ike1_0.expires_at,
+        ike1_0.response_hash,
+        ike1_0.status 
+    from
+        idempotency_keys ike1_0 
+    where
+        ike1_0.event_id=?
+2026-07-12T09:02:06.152+05:30 TRACE 17152 --- [    Test worker] org.hibernate.orm.jdbc.bind              : binding parameter (1:UUID) &lt;- [20f6e784-11ac-4954-aa5a-c3acab8a5f4f]
+2026-07-12T09:02:06.154+05:30 DEBUG 17152 --- [    Test worker] o.h.stat.internal.StatisticsImpl         : HHH000117: HQL: [CRITERIA] select ike1_0.id,ike1_0.created_at,ike1_0.event_id,ike1_0.expires_at,ike1_0.response_hash,ike1_0.status from idempotency_keys ike1_0 where ike1_0.event_id=?, time: 2ms, rows: 0
+2026-07-12T09:02:06.159+05:30 DEBUG 17152 --- [    Test worker] org.hibernate.SQL                        : 
+    select
+        tre1_0.usage_type,
+        tre1_0.rate_per_unit 
+    from
+        tariff_rates tre1_0 
+    where
+        tre1_0.plan_id=(
+            select
+                spe1_0.plan_id 
+            from
+                subscriber_plans spe1_0 
+            where
+                spe1_0.subscriber_id=? 
+                and spe1_0.active=true
+        )
+2026-07-12T09:02:06.160+05:30 TRACE 17152 --- [    Test worker] org.hibernate.orm.jdbc.bind              : binding parameter (1:BIGINT) &lt;- [2]
+2026-07-12T09:02:06.162+05:30 DEBUG 17152 --- [    Test worker] o.h.stat.internal.StatisticsImpl         : HHH000117: HQL:     SELECT tr.usageType AS usageType, tr.ratePerUnit AS ratePerUnit
+    FROM TariffRateEntity tr
+    WHERE tr.planId = (
+    SELECT sp.planId FROM SubscriberPlanEntity sp
+    WHERE sp.subscriberId = :subscriberId AND sp.active=true
+    )
+, time: 3ms, rows: 3
+2026-07-12T09:02:06.165+05:30 DEBUG 17152 --- [    Test worker] org.hibernate.SQL                        : 
+    select
+        be1_0.id,
+        be1_0.amount,
+        be1_0.created_at,
+        be1_0.subscriber_id,
+        be1_0.updated_at,
+        be1_0.version 
+    from
+        balances be1_0 
+    where
+        be1_0.subscriber_id=?
+2026-07-12T09:02:06.166+05:30 TRACE 17152 --- [    Test worker] org.hibernate.orm.jdbc.bind              : binding parameter (1:BIGINT) &lt;- [2]
+2026-07-12T09:02:06.171+05:30 DEBUG 17152 --- [    Test worker] o.h.stat.internal.StatisticsImpl         : HHH000117: HQL: [CRITERIA] select be1_0.id,be1_0.amount,be1_0.created_at,be1_0.subscriber_id,be1_0.updated_at,be1_0.version from balances be1_0 where be1_0.subscriber_id=?, time: 5ms, rows: 1
+2026-07-12T09:02:06.200+05:30 DEBUG 17152 --- [    Test worker] org.hibernate.SQL                        : 
+    insert 
+    into
+        usage_events
+        (amount_charged, balance_after, event_id, operator_id, processed_at, rate_applied, status, subscriber_id, units, usage_type) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?) 
+    returning id
+2026-07-12T09:02:06.202+05:30 TRACE 17152 --- [    Test worker] org.hibernate.orm.jdbc.bind              : binding parameter (1:NUMERIC) &lt;- [0.6000]
+2026-07-12T09:02:06.203+05:30 TRACE 17152 --- [    Test worker] org.hibernate.orm.jdbc.bind              : binding parameter (2:NUMERIC) &lt;- [999.4000]
+2026-07-12T09:02:06.203+05:30 TRACE 17152 --- [    Test worker] org.hibernate.orm.jdbc.bind              : binding parameter (3:UUID) &lt;- [20f6e784-11ac-4954-aa5a-c3acab8a5f4f]
+2026-07-12T09:02:06.203+05:30 TRACE 17152 --- [    Test worker] org.hibernate.orm.jdbc.bind              : binding parameter (4:VARCHAR) &lt;- [acme]
+2026-07-12T09:02:06.203+05:30 TRACE 17152 --- [    Test worker] org.hibernate.orm.jdbc.bind              : binding parameter (5:TIMESTAMP_UTC) &lt;- [2026-07-12T03:32:06.171607500Z]
+2026-07-12T09:02:06.203+05:30 TRACE 17152 --- [    Test worker] org.hibernate.orm.jdbc.bind              : binding parameter (6:NUMERIC) &lt;- [0.0100]
+2026-07-12T09:02:06.204+05:30 TRACE 17152 --- [    Test worker] org.hibernate.orm.jdbc.bind              : binding parameter (7:VARCHAR) &lt;- [CHARGED]
+2026-07-12T09:02:06.204+05:30 TRACE 17152 --- [    Test worker] org.hibernate.orm.jdbc.bind              : binding parameter (8:BIGINT) &lt;- [2]
+2026-07-12T09:02:06.204+05:30 TRACE 17152 --- [    Test worker] org.hibernate.orm.jdbc.bind              : binding parameter (9:NUMERIC) &lt;- [60]
+2026-07-12T09:02:06.204+05:30 TRACE 17152 --- [    Test worker] org.hibernate.orm.jdbc.bind              : binding parameter (10:VARCHAR) &lt;- [VOICE]
+2026-07-12T09:02:06.235+05:30 DEBUG 17152 --- [    Test worker] org.hibernate.SQL                        : 
+    insert 
+    into
+        idempotency_keys
+        (created_at, event_id, expires_at, response_hash, status) 
+    values
+        (?, ?, ?, ?, ?) 
+    returning id
+2026-07-12T09:02:06.235+05:30 TRACE 17152 --- [    Test worker] org.hibernate.orm.jdbc.bind              : binding parameter (1:TIMESTAMP_UTC) &lt;- [2026-07-12T03:32:06.234189800Z]
+2026-07-12T09:02:06.235+05:30 TRACE 17152 --- [    Test worker] org.hibernate.orm.jdbc.bind              : binding parameter (2:UUID) &lt;- [20f6e784-11ac-4954-aa5a-c3acab8a5f4f]
+2026-07-12T09:02:06.236+05:30 TRACE 17152 --- [    Test worker] org.hibernate.orm.jdbc.bind              : binding parameter (3:TIMESTAMP_UTC) &lt;- [2026-07-13T03:32:06.234189800Z]
+2026-07-12T09:02:06.236+05:30 TRACE 17152 --- [    Test worker] org.hibernate.orm.jdbc.bind              : binding parameter (4:VARCHAR) &lt;- [null]
+2026-07-12T09:02:06.236+05:30 TRACE 17152 --- [    Test worker] org.hibernate.orm.jdbc.bind              : binding parameter (5:VARCHAR) &lt;- [CHARGED]
+2026-07-12T09:02:06.291+05:30 DEBUG 17152 --- [    Test worker] org.hibernate.SQL                        : 
+    update
+        balances 
+    set
+        amount=?,
+        subscriber_id=?,
+        updated_at=?,
+        version=? 
+    where
+        id=? 
+        and version=?
+2026-07-12T09:02:06.292+05:30 TRACE 17152 --- [    Test worker] org.hibernate.orm.jdbc.bind              : binding parameter (1:NUMERIC) &lt;- [999.4000]
+2026-07-12T09:02:06.293+05:30 TRACE 17152 --- [    Test worker] org.hibernate.orm.jdbc.bind              : binding parameter (2:BIGINT) &lt;- [2]
+2026-07-12T09:02:06.293+05:30 TRACE 17152 --- [    Test worker] org.hibernate.orm.jdbc.bind              : binding parameter (3:TIMESTAMP_UTC) &lt;- [2026-07-12T03:32:06.268421700Z]
+2026-07-12T09:02:06.294+05:30 TRACE 17152 --- [    Test worker] org.hibernate.orm.jdbc.bind              : binding parameter (4:INTEGER) &lt;- [1]
+2026-07-12T09:02:06.294+05:30 TRACE 17152 --- [    Test worker] org.hibernate.orm.jdbc.bind              : binding parameter (5:BIGINT) &lt;- [2]
+2026-07-12T09:02:06.294+05:30 TRACE 17152 --- [    Test worker] org.hibernate.orm.jdbc.bind              : binding parameter (6:INTEGER) &lt;- [0]
+2026-07-12T09:02:06.308+05:30  INFO 17152 --- [    Test worker] i.StatisticalLoggingSessionEventListener : Session Metrics {
+    30600 nanoseconds spent acquiring 1 JDBC connections;
+    0 nanoseconds spent releasing 0 JDBC connections;
+    561400 nanoseconds spent preparing 6 JDBC statements;
+    31887900 nanoseconds spent executing 5 JDBC statements;
+    4900700 nanoseconds spent executing 1 JDBC batches;
+    0 nanoseconds spent performing 0 L2C puts;
+    0 nanoseconds spent performing 0 L2C hits;
+    0 nanoseconds spent performing 0 L2C misses;
+    60846600 nanoseconds spent executing 1 flushes (flushing a total of 3 entities and 0 collections);
+    165426075164603 nanoseconds spent executing 3 pre-partial-flushes;
+    20400 nanoseconds spent executing 3 partial-flushes (flushing a total of 0 entities and 0 collections)
+}
+2026-07-12T09:02:06.311+05:30 DEBUG 17152 --- [    Test worker] org.hibernate.SQL                        : 
+    select
+        ike1_0.id,
+        ike1_0.created_at,
+        ike1_0.event_id,
+        ike1_0.expires_at,
+        ike1_0.response_hash,
+        ike1_0.status 
+    from
+        idempotency_keys ike1_0 
+    where
+        ike1_0.event_id=?
+2026-07-12T09:02:06.312+05:30 TRACE 17152 --- [    Test worker] org.hibernate.orm.jdbc.bind              : binding parameter (1:UUID) &lt;- [a1b1322e-cca2-480a-aa7f-7f8ccc9b52a6]
+2026-07-12T09:02:06.314+05:30 DEBUG 17152 --- [    Test worker] o.h.stat.internal.StatisticsImpl         : HHH000117: HQL: [CRITERIA] select ike1_0.id,ike1_0.created_at,ike1_0.event_id,ike1_0.expires_at,ike1_0.response_hash,ike1_0.status from idempotency_keys ike1_0 where ike1_0.event_id=?, time: 3ms, rows: 0
+2026-07-12T09:02:06.319+05:30 DEBUG 17152 --- [    Test worker] org.hibernate.SQL                        : 
+    select
+        tre1_0.usage_type,
+        tre1_0.rate_per_unit 
+    from
+        tariff_rates tre1_0 
+    where
+        tre1_0.plan_id=(
+            select
+                spe1_0.plan_id 
+            from
+                subscriber_plans spe1_0 
+            where
+                spe1_0.subscriber_id=? 
+                and spe1_0.active=true
+        )
+2026-07-12T09:02:06.319+05:30 TRACE 17152 --- [    Test worker] org.hibernate.orm.jdbc.bind              : binding parameter (1:BIGINT) &lt;- [2]
+2026-07-12T09:02:06.322+05:30 DEBUG 17152 --- [    Test worker] o.h.stat.internal.StatisticsImpl         : HHH000117: HQL:     SELECT tr.usageType AS usageType, tr.ratePerUnit AS ratePerUnit
+    FROM TariffRateEntity tr
+    WHERE tr.planId = (
+    SELECT sp.planId FROM SubscriberPlanEntity sp
+    WHERE sp.subscriberId = :subscriberId AND sp.active=true
+    )
+, time: 3ms, rows: 3
+2026-07-12T09:02:06.325+05:30 DEBUG 17152 --- [    Test worker] org.hibernate.SQL                        : 
+    select
+        be1_0.id,
+        be1_0.amount,
+        be1_0.created_at,
+        be1_0.subscriber_id,
+        be1_0.updated_at,
+        be1_0.version 
+    from
+        balances be1_0 
+    where
+        be1_0.subscriber_id=?
+2026-07-12T09:02:06.325+05:30 TRACE 17152 --- [    Test worker] org.hibernate.orm.jdbc.bind              : binding parameter (1:BIGINT) &lt;- [2]
+2026-07-12T09:02:06.328+05:30 DEBUG 17152 --- [    Test worker] o.h.stat.internal.StatisticsImpl         : HHH000117: HQL: [CRITERIA] select be1_0.id,be1_0.amount,be1_0.created_at,be1_0.subscriber_id,be1_0.updated_at,be1_0.version from balances be1_0 where be1_0.subscriber_id=?, time: 3ms, rows: 1
+2026-07-12T09:02:06.330+05:30 DEBUG 17152 --- [    Test worker] org.hibernate.SQL                        : 
+    insert 
+    into
+        usage_events
+        (amount_charged, balance_after, event_id, operator_id, processed_at, rate_applied, status, subscriber_id, units, usage_type) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?) 
+    returning id
+2026-07-12T09:02:06.330+05:30 TRACE 17152 --- [    Test worker] org.hibernate.orm.jdbc.bind              : binding parameter (1:NUMERIC) &lt;- [0.6000]
+2026-07-12T09:02:06.330+05:30 TRACE 17152 --- [    Test worker] org.hibernate.orm.jdbc.bind              : binding parameter (2:NUMERIC) &lt;- [998.8000]
+2026-07-12T09:02:06.330+05:30 TRACE 17152 --- [    Test worker] org.hibernate.orm.jdbc.bind              : binding parameter (3:UUID) &lt;- [a1b1322e-cca2-480a-aa7f-7f8ccc9b52a6]
+2026-07-12T09:02:06.330+05:30 TRACE 17152 --- [    Test worker] org.hibernate.orm.jdbc.bind              : binding parameter (4:VARCHAR) &lt;- [acme]
+2026-07-12T09:02:06.330+05:30 TRACE 17152 --- [    Test worker] org.hibernate.orm.jdbc.bind              : binding parameter (5:TIMESTAMP_UTC) &lt;- [2026-07-12T03:32:06.328953700Z]
+2026-07-12T09:02:06.330+05:30 TRACE 17152 --- [    Test worker] org.hibernate.orm.jdbc.bind              : binding parameter (6:NUMERIC) &lt;- [0.0100]
+2026-07-12T09:02:06.330+05:30 TRACE 17152 --- [    Test worker] org.hibernate.orm.jdbc.bind              : binding parameter (7:VARCHAR) &lt;- [CHARGED]
+2026-07-12T09:02:06.330+05:30 TRACE 17152 --- [    Test worker] org.hibernate.orm.jdbc.bind              : binding parameter (8:BIGINT) &lt;- [2]
+2026-07-12T09:02:06.330+05:30 TRACE 17152 --- [    Test worker] org.hibernate.orm.jdbc.bind              : binding parameter (9:NUMERIC) &lt;- [60]
+2026-07-12T09:02:06.330+05:30 TRACE 17152 --- [    Test worker] org.hibernate.orm.jdbc.bind              : binding parameter (10:VARCHAR) &lt;- [VOICE]
+2026-07-12T09:02:06.334+05:30 DEBUG 17152 --- [    Test worker] org.hibernate.SQL                        : 
+    insert 
+    into
+        idempotency_keys
+        (created_at, event_id, expires_at, response_hash, status) 
+    values
+        (?, ?, ?, ?, ?) 
+    returning id
+2026-07-12T09:02:06.334+05:30 TRACE 17152 --- [    Test worker] org.hibernate.orm.jdbc.bind              : binding parameter (1:TIMESTAMP_UTC) &lt;- [2026-07-12T03:32:06.333833500Z]
+2026-07-12T09:02:06.334+05:30 TRACE 17152 --- [    Test worker] org.hibernate.orm.jdbc.bind              : binding parameter (2:UUID) &lt;- [a1b1322e-cca2-480a-aa7f-7f8ccc9b52a6]
+2026-07-12T09:02:06.334+05:30 TRACE 17152 --- [    Test worker] org.hibernate.orm.jdbc.bind              : binding parameter (3:TIMESTAMP_UTC) &lt;- [2026-07-13T03:32:06.333833500Z]
+2026-07-12T09:02:06.334+05:30 TRACE 17152 --- [    Test worker] org.hibernate.orm.jdbc.bind              : binding parameter (4:VARCHAR) &lt;- [null]
+2026-07-12T09:02:06.334+05:30 TRACE 17152 --- [    Test worker] org.hibernate.orm.jdbc.bind              : binding parameter (5:VARCHAR) &lt;- [CHARGED]
+2026-07-12T09:02:06.337+05:30 DEBUG 17152 --- [    Test worker] org.hibernate.SQL                        : 
+    update
+        balances 
+    set
+        amount=?,
+        subscriber_id=?,
+        updated_at=?,
+        version=? 
+    where
+        id=? 
+        and version=?
+2026-07-12T09:02:06.337+05:30 TRACE 17152 --- [    Test worker] org.hibernate.orm.jdbc.bind              : binding parameter (1:NUMERIC) &lt;- [998.8000]
+2026-07-12T09:02:06.337+05:30 TRACE 17152 --- [    Test worker] org.hibernate.orm.jdbc.bind              : binding parameter (2:BIGINT) &lt;- [2]
+2026-07-12T09:02:06.337+05:30 TRACE 17152 --- [    Test worker] org.hibernate.orm.jdbc.bind              : binding parameter (3:TIMESTAMP_UTC) &lt;- [2026-07-12T03:32:06.337092500Z]
+2026-07-12T09:02:06.338+05:30 TRACE 17152 --- [    Test worker] org.hibernate.orm.jdbc.bind              : binding parameter (4:INTEGER) &lt;- [2]
+2026-07-12T09:02:06.338+05:30 TRACE 17152 --- [    Test worker] org.hibernate.orm.jdbc.bind              : binding parameter (5:BIGINT) &lt;- [2]
+2026-07-12T09:02:06.338+05:30 TRACE 17152 --- [    Test worker] org.hibernate.orm.jdbc.bind              : binding parameter (6:INTEGER) &lt;- [1]
+2026-07-12T09:02:06.340+05:30  INFO 17152 --- [    Test worker] i.StatisticalLoggingSessionEventListener : Session Metrics {
+    54800 nanoseconds spent acquiring 1 JDBC connections;
+    0 nanoseconds spent releasing 0 JDBC connections;
+    265000 nanoseconds spent preparing 6 JDBC statements;
+    9503100 nanoseconds spent executing 5 JDBC statements;
+    1140600 nanoseconds spent executing 1 JDBC batches;
+    0 nanoseconds spent performing 0 L2C puts;
+    0 nanoseconds spent performing 0 L2C hits;
+    0 nanoseconds spent performing 0 L2C misses;
+    2711500 nanoseconds spent executing 1 flushes (flushing a total of 3 entities and 0 collections);
+    165426555533103 nanoseconds spent executing 3 pre-partial-flushes;
+    15600 nanoseconds spent executing 3 partial-flushes (flushing a total of 0 entities and 0 collections)
+}
+2026-07-12T09:02:06.342+05:30 DEBUG 17152 --- [    Test worker] org.hibernate.SQL                        : 
+    select
+        ike1_0.id,
+        ike1_0.created_at,
+        ike1_0.event_id,
+        ike1_0.expires_at,
+        ike1_0.response_hash,
+        ike1_0.status 
+    from
+        idempotency_keys ike1_0 
+    where
+        ike1_0.event_id=?
+2026-07-12T09:02:06.343+05:30 TRACE 17152 --- [    Test worker] org.hibernate.orm.jdbc.bind              : binding parameter (1:UUID) &lt;- [378d8dad-2143-44fe-94e2-f063c302ac1c]
+2026-07-12T09:02:06.344+05:30 DEBUG 17152 --- [    Test worker] o.h.stat.internal.StatisticsImpl         : HHH000117: HQL: [CRITERIA] select ike1_0.id,ike1_0.created_at,ike1_0.event_id,ike1_0.expires_at,ike1_0.response_hash,ike1_0.status from idempotency_keys ike1_0 where ike1_0.event_id=?, time: 2ms, rows: 0
+2026-07-12T09:02:06.347+05:30 DEBUG 17152 --- [    Test worker] org.hibernate.SQL                        : 
+    select
+        tre1_0.usage_type,
+        tre1_0.rate_per_unit 
+    from
+        tariff_rates tre1_0 
+    where
+        tre1_0.plan_id=(
+            select
+                spe1_0.plan_id 
+            from
+                subscriber_plans spe1_0 
+            where
+                spe1_0.subscriber_id=? 
+                and spe1_0.active=true
+        )
+2026-07-12T09:02:06.348+05:30 TRACE 17152 --- [    Test worker] org.hibernate.orm.jdbc.bind              : binding parameter (1:BIGINT) &lt;- [2]
+2026-07-12T09:02:06.349+05:30 DEBUG 17152 --- [    Test worker] o.h.stat.internal.StatisticsImpl         : HHH000117: HQL:     SELECT tr.usageType AS usageType, tr.ratePerUnit AS ratePerUnit
+    FROM TariffRateEntity tr
+    WHERE tr.planId = (
+    SELECT sp.planId FROM SubscriberPlanEntity sp
+    WHERE sp.subscriberId = :subscriberId AND sp.active=true
+    )
+, time: 2ms, rows: 3
+2026-07-12T09:02:06.352+05:30 DEBUG 17152 --- [    Test worker] org.hibernate.SQL                        : 
+    select
+        be1_0.id,
+        be1_0.amount,
+        be1_0.created_at,
+        be1_0.subscriber_id,
+        be1_0.updated_at,
+        be1_0.version 
+    from
+        balances be1_0 
+    where
+        be1_0.subscriber_id=?
+2026-07-12T09:02:06.352+05:30 TRACE 17152 --- [    Test worker] org.hibernate.orm.jdbc.bind              : binding parameter (1:BIGINT) &lt;- [2]
+2026-07-12T09:02:06.354+05:30 DEBUG 17152 --- [    Test worker] o.h.stat.internal.StatisticsImpl         : HHH000117: HQL: [CRITERIA] select be1_0.id,be1_0.amount,be1_0.created_at,be1_0.subscriber_id,be1_0.updated_at,be1_0.version from balances be1_0 where be1_0.subscriber_id=?, time: 2ms, rows: 1
+2026-07-12T09:02:06.355+05:30 DEBUG 17152 --- [    Test worker] org.hibernate.SQL                        : 
+    insert 
+    into
+        usage_events
+        (amount_charged, balance_after, event_id, operator_id, processed_at, rate_applied, status, subscriber_id, units, usage_type) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?) 
+    returning id
+2026-07-12T09:02:06.356+05:30 TRACE 17152 --- [    Test worker] org.hibernate.orm.jdbc.bind              : binding parameter (1:NUMERIC) &lt;- [0.6000]
+2026-07-12T09:02:06.356+05:30 TRACE 17152 --- [    Test worker] org.hibernate.orm.jdbc.bind              : binding parameter (2:NUMERIC) &lt;- [998.2000]
+2026-07-12T09:02:06.356+05:30 TRACE 17152 --- [    Test worker] org.hibernate.orm.jdbc.bind              : binding parameter (3:UUID) &lt;- [378d8dad-2143-44fe-94e2-f063c302ac1c]
+2026-07-12T09:02:06.356+05:30 TRACE 17152 --- [    Test worker] org.hibernate.orm.jdbc.bind              : binding parameter (4:VARCHAR) &lt;- [acme]
+2026-07-12T09:02:06.357+05:30 TRACE 17152 --- [    Test worker] org.hibernate.orm.jdbc.bind              : binding parameter (5:TIMESTAMP_UTC) &lt;- [2026-07-12T03:32:06.355356Z]
+2026-07-12T09:02:06.357+05:30 TRACE 17152 --- [    Test worker] org.hibernate.orm.jdbc.bind              : binding parameter (6:NUMERIC) &lt;- [0.0100]
+2026-07-12T09:02:06.357+05:30 TRACE 17152 --- [    Test worker] org.hibernate.orm.jdbc.bind              : binding parameter (7:VARCHAR) &lt;- [CHARGED]
+2026-07-12T09:02:06.357+05:30 TRACE 17152 --- [    Test worker] org.hibernate.orm.jdbc.bind              : binding parameter (8:BIGINT) &lt;- [2]
+2026-07-12T09:02:06.357+05:30 TRACE 17152 --- [    Test worker] org.hibernate.orm.jdbc.bind              : binding parameter (9:NUMERIC) &lt;- [60]
+2026-07-12T09:02:06.357+05:30 TRACE 17152 --- [    Test worker] org.hibernate.orm.jdbc.bind              : binding parameter (10:VARCHAR) &lt;- [VOICE]
+2026-07-12T09:02:06.360+05:30 DEBUG 17152 --- [    Test worker] org.hibernate.SQL                        : 
+    insert 
+    into
+        idempotency_keys
+        (created_at, event_id, expires_at, response_hash, status) 
+    values
+        (?, ?, ?, ?, ?) 
+    returning id
+2026-07-12T09:02:06.360+05:30 TRACE 17152 --- [    Test worker] org.hibernate.orm.jdbc.bind              : binding parameter (1:TIMESTAMP_UTC) &lt;- [2026-07-12T03:32:06.359744100Z]
+2026-07-12T09:02:06.360+05:30 TRACE 17152 --- [    Test worker] org.hibernate.orm.jdbc.bind              : binding parameter (2:UUID) &lt;- [378d8dad-2143-44fe-94e2-f063c302ac1c]
+2026-07-12T09:02:06.360+05:30 TRACE 17152 --- [    Test worker] org.hibernate.orm.jdbc.bind              : binding parameter (3:TIMESTAMP_UTC) &lt;- [2026-07-13T03:32:06.359744100Z]
+2026-07-12T09:02:06.360+05:30 TRACE 17152 --- [    Test worker] org.hibernate.orm.jdbc.bind              : binding parameter (4:VARCHAR) &lt;- [null]
+2026-07-12T09:02:06.360+05:30 TRACE 17152 --- [    Test worker] org.hibernate.orm.jdbc.bind              : binding parameter (5:VARCHAR) &lt;- [CHARGED]
+2026-07-12T09:02:06.368+05:30 DEBUG 17152 --- [    Test worker] org.hibernate.SQL                        : 
+    update
+        balances 
+    set
+        amount=?,
+        subscriber_id=?,
+        updated_at=?,
+        version=? 
+    where
+        id=? 
+        and version=?
+2026-07-12T09:02:06.368+05:30 TRACE 17152 --- [    Test worker] org.hibernate.orm.jdbc.bind              : binding parameter (1:NUMERIC) &lt;- [998.2000]
+2026-07-12T09:02:06.368+05:30 TRACE 17152 --- [    Test worker] org.hibernate.orm.jdbc.bind              : binding parameter (2:BIGINT) &lt;- [2]
+2026-07-12T09:02:06.368+05:30 TRACE 17152 --- [    Test worker] org.hibernate.orm.jdbc.bind              : binding parameter (3:TIMESTAMP_UTC) &lt;- [2026-07-12T03:32:06.367245400Z]
+2026-07-12T09:02:06.368+05:30 TRACE 17152 --- [    Test worker] org.hibernate.orm.jdbc.bind              : binding parameter (4:INTEGER) &lt;- [3]
+2026-07-12T09:02:06.368+05:30 TRACE 17152 --- [    Test worker] org.hibernate.orm.jdbc.bind              : binding parameter (5:BIGINT) &lt;- [2]
+2026-07-12T09:02:06.369+05:30 TRACE 17152 --- [    Test worker] org.hibernate.orm.jdbc.bind              : binding parameter (6:INTEGER) &lt;- [2]
+2026-07-12T09:02:06.372+05:30  INFO 17152 --- [    Test worker] i.StatisticalLoggingSessionEventListener : Session Metrics {
+    23400 nanoseconds spent acquiring 1 JDBC connections;
+    0 nanoseconds spent releasing 0 JDBC connections;
+    176200 nanoseconds spent preparing 6 JDBC statements;
+    11854800 nanoseconds spent executing 5 JDBC statements;
+    2616400 nanoseconds spent executing 1 JDBC batches;
+    0 nanoseconds spent performing 0 L2C puts;
+    0 nanoseconds spent performing 0 L2C hits;
+    0 nanoseconds spent performing 0 L2C misses;
+    4550000 nanoseconds spent executing 1 flushes (flushing a total of 3 entities and 0 collections);
+    165426642275303 nanoseconds spent executing 3 pre-partial-flushes;
+    10200 nanoseconds spent executing 3 partial-flushes (flushing a total of 0 entities and 0 collections)
+}
+2026-07-12T09:02:06.385+05:30 DEBUG 17152 --- [    Test worker] org.hibernate.SQL                        : 
+    select
+        uee1_0.event_id,
+        uee1_0.usage_type,
+        uee1_0.units,
+        uee1_0.rate_applied,
+        uee1_0.amount_charged,
+        uee1_0.balance_after,
+        uee1_0.processed_at 
+    from
+        usage_events uee1_0 
+    where
+        uee1_0.subscriber_id=? 
+    order by
+        uee1_0.processed_at desc 
+    fetch
+        first ? rows only
+2026-07-12T09:02:06.386+05:30 TRACE 17152 --- [    Test worker] org.hibernate.orm.jdbc.bind              : binding parameter (1:BIGINT) &lt;- [2]
+2026-07-12T09:02:06.386+05:30 TRACE 17152 --- [    Test worker] org.hibernate.orm.jdbc.bind              : binding parameter (2:INTEGER) &lt;- [20]
+2026-07-12T09:02:06.391+05:30 DEBUG 17152 --- [    Test worker] o.h.stat.internal.StatisticsImpl         : HHH000117: HQL:     SELECT new com.telcoedge.charging.dto.UsageHistoryDto(
+        ue.eventId, ue.usageType, ue.units, ue.rateApplied,
+        ue.amountCharged, ue.balanceAfter, ue.processedAt)
+    FROM UsageEventEntity ue
+    WHERE ue.subscriberId = :subscriberId
+    ORDER BY ue.processedAt DESC
+, time: 7ms, rows: 3
+2026-07-12T09:02:06.398+05:30  INFO 17152 --- [    Test worker] i.StatisticalLoggingSessionEventListener : Session Metrics {
+    37700 nanoseconds spent acquiring 1 JDBC connections;
+    0 nanoseconds spent releasing 0 JDBC connections;
+    118000 nanoseconds spent preparing 1 JDBC statements;
+    3039700 nanoseconds spent executing 1 JDBC statements;
+    0 nanoseconds spent executing 0 JDBC batches;
+    0 nanoseconds spent performing 0 L2C puts;
+    0 nanoseconds spent performing 0 L2C hits;
+    0 nanoseconds spent performing 0 L2C misses;
+    0 nanoseconds spent executing 0 flushes (flushing a total of 0 entities and 0 collections);
+    55142247085701 nanoseconds spent executing 1 pre-partial-flushes;
+    3800 nanoseconds spent executing 1 partial-flushes (flushing a total of 0 entities and 0 collections)
+}
+</pre>
+<button class="clipboard-copy-btn" aria-label="Copy to clipboard" data-copy-element-id="root-0-test-stdout-usageHistoryShouldExecuteExactlyTwoQueries()">Copy</button>
+</span>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<p>
+<div>
+<label class="hidden" id="label-for-line-wrapping-toggle" for="line-wrapping-toggle">Wrap lines
+<input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
+</label>
+</div>Generated by 
+<a href="https://www.gradle.org">Gradle 9.3.0</a> at 12-Jul-2026, 9:02:07 am</p>
+</div>
+</div>
+</body>
+</html>
