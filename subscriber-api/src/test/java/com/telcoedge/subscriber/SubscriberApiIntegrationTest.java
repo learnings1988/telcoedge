@@ -2,6 +2,7 @@ package com.telcoedge.subscriber;
 
 import com.telcoedge.domain.Subscriber;
 import com.telcoedge.domain.SubscriberStatus;
+import com.telcoedge.subscriber.config.TestSecurityConfig;
 import com.telcoedge.subscriber.exception.SubscriberAlreadyExistException;
 import com.telcoedge.subscriber.persistence.OperatorEntity;
 import com.telcoedge.subscriber.persistence.OperatorRepository;
@@ -13,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.boot.testcontainers.service.connection.ServiceConnection;
+import org.springframework.context.annotation.Import;
 import org.springframework.http.ResponseEntity;
 import org.testcontainers.containers.PostgreSQLContainer;
 import org.testcontainers.junit.jupiter.Container;
@@ -22,6 +24,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+@Import(TestSecurityConfig.class)
 @Testcontainers
 class SubscriberApiIntegrationTest {
 
@@ -65,7 +68,9 @@ class SubscriberApiIntegrationTest {
 
     @Test
     void returns404ForUnknownSubscriber(){
-        ResponseEntity<String> response = restTemplate.getForEntity(
+        ResponseEntity<String> response = restTemplate
+                .withBasicAuth("testuser","testpass")
+                .getForEntity(
                 "/api/v1/operators/acme/subscribers/00000000000",
                 String.class);
 

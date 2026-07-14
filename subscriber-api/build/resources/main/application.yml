@@ -37,3 +37,4 @@ logging:
     root: INFO
     com.telcoedge: DEBUG
     org.springframework.jdbc.datasource: DEBUG
+    org.springframework.security: DEBUG

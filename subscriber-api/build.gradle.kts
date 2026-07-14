@@ -9,7 +9,7 @@ dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-web")
 	implementation("org.springframework.boot:spring-boot-starter-actuator")
 	implementation("net.logstash.logback:logstash-logback-encoder:7.4")
-
+	implementation("org.springframework.boot:spring-boot-starter-security")
 	implementation("org.springframework.boot:spring-boot-starter-data-jpa")
 	implementation("org.postgresql:postgresql")
 	implementation("org.flywaydb:flyway-core")
@@ -18,6 +18,7 @@ dependencies {
 
 	testImplementation("org.springframework.boot:spring-boot-starter-test:3.3.4")
 	testImplementation("org.springframework.boot:spring-boot-testcontainers:3.3.4")
+	testImplementation("org.springframework.boot:spring-boot-starter-security")
 	testImplementation("org.testcontainers:junit-jupiter:1.21.4")
 	testImplementation("org.testcontainers:testcontainers:1.21.4")
 	testImplementation("org.testcontainers:postgresql:1.21.4")
