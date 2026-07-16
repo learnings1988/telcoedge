@@ -16,6 +16,11 @@ spring:
         jdbc:
           batch_size: 50
     show-sql: true
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          public-key-location: classpath:keys/public.pem
 
   flyway:
     enabled: true

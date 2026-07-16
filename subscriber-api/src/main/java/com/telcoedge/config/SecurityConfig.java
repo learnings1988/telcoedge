@@ -22,6 +22,8 @@ public class SecurityConfig {
                         .requestMatchers( "/actuator/health", "actuator/info").permitAll()
                         .requestMatchers("/api/**").authenticated()
                         .anyRequest().denyAll()
-                ).httpBasic(Customizer.withDefaults()).build();
+                ).oauth2ResourceServer( oauth2->
+                        oauth2.jwt(Customizer.withDefaults()))
+                .build();
     }
 }

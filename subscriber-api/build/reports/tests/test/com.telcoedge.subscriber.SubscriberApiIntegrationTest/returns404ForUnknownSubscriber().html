@@ -63,7 +63,7 @@
 </td>
 <td>
 <div class="infoBox duration">
-<div class="counter">0.770s</div>
+<div class="counter">0.156s</div>
 <p>duration</p>
 </div>
 </td>
@@ -85,13 +85,10 @@
 <div class="tab">
 <h2>standard output</h2>
 <span class="code">
-<pre id="root-0-test-stdout-returns404ForUnknownSubscriber()">{&quot;@timestamp&quot;:&quot;2026-07-14T08.10.51.588+05:30&quot;,&quot;level&quot;:&quot;INFO&quot;,&quot;logger_name&quot;:&quot;org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]&quot;,&quot;thread_name&quot;:&quot;tomcat-handler-0&quot;,&quot;message&quot;:&quot;Initializing Spring DispatcherServlet 'dispatcherServlet'&quot;,&quot;app&quot;:&quot;subscriber-api&quot;}
-{&quot;@timestamp&quot;:&quot;2026-07-14T08.10.51.589+05:30&quot;,&quot;level&quot;:&quot;INFO&quot;,&quot;logger_name&quot;:&quot;org.springframework.web.servlet.DispatcherServlet&quot;,&quot;thread_name&quot;:&quot;tomcat-handler-0&quot;,&quot;message&quot;:&quot;Initializing Servlet 'dispatcherServlet'&quot;,&quot;app&quot;:&quot;subscriber-api&quot;}
-{&quot;@timestamp&quot;:&quot;2026-07-14T08.10.51.596+05:30&quot;,&quot;level&quot;:&quot;INFO&quot;,&quot;logger_name&quot;:&quot;org.springframework.web.servlet.DispatcherServlet&quot;,&quot;thread_name&quot;:&quot;tomcat-handler-0&quot;,&quot;message&quot;:&quot;Completed initialization in 7 ms&quot;,&quot;app&quot;:&quot;subscriber-api&quot;}
-{&quot;@timestamp&quot;:&quot;2026-07-14T08.10.51.634+05:30&quot;,&quot;level&quot;:&quot;DEBUG&quot;,&quot;logger_name&quot;:&quot;org.springframework.security.web.FilterChainProxy&quot;,&quot;thread_name&quot;:&quot;tomcat-handler-0&quot;,&quot;message&quot;:&quot;Securing GET /api/v1/operators/acme/subscribers/00000000000&quot;,&quot;app&quot;:&quot;subscriber-api&quot;}
-{&quot;@timestamp&quot;:&quot;2026-07-14T08.10.51.946+05:30&quot;,&quot;level&quot;:&quot;DEBUG&quot;,&quot;logger_name&quot;:&quot;org.springframework.security.authentication.dao.DaoAuthenticationProvider&quot;,&quot;thread_name&quot;:&quot;tomcat-handler-0&quot;,&quot;message&quot;:&quot;Authenticated user&quot;,&quot;app&quot;:&quot;subscriber-api&quot;}
-{&quot;@timestamp&quot;:&quot;2026-07-14T08.10.51.951+05:30&quot;,&quot;level&quot;:&quot;DEBUG&quot;,&quot;logger_name&quot;:&quot;org.springframework.security.web.authentication.www.BasicAuthenticationFilter&quot;,&quot;thread_name&quot;:&quot;tomcat-handler-0&quot;,&quot;message&quot;:&quot;Set SecurityContextHolder to UsernamePasswordAuthenticationToken [Principal=org.springframework.security.core.userdetails.User [Username=testuser, Password=[PROTECTED], Enabled=true, AccountNonExpired=true, CredentialsNonExpired=true, AccountNonLocked=true, Granted Authorities=[ROLE_USER]], Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=127.0.0.1, SessionId=null], Granted Authorities=[ROLE_USER]]&quot;,&quot;app&quot;:&quot;subscriber-api&quot;}
-{&quot;@timestamp&quot;:&quot;2026-07-14T08.10.51.966+05:30&quot;,&quot;level&quot;:&quot;DEBUG&quot;,&quot;logger_name&quot;:&quot;org.springframework.security.web.FilterChainProxy&quot;,&quot;thread_name&quot;:&quot;tomcat-handler-0&quot;,&quot;message&quot;:&quot;Secured GET /api/v1/operators/acme/subscribers/00000000000&quot;,&quot;app&quot;:&quot;subscriber-api&quot;}
+<pre id="root-0-test-stdout-returns404ForUnknownSubscriber()">{&quot;@timestamp&quot;:&quot;2026-07-16T07.50.56.257+05:30&quot;,&quot;level&quot;:&quot;DEBUG&quot;,&quot;logger_name&quot;:&quot;org.springframework.security.web.FilterChainProxy&quot;,&quot;thread_name&quot;:&quot;tomcat-handler-2&quot;,&quot;message&quot;:&quot;Securing GET /api/v1/operators/acme/subscribers/00000000000&quot;,&quot;app&quot;:&quot;subscriber-api&quot;}
+{&quot;@timestamp&quot;:&quot;2026-07-16T07.50.56.270+05:30&quot;,&quot;level&quot;:&quot;DEBUG&quot;,&quot;logger_name&quot;:&quot;org.springframework.security.oauth2.server.resource.authentication.JwtAuthenticationProvider&quot;,&quot;thread_name&quot;:&quot;tomcat-handler-2&quot;,&quot;message&quot;:&quot;Authenticated token&quot;,&quot;app&quot;:&quot;subscriber-api&quot;}
+{&quot;@timestamp&quot;:&quot;2026-07-16T07.50.56.271+05:30&quot;,&quot;level&quot;:&quot;DEBUG&quot;,&quot;logger_name&quot;:&quot;org.springframework.security.oauth2.server.resource.web.authentication.BearerTokenAuthenticationFilter&quot;,&quot;thread_name&quot;:&quot;tomcat-handler-2&quot;,&quot;message&quot;:&quot;Set SecurityContextHolder to JwtAuthenticationToken [Principal=org.springframework.security.oauth2.jwt.Jwt@16317f9d, Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=127.0.0.1, SessionId=null], Granted Authorities=[]]&quot;,&quot;app&quot;:&quot;subscriber-api&quot;}
+{&quot;@timestamp&quot;:&quot;2026-07-16T07.50.56.272+05:30&quot;,&quot;level&quot;:&quot;DEBUG&quot;,&quot;logger_name&quot;:&quot;org.springframework.security.web.FilterChainProxy&quot;,&quot;thread_name&quot;:&quot;tomcat-handler-2&quot;,&quot;message&quot;:&quot;Secured GET /api/v1/operators/acme/subscribers/00000000000&quot;,&quot;app&quot;:&quot;subscriber-api&quot;}
 Hibernate: 
     select
         se1_0.id,
@@ -106,8 +103,8 @@ Hibernate:
     where
         se1_0.operator_id=? 
         and se1_0.msisdn=?
-{&quot;@timestamp&quot;:&quot;2026-07-14T08.10.52.047+05:30&quot;,&quot;level&quot;:&quot;TRACE&quot;,&quot;logger_name&quot;:&quot;org.hibernate.orm.jdbc.bind&quot;,&quot;thread_name&quot;:&quot;tomcat-handler-0&quot;,&quot;message&quot;:&quot;binding parameter (1:VARCHAR) &lt;- [acme]&quot;,&quot;app&quot;:&quot;subscriber-api&quot;}
-{&quot;@timestamp&quot;:&quot;2026-07-14T08.10.52.048+05:30&quot;,&quot;level&quot;:&quot;TRACE&quot;,&quot;logger_name&quot;:&quot;org.hibernate.orm.jdbc.bind&quot;,&quot;thread_name&quot;:&quot;tomcat-handler-0&quot;,&quot;message&quot;:&quot;binding parameter (2:VARCHAR) &lt;- [00000000000]&quot;,&quot;app&quot;:&quot;subscriber-api&quot;}
+{&quot;@timestamp&quot;:&quot;2026-07-16T07.50.56.281+05:30&quot;,&quot;level&quot;:&quot;TRACE&quot;,&quot;logger_name&quot;:&quot;org.hibernate.orm.jdbc.bind&quot;,&quot;thread_name&quot;:&quot;tomcat-handler-2&quot;,&quot;message&quot;:&quot;binding parameter (1:VARCHAR) &lt;- [acme]&quot;,&quot;app&quot;:&quot;subscriber-api&quot;}
+{&quot;@timestamp&quot;:&quot;2026-07-16T07.50.56.281+05:30&quot;,&quot;level&quot;:&quot;TRACE&quot;,&quot;logger_name&quot;:&quot;org.hibernate.orm.jdbc.bind&quot;,&quot;thread_name&quot;:&quot;tomcat-handler-2&quot;,&quot;message&quot;:&quot;binding parameter (2:VARCHAR) &lt;- [00000000000]&quot;,&quot;app&quot;:&quot;subscriber-api&quot;}
 </pre>
 <button class="clipboard-copy-btn" aria-label="Copy to clipboard" data-copy-element-id="root-0-test-stdout-returns404ForUnknownSubscriber()">Copy</button>
 </span>
@@ -122,7 +119,7 @@ Hibernate:
 <input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
 </label>
 </div>Generated by 
-<a href="https://www.gradle.org">Gradle 9.3.0</a> at 14-Jul-2026, 8:10:59 am</p>
+<a href="https://www.gradle.org">Gradle 9.3.0</a> at 16-Jul-2026, 7:51:01 am</p>
 </div>
 </div>
 </body>
