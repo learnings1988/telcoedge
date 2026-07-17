@@ -9,6 +9,7 @@ import com.telcoedge.subscriber.persistence.SubscriberEntity;
 import com.telcoedge.subscriber.persistence.SubscriberMapper;
 import com.telcoedge.subscriber.persistence.SubscriberRepository;
 import jakarta.transaction.Transactional;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -20,6 +21,7 @@ public class SubscriberService {
     }
 
     @Transactional
+    @PreAuthorize("#operatorId == authentication.token.claims['operator_id']")
     public Subscriber create(String operatorId, String msisdn, String name){
         if( repository.existsByOperatorIdAndMsisdn(operatorId, msisdn)){
             throw new SubscriberAlreadyExistException(operatorId, msisdn);
@@ -30,6 +32,7 @@ public class SubscriberService {
         return SubscriberMapper.toDomain(saved);
     }
 
+    @PreAuthorize("#operatorId == authentication.token.claims['operator_id']")
     public Subscriber findByMsisdn(String operatorId, String msisdn){
         return repository.findByOperatorIdAndMsisdn(operatorId, msisdn)
                 .map(SubscriberMapper::toDomain)

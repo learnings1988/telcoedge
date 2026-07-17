@@ -2,25 +2,18 @@ package com.telcoedge.subscriber;
 
 import com.telcoedge.domain.Subscriber;
 import com.telcoedge.domain.SubscriberStatus;
-import com.telcoedge.subscriber.config.TestSecurityConfig;
 import com.telcoedge.subscriber.exception.SubscriberAlreadyExistException;
 import com.telcoedge.subscriber.persistence.OperatorEntity;
 import com.telcoedge.subscriber.persistence.OperatorRepository;
 import com.telcoedge.subscriber.service.SubscriberService;
 import com.telcoedge.subscriber.testutil.JWTTestUtil;
 import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.boot.testcontainers.service.connection.ServiceConnection;
-import org.springframework.context.annotation.Import;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpMethod;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.client.RestTemplate;
+import org.springframework.http.*;
 import org.testcontainers.containers.PostgreSQLContainer;
 import org.testcontainers.junit.jupiter.Container;
 import org.testcontainers.junit.jupiter.Testcontainers;
@@ -56,25 +49,71 @@ class SubscriberApiIntegrationTest {
         return headers;
     }
 
+    private HttpHeaders jsonHeaders(HttpHeaders existing){
+        HttpHeaders headers = new HttpHeaders(existing);
+        headers.setContentType(MediaType.APPLICATION_JSON);
+        return headers;
+    }
+
     @Test
     void createSubscriberAndReadItBack() {
-        Subscriber created = service.create("acme", "919876543210", "Aakash kumar");
-        assertThat(created.id()).isNotNull();
-        assertThat(created.status()).isEqualTo(SubscriberStatus.ACTIVE);
 
-        Subscriber found = service.findByMsisdn("acme", "919876543210");
-        assertThat(found.id()).isEqualTo(created.id());
-        assertThat(found.name()).isEqualTo("Aakash kumar");
+        HttpHeaders acmeHeaders = authHeaders("acme");
+        String body = """
+                {"msisdn": "9876543210", "name": "Aakash kumar"}
+                """;
 
+        ResponseEntity<Subscriber> createResponse = restTemplate.exchange(
+                "/api/v1/operators/acme/subscribers",
+                HttpMethod.POST,
+                new HttpEntity<>(body, jsonHeaders(acmeHeaders)),
+                Subscriber.class
+        );
+
+        assertThat(createResponse.getStatusCode().value()).isEqualTo(201);
+        assertThat(createResponse.getBody()).isNotNull();
+        assertThat(createResponse.getBody().id()).isNotNull();
+        assertThat(createResponse.getBody().status()).isEqualTo(SubscriberStatus.ACTIVE);
+
+
+        ResponseEntity<Subscriber> readResponse = restTemplate.exchange(
+                "/api/v1/operators/acme/subscribers/9876543210",
+                HttpMethod.GET,
+                new HttpEntity<>(authHeaders("acme")),
+                Subscriber.class
+        );
+
+        assertThat(readResponse.getStatusCode().value()).isEqualTo(200);
+        assertThat(readResponse.getBody()).isNotNull();
+        assertThat(readResponse.getBody().id()).isEqualTo(
+                createResponse.getBody().id());
+        assertThat(readResponse.getBody().name()).isEqualTo(
+                createResponse.getBody().name());
     }
 
     @Test
     void returns409WhenDuplicateSubscriber(){
-        service.create("testtop", "919111000001",
-                "First");
 
-        assertThatThrownBy(()-> service.create("testtop", "919111000001",
-                "Second")).isInstanceOf(SubscriberAlreadyExistException.class);
+        HttpHeaders testtopHeaders = authHeaders("testtop");
+        String body = """
+                {"msisdn": "919111000001", "name": "first"}
+                """;
+
+        ResponseEntity<Subscriber> createResponse = restTemplate.exchange(
+                "/api/v1/operators/testtop/subscribers",
+                HttpMethod.POST,
+                new HttpEntity<>(body, jsonHeaders(testtopHeaders)),
+                Subscriber.class
+        );
+
+
+        ResponseEntity<String> duplicateCreateResponse = restTemplate.exchange(
+                "/api/v1/operators/testtop/subscribers",
+                HttpMethod.POST,
+                new HttpEntity<>(body, jsonHeaders(testtopHeaders)),
+                String.class
+        );
+        assertThat(duplicateCreateResponse.getStatusCode().value()).isEqualTo(409);
     }
 
     @Test
@@ -103,5 +142,71 @@ class SubscriberApiIntegrationTest {
                 "/actuator/health", String.class);
 
         assertThat(response.getStatusCode().value()).isEqualTo(200);
+    }
+
+    @Test
+    void allowSameOperatorTest(){
+        HttpHeaders acmeHeaders = authHeaders("acme");
+        String body = """
+                {"msisdn": "9876543219", "name": "Test User"}
+                """;
+
+        ResponseEntity<String> createResponse = restTemplate.exchange(
+          "/api/v1/operators/acme/subscribers",
+                HttpMethod.POST,
+                new HttpEntity<>(body, jsonHeaders(acmeHeaders)),
+                String.class
+        );
+
+        assertThat(createResponse.getStatusCode().value()).isEqualTo(201);
+
+
+        ResponseEntity<String> readResponse = restTemplate.exchange(
+                "/api/v1/operators/acme/subscribers/9876543219",
+                HttpMethod.GET,
+                new HttpEntity<>(acmeHeaders),
+                String.class
+        );
+
+        assertThat(readResponse.getStatusCode().value()).isEqualTo(200);
+    }
+
+    @Test
+    void deniedCrossTenantAccess(){
+        HttpHeaders acmeHeaders = authHeaders("acme");
+        String body = """
+                {"msisdn": "9876543999", "name": "Test User"}
+                """;
+        ResponseEntity<String> createResponse = restTemplate.exchange(
+                "/api/v1/operators/acme/subscribers",
+                HttpMethod.POST,
+                new HttpEntity<>(body, jsonHeaders(acmeHeaders)),
+                String.class
+        );
+
+        HttpHeaders zenithHeader = authHeaders("zenith");
+        ResponseEntity<String> crossTenantResponse = restTemplate.exchange(
+          "/api/v1/operators/acme/subscribers/9876543999",
+          HttpMethod.GET,
+          new HttpEntity<>(zenithHeader),
+          String.class
+        );
+        assertThat(crossTenantResponse.getStatusCode().value()).isEqualTo(403);
+    }
+
+    @Test
+    void deniedCrossTenantCreate(){
+        HttpHeaders zenithHeaders = authHeaders("zenith");
+        String body = """
+                {"msisdn": "9876540000", "name": "sneaky User"}
+                """;
+
+        ResponseEntity<String> crossTemplateCreateResponse = restTemplate.exchange(
+          "/api/v1/operators/acme/subscribers",
+          HttpMethod.POST,
+          new HttpEntity<>(body, jsonHeaders(zenithHeaders)),
+          String.class
+        );
+        assertThat(crossTemplateCreateResponse.getStatusCode().value()).isEqualTo(403);
     }
 }

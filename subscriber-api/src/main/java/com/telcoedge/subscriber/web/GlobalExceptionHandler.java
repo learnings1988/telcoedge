@@ -6,13 +6,17 @@ import com.telcoedge.subscriber.exception.SubscriberNotFoundException;
 import jakarta.servlet.http.HttpServletRequest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.http.HttpRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.converter.HttpMessageNotReadableException;
+import org.springframework.security.authorization.AuthorizationDeniedException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
+import java.nio.file.AccessDeniedException;
+import java.time.Instant;
 import java.util.List;
 
 
@@ -66,6 +70,15 @@ public class GlobalExceptionHandler {
                                           HttpServletRequest req){
         return ErrorResponse.of(400, "Bad Request", "Request body is missing or malformed",
                 req.getRequestURI());
+    }
+
+    @ExceptionHandler({AccessDeniedException.class, AuthorizationDeniedException.class})
+    @ResponseStatus(HttpStatus.FORBIDDEN)
+    public ErrorResponse handleAccessDenied(AccessDeniedException ex, AuthorizationDeniedException authEx,
+                                            HttpServletRequest req){
+        return new ErrorResponse( Instant.now(), 403, "Forbidden",
+                "Access Denied: Operator Mismatch or insufficient Permission",
+                req.getRequestURI(),List.of());
     }
 
 }
