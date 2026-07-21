@@ -14,6 +14,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.boot.testcontainers.service.connection.ServiceConnection;
 import org.springframework.http.*;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.testcontainers.containers.PostgreSQLContainer;
 import org.testcontainers.junit.jupiter.Container;
 import org.testcontainers.junit.jupiter.Testcontainers;
@@ -37,6 +38,8 @@ class SubscriberApiIntegrationTest {
 
     @Autowired
     private TestRestTemplate restTemplate;
+    @Autowired
+    private JdbcTemplate jdbcTemplate;
 
     @BeforeAll
     static void seedOperators(@Autowired OperatorRepository operatorRepository){
@@ -208,5 +211,27 @@ class SubscriberApiIntegrationTest {
           String.class
         );
         assertThat(crossTemplateCreateResponse.getStatusCode().value()).isEqualTo(403);
+    }
+
+    @Test
+    public void createdByIsCapturedFromJwt(){
+        HttpHeaders acmeHeaders = authHeaders("acme");
+        String body = """
+                {"msisdn": "9876500001", "name": "Audit Test User"}
+                """;
+        ResponseEntity<String> createResponse = restTemplate.exchange(
+                "/api/v1/operators/acme/subscribers",
+                HttpMethod.POST,
+                new HttpEntity<>(body, jsonHeaders(acmeHeaders)),
+                String.class
+        );
+
+        assertThat(createResponse.getStatusCode().value()).isEqualTo(201);
+
+        String createdBy = jdbcTemplate.queryForObject(
+                "SELECT created_by FROM subscribers where msisdn = '9876500001'",
+                String.class);
+
+        assertThat(createdBy).isEqualTo("api-user");
     }
 }

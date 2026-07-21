@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta http-equiv="x-ua-compatible" content="IE=edge"/>
+<title>Test results - createdByIsCapturedFromJwt()</title>
+<link href="../css/base-style.css" rel="stylesheet" type="text/css"/>
+<link href="../css/style.css" rel="stylesheet" type="text/css"/>
+<script src="../js/report.js" type="text/javascript"></script>
+</head>
+<body>
+<div id="content">
+<div class="breadcrumbs">
+<a class="breadcrumb" href="../index.html">all</a> &gt; 
+<a class="breadcrumb" href="index.html">com.telcoedge.subscriber.SubscriberApiIntegrationTest</a> &gt; 
+<span class="breadcrumb">createdByIsCapturedFromJwt()</span>
+</div>
+<div class="tab-container">
+<ul class="tabLinks">
+<li>
+<a class="successGroup" href="#">Gradle Test Run :subscriber-api:test</a>
+</li>
+</ul>
+<div class="tab">
+<h2>Gradle Test Run :subscriber-api:test</h2>
+<h1>createdByIsCapturedFromJwt()</h1>
+<div class="tab-container">
+<ul class="tabLinks">
+<li>
+<a class="" href="#">summary</a>
+</li>
+<li>
+<a class="" href="#">standard output</a>
+</li>
+</ul>
+<div class="tab">
+<h2>summary</h2>
+<div>
+<div class="summary">
+<table>
+<tr>
+<td>
+<div class="summaryGroup">
+<table>
+<tr>
+<td>
+<div class="infoBox">
+<div class="counter">1</div>
+<p>tests</p>
+</div>
+</td>
+<td>
+<div class="infoBox">
+<div class="counter">0</div>
+<p>failures</p>
+</div>
+</td>
+<td>
+<div class="infoBox">
+<div class="counter">0</div>
+<p>skipped</p>
+</div>
+</td>
+<td>
+<div class="infoBox duration">
+<div class="counter">0.067s</div>
+<p>duration</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</td>
+<td>
+<div class="infoBox success successRate">
+<div class="percent">100%</div>
+<p>successful</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="tab">
+<h2>standard output</h2>
+<span class="code">
+<pre id="root-0-test-stdout-createdByIsCapturedFromJwt()">{&quot;@timestamp&quot;:&quot;2026-07-21T07.21.24.468+05:30&quot;,&quot;level&quot;:&quot;DEBUG&quot;,&quot;logger_name&quot;:&quot;org.springframework.security.web.FilterChainProxy&quot;,&quot;thread_name&quot;:&quot;tomcat-handler-4&quot;,&quot;message&quot;:&quot;Securing POST /api/v1/operators/acme/subscribers&quot;,&quot;app&quot;:&quot;subscriber-api&quot;}
+{&quot;@timestamp&quot;:&quot;2026-07-21T07.21.24.471+05:30&quot;,&quot;level&quot;:&quot;DEBUG&quot;,&quot;logger_name&quot;:&quot;org.springframework.security.oauth2.server.resource.authentication.JwtAuthenticationProvider&quot;,&quot;thread_name&quot;:&quot;tomcat-handler-4&quot;,&quot;message&quot;:&quot;Authenticated token&quot;,&quot;app&quot;:&quot;subscriber-api&quot;}
+{&quot;@timestamp&quot;:&quot;2026-07-21T07.21.24.471+05:30&quot;,&quot;level&quot;:&quot;DEBUG&quot;,&quot;logger_name&quot;:&quot;org.springframework.security.oauth2.server.resource.web.authentication.BearerTokenAuthenticationFilter&quot;,&quot;thread_name&quot;:&quot;tomcat-handler-4&quot;,&quot;message&quot;:&quot;Set SecurityContextHolder to JwtAuthenticationToken [Principal=org.springframework.security.oauth2.jwt.Jwt@5d73d786, Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=127.0.0.1, SessionId=null], Granted Authorities=[]]&quot;,&quot;app&quot;:&quot;subscriber-api&quot;}
+{&quot;@timestamp&quot;:&quot;2026-07-21T07.21.24.473+05:30&quot;,&quot;level&quot;:&quot;DEBUG&quot;,&quot;logger_name&quot;:&quot;org.springframework.security.web.FilterChainProxy&quot;,&quot;thread_name&quot;:&quot;tomcat-handler-4&quot;,&quot;message&quot;:&quot;Secured POST /api/v1/operators/acme/subscribers&quot;,&quot;app&quot;:&quot;subscriber-api&quot;}
+{&quot;@timestamp&quot;:&quot;2026-07-21T07.21.24.475+05:30&quot;,&quot;level&quot;:&quot;DEBUG&quot;,&quot;logger_name&quot;:&quot;org.springframework.security.authorization.method.AuthorizationManagerBeforeMethodInterceptor&quot;,&quot;thread_name&quot;:&quot;tomcat-handler-4&quot;,&quot;message&quot;:&quot;Authorizing method invocation ReflectiveMethodInvocation: public com.telcoedge.domain.Subscriber com.telcoedge.subscriber.service.SubscriberService.create(java.lang.String,java.lang.String,java.lang.String); target is of class [com.telcoedge.subscriber.service.SubscriberService]&quot;,&quot;app&quot;:&quot;subscriber-api&quot;}
+{&quot;@timestamp&quot;:&quot;2026-07-21T07.21.24.476+05:30&quot;,&quot;level&quot;:&quot;DEBUG&quot;,&quot;logger_name&quot;:&quot;org.springframework.security.authorization.method.AuthorizationManagerBeforeMethodInterceptor&quot;,&quot;thread_name&quot;:&quot;tomcat-handler-4&quot;,&quot;message&quot;:&quot;Authorized method invocation ReflectiveMethodInvocation: public com.telcoedge.domain.Subscriber com.telcoedge.subscriber.service.SubscriberService.create(java.lang.String,java.lang.String,java.lang.String); target is of class [com.telcoedge.subscriber.service.SubscriberService]&quot;,&quot;app&quot;:&quot;subscriber-api&quot;}
+Hibernate: 
+    select
+        se1_0.id 
+    from
+        subscribers se1_0 
+    where
+        se1_0.operator_id=? 
+        and se1_0.msisdn=? 
+    fetch
+        first ? rows only
+{&quot;@timestamp&quot;:&quot;2026-07-21T07.21.24.479+05:30&quot;,&quot;level&quot;:&quot;TRACE&quot;,&quot;logger_name&quot;:&quot;org.hibernate.orm.jdbc.bind&quot;,&quot;thread_name&quot;:&quot;tomcat-handler-4&quot;,&quot;message&quot;:&quot;binding parameter (1:VARCHAR) &lt;- [acme]&quot;,&quot;app&quot;:&quot;subscriber-api&quot;}
+{&quot;@timestamp&quot;:&quot;2026-07-21T07.21.24.479+05:30&quot;,&quot;level&quot;:&quot;TRACE&quot;,&quot;logger_name&quot;:&quot;org.hibernate.orm.jdbc.bind&quot;,&quot;thread_name&quot;:&quot;tomcat-handler-4&quot;,&quot;message&quot;:&quot;binding parameter (2:VARCHAR) &lt;- [9876500001]&quot;,&quot;app&quot;:&quot;subscriber-api&quot;}
+{&quot;@timestamp&quot;:&quot;2026-07-21T07.21.24.479+05:30&quot;,&quot;level&quot;:&quot;TRACE&quot;,&quot;logger_name&quot;:&quot;org.hibernate.orm.jdbc.bind&quot;,&quot;thread_name&quot;:&quot;tomcat-handler-4&quot;,&quot;message&quot;:&quot;binding parameter (3:INTEGER) &lt;- [1]&quot;,&quot;app&quot;:&quot;subscriber-api&quot;}
+Hibernate: 
+    insert 
+    into
+        subscribers
+        (created_at, created_by, msisdn, name, operator_id, status, updated_at, updated_by) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?) 
+    returning id
+{&quot;@timestamp&quot;:&quot;2026-07-21T07.21.24.485+05:30&quot;,&quot;level&quot;:&quot;TRACE&quot;,&quot;logger_name&quot;:&quot;org.hibernate.orm.jdbc.bind&quot;,&quot;thread_name&quot;:&quot;tomcat-handler-4&quot;,&quot;message&quot;:&quot;binding parameter (1:TIMESTAMP_UTC) &lt;- [2026-07-21T01:51:24.484508700Z]&quot;,&quot;app&quot;:&quot;subscriber-api&quot;}
+{&quot;@timestamp&quot;:&quot;2026-07-21T07.21.24.485+05:30&quot;,&quot;level&quot;:&quot;TRACE&quot;,&quot;logger_name&quot;:&quot;org.hibernate.orm.jdbc.bind&quot;,&quot;thread_name&quot;:&quot;tomcat-handler-4&quot;,&quot;message&quot;:&quot;binding parameter (2:VARCHAR) &lt;- [api-user]&quot;,&quot;app&quot;:&quot;subscriber-api&quot;}
+{&quot;@timestamp&quot;:&quot;2026-07-21T07.21.24.485+05:30&quot;,&quot;level&quot;:&quot;TRACE&quot;,&quot;logger_name&quot;:&quot;org.hibernate.orm.jdbc.bind&quot;,&quot;thread_name&quot;:&quot;tomcat-handler-4&quot;,&quot;message&quot;:&quot;binding parameter (3:VARCHAR) &lt;- [9876500001]&quot;,&quot;app&quot;:&quot;subscriber-api&quot;}
+{&quot;@timestamp&quot;:&quot;2026-07-21T07.21.24.485+05:30&quot;,&quot;level&quot;:&quot;TRACE&quot;,&quot;logger_name&quot;:&quot;org.hibernate.orm.jdbc.bind&quot;,&quot;thread_name&quot;:&quot;tomcat-handler-4&quot;,&quot;message&quot;:&quot;binding parameter (4:VARCHAR) &lt;- [Audit Test User]&quot;,&quot;app&quot;:&quot;subscriber-api&quot;}
+{&quot;@timestamp&quot;:&quot;2026-07-21T07.21.24.485+05:30&quot;,&quot;level&quot;:&quot;TRACE&quot;,&quot;logger_name&quot;:&quot;org.hibernate.orm.jdbc.bind&quot;,&quot;thread_name&quot;:&quot;tomcat-handler-4&quot;,&quot;message&quot;:&quot;binding parameter (5:VARCHAR) &lt;- [acme]&quot;,&quot;app&quot;:&quot;subscriber-api&quot;}
+{&quot;@timestamp&quot;:&quot;2026-07-21T07.21.24.486+05:30&quot;,&quot;level&quot;:&quot;TRACE&quot;,&quot;logger_name&quot;:&quot;org.hibernate.orm.jdbc.bind&quot;,&quot;thread_name&quot;:&quot;tomcat-handler-4&quot;,&quot;message&quot;:&quot;binding parameter (6:VARCHAR) &lt;- [ACTIVE]&quot;,&quot;app&quot;:&quot;subscriber-api&quot;}
+{&quot;@timestamp&quot;:&quot;2026-07-21T07.21.24.486+05:30&quot;,&quot;level&quot;:&quot;TRACE&quot;,&quot;logger_name&quot;:&quot;org.hibernate.orm.jdbc.bind&quot;,&quot;thread_name&quot;:&quot;tomcat-handler-4&quot;,&quot;message&quot;:&quot;binding parameter (7:TIMESTAMP_UTC) &lt;- [2026-07-21T01:51:24.484508700Z]&quot;,&quot;app&quot;:&quot;subscriber-api&quot;}
+{&quot;@timestamp&quot;:&quot;2026-07-21T07.21.24.487+05:30&quot;,&quot;level&quot;:&quot;TRACE&quot;,&quot;logger_name&quot;:&quot;org.hibernate.orm.jdbc.bind&quot;,&quot;thread_name&quot;:&quot;tomcat-handler-4&quot;,&quot;message&quot;:&quot;binding parameter (8:VARCHAR) &lt;- [api-user]&quot;,&quot;app&quot;:&quot;subscriber-api&quot;}
+{&quot;@timestamp&quot;:&quot;2026-07-21T07.21.24.498+05:30&quot;,&quot;level&quot;:&quot;DEBUG&quot;,&quot;logger_name&quot;:&quot;org.springframework.jdbc.datasource.DataSourceUtils&quot;,&quot;thread_name&quot;:&quot;Test worker&quot;,&quot;message&quot;:&quot;Fetching JDBC Connection from DataSource&quot;,&quot;app&quot;:&quot;subscriber-api&quot;}
+</pre>
+<button class="clipboard-copy-btn" aria-label="Copy to clipboard" data-copy-element-id="root-0-test-stdout-createdByIsCapturedFromJwt()">Copy</button>
+</span>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<p>
+<div>
+<label class="hidden" id="label-for-line-wrapping-toggle" for="line-wrapping-toggle">Wrap lines
+<input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
+</label>
+</div>Generated by 
+<a href="https://www.gradle.org">Gradle 9.3.0</a> at 21-Jul-2026, 7:21:30 am</p>
+</div>
+</div>
+</body>
+</html>
