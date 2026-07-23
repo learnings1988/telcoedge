@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.telcoedge.charging.AllBalanceImplementationsTest" tests="9" skipped="0" failures="0" errors="0" timestamp="2026-07-23T04:24:22.700Z" hostname="LAPTOP-AJ4PV88L" time="0.105">
+  <properties/>
+  <testcase name="repetition 1 of 3" classname="com.telcoedge.charging.AllBalanceImplementationsTest" time="0.033"/>
+  <testcase name="repetition 2 of 3" classname="com.telcoedge.charging.AllBalanceImplementationsTest" time="0.002"/>
+  <testcase name="repetition 3 of 3" classname="com.telcoedge.charging.AllBalanceImplementationsTest" time="0.003"/>
+  <testcase name="repetition 1 of 3" classname="com.telcoedge.charging.AllBalanceImplementationsTest" time="0.003"/>
+  <testcase name="repetition 2 of 3" classname="com.telcoedge.charging.AllBalanceImplementationsTest" time="0.004"/>
+  <testcase name="repetition 3 of 3" classname="com.telcoedge.charging.AllBalanceImplementationsTest" time="0.003"/>
+  <testcase name="repetition 1 of 3" classname="com.telcoedge.charging.AllBalanceImplementationsTest" time="0.006"/>
+  <testcase name="repetition 2 of 3" classname="com.telcoedge.charging.AllBalanceImplementationsTest" time="0.002"/>
+  <testcase name="repetition 3 of 3" classname="com.telcoedge.charging.AllBalanceImplementationsTest" time="0.003"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
