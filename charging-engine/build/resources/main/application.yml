@@ -40,6 +40,12 @@ logging:
     org.hibernate.stat: DEBUG
     org.hibernate.orm.jdbc.bind: TRACE
 
-
-
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics,prometheus
+  metrics:
+    tags:
+      application: charging-engine
 

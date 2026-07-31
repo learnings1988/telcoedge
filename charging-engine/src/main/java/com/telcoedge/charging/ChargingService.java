@@ -5,6 +5,10 @@ import com.telcoedge.domain.Cdr;
 import com.telcoedge.domain.ChargeResult;
 import com.telcoedge.domain.ChargeStatus;
 import com.telcoedge.domain.UsageType;
+import io.micrometer.core.instrument.Counter;
+import io.micrometer.core.instrument.MeterRegistry;
+import io.micrometer.core.instrument.Timer;
+import io.micrometer.core.instrument.Gauge;
 import jakarta.transaction.Transactional;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -34,44 +38,44 @@ public class ChargingService {
     private final IdempotencyKeyRepository idempotencyKeyRepository;
     private final TariffRateRepository tariffRateRepository;
     private final SubscriberLookup subscriberLookup;
+    private final MeterRegistry meterRegistry;
+    private final Timer processingTimer;
 
     public ChargingService(RatingEngine ratingEngine, BalanceRepository balanceRepository,
                            UsageEventRepository usageEventRepository,
                            IdempotencyKeyRepository idempotencyKeyRepository,
                            TariffRateRepository tariffRateRepository,
-                           SubscriberLookup subscriberLookup) {
+                           SubscriberLookup subscriberLookup,
+                           MeterRegistry meterRegistry) {
         this.ratingEngine = ratingEngine;
         this.balanceRepository = balanceRepository;
         this.usageEventRepository = usageEventRepository;
         this.idempotencyKeyRepository = idempotencyKeyRepository;
         this.tariffRateRepository = tariffRateRepository;
         this.subscriberLookup = subscriberLookup;
+        this.meterRegistry = meterRegistry;
+        this.processingTimer = Timer.builder("cdr.processing.duration")
+                .description("Time to process a single cdr")
+                .publishPercentiles(0.5,0.95,0.99)
+                .register(meterRegistry);
+        Gauge.builder("charging.active.balances", balanceRepository, repo -> (double) repo.count())
+                .description("Total balance records in system")
+                .register(meterRegistry);
     }
 
     @Transactional
     public ChargeResult process(Cdr cdr){
-        Optional<IdempotencyKeyEntity> existingKey =
-                idempotencyKeyRepository.findByEventId(cdr.eventId());
-        if(existingKey.isPresent()){
-            log.debug("Duplicate event with eventId : {} Detected", cdr.eventId());
-            return buildResult(cdr, BigDecimal.ZERO, BigDecimal.ZERO,
-                    ChargeStatus.DUPLICATE);
-        }
+        return processingTimer.record(()->{
+            ChargeResult result = doProcess(cdr);
+            Counter.builder("cdr.processed")
+                    .description("Total CDRs processed")
+                    .tag("status", result.status().name())
+                    .tag("usage_type", cdr.usageType().name())
+                    .register(meterRegistry)
+                    .increment();
+            return result;
+        });
 
-        Long subscriberId = subscriberLookup.findSubscriberId(cdr.operatorId(), cdr.msisdn());
-        if(subscriberId==null){
-            return buildResult(cdr, BigDecimal.ZERO, BigDecimal.ZERO,
-                    ChargeStatus.SUBSCRIBER_NOT_FOUND);
-        }
-
-        List<TariffRateView> rates = tariffRateRepository.findActiveRatesForSubscriber(subscriberId);
-
-        BigDecimal rate = findRateForUsageType(cdr.usageType(), rates);
-
-        BigDecimal chargedAmount = ratingEngine.calculateCharge(cdr.usageType(),
-                cdr.quantity(), rate);
-
-        return doCharge(cdr, subscriberId, chargedAmount, rate);
     }
 
 
@@ -113,4 +117,31 @@ public class ChargingService {
                                      BigDecimal remaining, ChargeStatus status){
         return new ChargeResult(cdr.eventId(), cdr.msisdn(), charged, remaining, status, Instant.now());
     }
+
+
+    private ChargeResult doProcess(Cdr cdr){
+        Optional<IdempotencyKeyEntity> existingKey =
+                idempotencyKeyRepository.findByEventId(cdr.eventId());
+        if(existingKey.isPresent()){
+            log.debug("Duplicate event with eventId : {} Detected", cdr.eventId());
+            return buildResult(cdr, BigDecimal.ZERO, BigDecimal.ZERO,
+                    ChargeStatus.DUPLICATE);
+        }
+
+        Long subscriberId = subscriberLookup.findSubscriberId(cdr.operatorId(), cdr.msisdn());
+        if(subscriberId==null){
+            return buildResult(cdr, BigDecimal.ZERO, BigDecimal.ZERO,
+                    ChargeStatus.SUBSCRIBER_NOT_FOUND);
+        }
+
+        List<TariffRateView> rates = tariffRateRepository.findActiveRatesForSubscriber(subscriberId);
+
+        BigDecimal rate = findRateForUsageType(cdr.usageType(), rates);
+
+        BigDecimal chargedAmount = ratingEngine.calculateCharge(cdr.usageType(),
+                cdr.quantity(), rate);
+
+        return doCharge(cdr, subscriberId, chargedAmount, rate);
+    }
+
 }
