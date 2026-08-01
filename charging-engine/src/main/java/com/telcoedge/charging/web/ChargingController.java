@@ -6,6 +6,8 @@ import com.telcoedge.charging.OptimisticLockRetry;
 import com.telcoedge.charging.dto.UsageHistoryDto;
 import com.telcoedge.domain.Cdr;
 import com.telcoedge.domain.ChargeResult;
+import org.apache.coyote.Response;
+import org.slf4j.MDC;
 import org.springframework.data.domain.Page;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.ResponseEntity;
@@ -28,8 +30,12 @@ public class ChargingController {
 
     @PostMapping("/cdr")
     public ResponseEntity<ChargeResult> processCdr(@RequestBody CdrRequest request){
-        ChargeResult result = chargingService.process(request.toCdr());
-        return ResponseEntity.ok(result);
+        try( var ignored1 = MDC.putCloseable("operatorId" , request.operatorId());
+            var ignored2 = MDC.putCloseable("msisdn" , request.msisdn())) {
+
+            ChargeResult result = chargingService.process(request.toCdr());
+            return ResponseEntity.ok(result);
+        }
     }
 
     @GetMapping("/health")
@@ -44,6 +50,7 @@ public class ChargingController {
                 chargingService.process(cdr));
         return ResponseEntity.ok(result);
     }
+
 
 
 }
