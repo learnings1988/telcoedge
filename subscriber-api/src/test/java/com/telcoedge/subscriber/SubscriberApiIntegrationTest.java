@@ -234,4 +234,22 @@ class SubscriberApiIntegrationTest {
 
         assertThat(createdBy).isEqualTo("api-user");
     }
+
+    @Test
+    void readinessEndpointReportUp(){
+        ResponseEntity<String> response = restTemplate.getForEntity(
+                "/actuator/health/readiness", String.class);
+
+        assertThat(response.getStatusCode().value()).isEqualTo(200);
+        assertThat(response.getBody()).contains("UP");
+    }
+
+    @Test
+    void livenessEndpointReportUp(){
+        ResponseEntity<String> response = restTemplate.getForEntity(
+                "/actuator/health/liveness", String.class);
+
+        assertThat(response.getStatusCode().value()).isEqualTo(200);
+        assertThat(response.getBody()).contains("UP");
+    }
 }

@@ -101,4 +101,40 @@ public class ChargingIntegrationTest {
         assertThat( response.getHeaders().getFirst("X-Correlation-Id")).isEqualTo("test-1234");
 
     }
+
+    @Test
+    void readinessEndpointReportUp(){
+        ResponseEntity<String> response = restTemplate.getForEntity(
+                "/actuator/health/readiness", String.class);
+
+        assertThat(response.getStatusCode().value()).isEqualTo(200);
+        assertThat(response.getBody()).contains("UP");
+    }
+
+    @Test
+    void livenessEndpointReportUp(){
+        ResponseEntity<String> response = restTemplate.getForEntity(
+                "/actuator/health/liveness", String.class);
+
+        assertThat(response.getStatusCode().value()).isEqualTo(200);
+        assertThat(response.getBody()).contains("UP");
+    }
+
+    @Test
+    void readinessReportsDownWhenNegativeBalanceExist(){
+        Long subscriberId = jdbcTemplate.queryForObject("SELECT id from subscribers" +
+                " where msisdn = '9876543000'", Long.class);
+        jdbcTemplate.update("""
+                update balances set amount =-10.00 where subscriber_id=?;
+                """, subscriberId);
+
+        ResponseEntity<String> response = restTemplate.getForEntity(
+                "/actuator/health/readiness", String.class);
+
+        assertThat(response.getStatusCode().value()).isEqualTo(503);
+        assertThat(response.getBody()).contains("DOWN");
+
+        jdbcTemplate.update(
+                "delete from balances where subscriber_id=?", subscriberId);
+    }
 }

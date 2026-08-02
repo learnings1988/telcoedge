@@ -24,6 +24,8 @@ spring:
             log:
               LOG_QUERIES_SLOWER_THAN_MS: 25
     open_in_view: false
+  lifecycle:
+    timeout-per-shutdown-phase: 25s
 
   flyway:
     enabled: true
@@ -31,6 +33,7 @@ spring:
 
 server:
   port: 8081
+  shutdown: graceful
 
 logging:
   level:
@@ -45,6 +48,18 @@ management:
     web:
       exposure:
         include: health,info,metrics,prometheus
+  endpoint:
+    health:
+      show-details: when_authorized
+      probes:
+        enabled: true
+      group:
+        readiness:
+          include: readinessState,db,charging
+
+        liveness:
+          include:
+            - livenessState
   metrics:
     tags:
       application: charging-engine

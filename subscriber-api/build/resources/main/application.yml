@@ -21,12 +21,15 @@ spring:
       resourceserver:
         jwt:
           public-key-location: classpath:keys/public.pem
+  lifecycle:
+    timeout-per-shutdown-phase: 25s
 
   flyway:
     enabled: true
 
 server:
   port: 8080
+  shutdown: graceful
 
 management:
   endpoints:
@@ -35,7 +38,17 @@ management:
         include: health, info, metrics
   endpoint:
     health:
-      show-details: always
+      show-details: when_authorized
+      probes:
+        enabled: true
+      group:
+        readiness:
+          include:
+            - readinessState
+            - db
+        liveness:
+          include:
+            - livenessState
 
 logging:
   level:
