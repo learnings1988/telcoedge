@@ -50,7 +50,7 @@ management:
         include: health,info,metrics,prometheus
   endpoint:
     health:
-      show-details: when_authorized
+      show-details: always
       probes:
         enabled: true
       group:
@@ -63,4 +63,19 @@ management:
   metrics:
     tags:
       application: charging-engine
+  health:
+    circuitbreakers:
+      enabled: true
 
+
+resilience4j:
+  circuitbreaker:
+    instances:
+      subscriberLookup:
+        sliding-window-size: 10
+        minimum-number-of-calls: 5
+        failure-rate-threshold: 50
+        wait-duration-in-open-state: 30s
+        permitted-number-of-calls-in-half-open-state: 3
+        sliding-window-type: count_based
+        register-health-indicator: true
