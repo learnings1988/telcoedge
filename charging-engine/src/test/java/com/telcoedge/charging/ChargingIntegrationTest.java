@@ -4,6 +4,8 @@ package com.telcoedge.charging;
 import com.telcoedge.charging.web.CdrRequest;
 import com.telcoedge.domain.Cdr;
 import com.telcoedge.domain.UsageType;
+import io.github.resilience4j.retry.Retry;
+import io.github.resilience4j.retry.RetryRegistry;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeEach;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,6 +44,9 @@ public class ChargingIntegrationTest {
 
     @Autowired
     private JdbcTemplate jdbcTemplate;
+
+    @Autowired
+    private RetryRegistry retryRegistry;
 
     @BeforeEach
     void seedTestData(){
@@ -136,5 +141,32 @@ public class ChargingIntegrationTest {
 
         jdbcTemplate.update(
                 "delete from balances where subscriber_id=?", subscriberId);
+    }
+
+    @Test
+    void RetryConfiguredForSubscriberLookup(){
+        Retry retry = retryRegistry.retry("subscriberLookup");
+        assertThat(retry.getRetryConfig().getMaxAttempts()).isEqualTo(3);
+        assertThat(retry.getRetryConfig().getIntervalBiFunction()).isNotNull();
+    }
+
+    //Test Rate limiter with reducing max limit per period in application.yaml
+    /*@Test
+    void rateLimiterRejects101stRequestIn1Second(){
+        for(int i=0;i<101;i++){
+            restTemplate.postForEntity("/api/v1/charging/cdr",
+                    createCdr(), String.class);
+        }
+
+        ResponseEntity<String> response = restTemplate.postForEntity("/api/v1/charging/cdr",
+                createCdr(), String.class);
+
+        assertThat(response.getStatusCode().value()).isEqualTo(429);
+
+    }*/
+
+    private CdrRequest createCdr(){
+        return new CdrRequest(UUID.randomUUID(), "acme", "9876543000",
+                UsageType.VOICE, new BigDecimal("60"), Instant.now(), Instant.now());
     }
 }

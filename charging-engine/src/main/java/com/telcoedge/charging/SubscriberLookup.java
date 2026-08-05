@@ -2,6 +2,7 @@ package com.telcoedge.charging;
 
 
 import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
+import io.github.resilience4j.retry.annotation.Retry;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -19,6 +20,7 @@ public class SubscriberLookup {
 
 
     @CircuitBreaker(name="subscriberLookup", fallbackMethod = "findSubscriberIdFallback")
+    @Retry(name = "subscriberLookup")
     public Long findSubscriberId(String operatorId, String msisdn){
         return jdbcTemplate.query(
                 "SELECT id FROM subscribers WHERE operator_id = ? and msisdn = ?" +
