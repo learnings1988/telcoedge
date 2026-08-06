@@ -1,9 +1,11 @@
 package com.telcoedge.charging;
 
 
+import com.github.benmanes.caffeine.cache.stats.CacheStats;
 import com.telcoedge.charging.persistence.TariffRateView;
 import com.telcoedge.charging.web.CdrRequest;
 import com.telcoedge.domain.Cdr;
+import com.telcoedge.domain.ChargeResult;
 import com.telcoedge.domain.UsageType;
 import io.github.resilience4j.retry.Retry;
 import io.github.resilience4j.retry.RetryRegistry;
@@ -13,12 +15,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.boot.testcontainers.service.connection.ServiceConnection;
+import org.springframework.cache.Cache;
 import org.springframework.cache.CacheManager;
+import org.springframework.cache.caffeine.CaffeineCache;
 import org.springframework.http.*;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.testcontainers.containers.PostgreSQLContainer;
 import org.testcontainers.junit.jupiter.Container;
 import org.testcontainers.junit.jupiter.Testcontainers;
+
 
 import java.math.BigDecimal;
 import java.time.Instant;
@@ -58,6 +63,8 @@ public class ChargingIntegrationTest {
 
     @Autowired
     TariffRatesLookupService tariffRatesLookupService;
+    @Autowired
+    private ChargingService chargingService;
 
     @BeforeEach
     void seedTestData(){
@@ -86,6 +93,21 @@ public class ChargingIntegrationTest {
                 """, subscriberId);
     }
 
+    @BeforeEach
+    void clearTariffCache(){
+        var cache = cacheManager.getCache("tariffRates");
+        if(cache != null) cache.clear();
+    }
+
+    private CacheStats currentStats(){
+        CaffeineCache caffeineCache = (CaffeineCache) cacheManager.getCache("tariffRates");
+        return caffeineCache.getNativeCache().stats();
+    }
+
+    private CdrRequest createCdr(){
+        return new CdrRequest(UUID.randomUUID(), "acme", "9876543000",
+                UsageType.VOICE, new BigDecimal("60"), Instant.now(), Instant.now());
+    }
 
     @Test
     void responseIncludesCorrelationId(){
@@ -108,10 +130,8 @@ public class ChargingIntegrationTest {
         headers.setContentType(MediaType.APPLICATION_JSON);
         headers.set("X-Correlation-Id", "test-1234");
 
-        CdrRequest request = new CdrRequest(UUID.randomUUID(), "acme", "9876543000",
-                UsageType.VOICE, new BigDecimal("60"), Instant.now(), Instant.now());
-
-        ResponseEntity<String> response = restTemplate.exchange("/api/v1/charging/", HttpMethod.POST,
+        CdrRequest request = createCdr();
+        ResponseEntity<String> response = restTemplate.exchange("/api/v1/charging/cdr", HttpMethod.POST,
                 new HttpEntity<>( request, headers), String.class);
 
         assertThat( response.getHeaders().getFirst("X-Correlation-Id")).isEqualTo("test-1234");
@@ -187,6 +207,62 @@ public class ChargingIntegrationTest {
         assertThat(response.getBody()).contains("cache=\"tariffRates\"");
     }
 
+    @Test
+    void recordsOneMissAndTwoHitsForSameKey(){
+        CacheStats before = currentStats();
+
+        Optional<TariffRateView> tariffRateView1 = tariffRatesLookupService.findRate(1L, UsageType.VOICE);
+        Optional<TariffRateView> tariffRateView2 = tariffRatesLookupService.findRate(1L, UsageType.VOICE);
+        Optional<TariffRateView> tariffRateView3 = tariffRatesLookupService.findRate(1L, UsageType.VOICE);
+
+        assertThat(tariffRateView1).isPresent();
+        assertThat(tariffRateView2).isPresent();
+        assertThat(tariffRateView3).isPresent();
+
+        assertThat(tariffRateView1.get().getRatePerUnit()).isEqualByComparingTo("0.01");
+        assertThat(tariffRateView2.get().getRatePerUnit()).isEqualByComparingTo("0.01");
+        assertThat(tariffRateView3.get().getRatePerUnit()).isEqualByComparingTo("0.01");
+
+        CacheStats after = currentStats();
+        assertThat(after.missCount() - before.missCount()).isEqualTo(1);
+        assertThat(after.hitCount()-before.hitCount()).isEqualTo(2);
+    }
+
+    @Test
+    void lookupServiceRecordSeparateMissPerUsageType(){
+        CacheStats before = currentStats();
+
+        tariffRatesLookupService.findRate(1L, UsageType.VOICE);
+        tariffRatesLookupService.findRate(1L, UsageType.VOICE);
+
+        tariffRatesLookupService.findRate(1L, UsageType.DATA);
+        tariffRatesLookupService.findRate(1L, UsageType.DATA);
+
+        CacheStats after = currentStats();
+
+        assertThat(after.missCount() - before.missCount()).isEqualTo(2);
+        assertThat(after.hitCount()-before.hitCount()).isEqualTo(2);
+    }
+
+    @Test
+    void chargingServiceSecondCdrHitsTariffCache(){
+        CacheStats before = currentStats();
+        CdrRequest request1 = createCdr();
+        CdrRequest request2 = createCdr();
+        ResponseEntity<String> firstResponse = restTemplate.postForEntity("/api/v1/charging/cdr",
+                request1, String.class);
+
+        ResponseEntity<String> secondResponse = restTemplate.postForEntity("/api/v1/charging/cdr",
+                request2, String.class);
+
+        assertThat(firstResponse.getBody()).contains("CHARGED");
+        assertThat(secondResponse.getBody()).contains("CHARGED");
+
+        CacheStats after = currentStats();
+        assertThat(after.hitCount()-before.hitCount()).isEqualTo(1);
+        assertThat(after.missCount()-before.missCount()).isEqualTo(1);
+    }
+
     //Test Rate limiter with reducing max limit per period in application.yaml
     /*@Test
     void rateLimiterRejects101stRequestIn1Second(){
@@ -202,9 +278,6 @@ public class ChargingIntegrationTest {
 
     }*/
 
-    private CdrRequest createCdr(){
-        return new CdrRequest(UUID.randomUUID(), "acme", "9876543000",
-                UsageType.VOICE, new BigDecimal("60"), Instant.now(), Instant.now());
-    }
+
 
 }
