@@ -36,24 +36,27 @@ public class ChargingService {
     private final BalanceRepository balanceRepository;
     private final UsageEventRepository usageEventRepository;
     private final IdempotencyKeyRepository idempotencyKeyRepository;
-    private final TariffRateRepository tariffRateRepository;
+    private final TariffRatesLookupService tariffRatesLookupService;
     private final SubscriberLookup subscriberLookup;
     private final MeterRegistry meterRegistry;
     private final Timer processingTimer;
+    private final SubscriberPlanRepository subscriberPlanRepository;
 
     public ChargingService(RatingEngine ratingEngine, BalanceRepository balanceRepository,
                            UsageEventRepository usageEventRepository,
                            IdempotencyKeyRepository idempotencyKeyRepository,
-                           TariffRateRepository tariffRateRepository,
+                           TariffRatesLookupService tariffRatesLookupService,
                            SubscriberLookup subscriberLookup,
-                           MeterRegistry meterRegistry) {
+                           MeterRegistry meterRegistry,
+                           SubscriberPlanRepository subscriberPlanRepository) {
         this.ratingEngine = ratingEngine;
         this.balanceRepository = balanceRepository;
         this.usageEventRepository = usageEventRepository;
         this.idempotencyKeyRepository = idempotencyKeyRepository;
-        this.tariffRateRepository = tariffRateRepository;
+        this.tariffRatesLookupService = tariffRatesLookupService;
         this.subscriberLookup = subscriberLookup;
         this.meterRegistry = meterRegistry;
+        this.subscriberPlanRepository = subscriberPlanRepository;
         this.processingTimer = Timer.builder("cdr.processing.duration")
                 .description("Time to process a single cdr")
                 .publishPercentiles(0.5,0.95,0.99)
@@ -105,13 +108,6 @@ public class ChargingService {
         return buildResult(cdr, chargeAmount, balance.getAmount(), ChargeStatus.CHARGED);
     }
 
-    private BigDecimal findRateForUsageType(UsageType usageType, List<TariffRateView> rates){
-        return rates.stream()
-                .filter( r -> r.getUsageType() == usageType)
-                .map(TariffRateView::getRatePerUnit)
-                .findFirst()
-                .orElse(null);
-    }
 
     private ChargeResult buildResult(Cdr cdr, BigDecimal charged,
                                      BigDecimal remaining, ChargeStatus status){
@@ -134,9 +130,20 @@ public class ChargingService {
                     ChargeStatus.SUBSCRIBER_NOT_FOUND);
         }
 
-        List<TariffRateView> rates = tariffRateRepository.findActiveRatesForSubscriber(subscriberId);
+        Optional<SubscriberToPlanIdDto> subscriberToPlanIdDto = subscriberPlanRepository.findBySubscriberId(subscriberId);
+        if(subscriberToPlanIdDto.isEmpty()){
+            return buildResult(cdr, BigDecimal.ZERO, BigDecimal.ZERO,
+                    ChargeStatus.NO_ACTIVE_PLAN_FOUND);
+        }
 
-        BigDecimal rate = findRateForUsageType(cdr.usageType(), rates);
+        Optional<TariffRateView> rateView = tariffRatesLookupService.findRate(subscriberToPlanIdDto.get().planId(),
+                cdr.usageType());
+        if(rateView.isEmpty()){
+            return buildResult(cdr, BigDecimal.ZERO, BigDecimal.ZERO,
+                    ChargeStatus.NO_RATE_FOUND_FOR_ACTIVE_PLAN);
+        }
+
+        BigDecimal rate = rateView.get().getRatePerUnit();
 
         BigDecimal chargedAmount = ratingEngine.calculateCharge(cdr.usageType(),
                 cdr.quantity(), rate);

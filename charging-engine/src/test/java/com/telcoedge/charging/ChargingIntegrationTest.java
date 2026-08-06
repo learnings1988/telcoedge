@@ -1,6 +1,7 @@
 package com.telcoedge.charging;
 
 
+import com.telcoedge.charging.persistence.TariffRateView;
 import com.telcoedge.charging.web.CdrRequest;
 import com.telcoedge.domain.Cdr;
 import com.telcoedge.domain.UsageType;
@@ -12,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.boot.testcontainers.service.connection.ServiceConnection;
+import org.springframework.cache.CacheManager;
 import org.springframework.http.*;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.testcontainers.containers.PostgreSQLContainer;
@@ -20,7 +22,10 @@ import org.testcontainers.junit.jupiter.Testcontainers;
 
 import java.math.BigDecimal;
 import java.time.Instant;
+import java.util.Optional;
 import java.util.UUID;
+
+import static org.assertj.core.api.Assertions.as;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @SpringBootTest(
@@ -47,6 +52,12 @@ public class ChargingIntegrationTest {
 
     @Autowired
     private RetryRegistry retryRegistry;
+
+    @Autowired
+    private CacheManager cacheManager;
+
+    @Autowired
+    TariffRatesLookupService tariffRatesLookupService;
 
     @BeforeEach
     void seedTestData(){
@@ -150,6 +161,32 @@ public class ChargingIntegrationTest {
         assertThat(retry.getRetryConfig().getIntervalBiFunction()).isNotNull();
     }
 
+    @Test
+    void tariffRateIsCachedAfterFirstLookup(){
+        UsageType usageType = UsageType.VOICE;
+        Optional<TariffRateView> tariffRateView1 = tariffRatesLookupService.findRate(1L, usageType);
+        assertThat(tariffRateView1).isPresent();
+        assertThat(tariffRateView1.get().getRatePerUnit()).isEqualByComparingTo("0.01");
+
+        Optional<TariffRateView> tariffRateView2 = tariffRatesLookupService.findRate(1L, usageType);
+        assertThat(tariffRateView2).isPresent();
+
+        var cache = cacheManager.getCache("tariffRates");
+        assertThat(cache).isNotNull();
+        assertThat(cache.get("1-VOICE")).isNotNull();
+
+    }
+
+    @Test
+    void cacheMetricsAreExposed(){
+        tariffRatesLookupService.findRate(1L, UsageType.DATA);
+        tariffRatesLookupService.findRate(1L, UsageType.DATA);
+
+        ResponseEntity<String> response = restTemplate.getForEntity("/actuator/prometheus", String.class);
+        assertThat(response.getBody()).contains("cache_gets_total");
+        assertThat(response.getBody()).contains("cache=\"tariffRates\"");
+    }
+
     //Test Rate limiter with reducing max limit per period in application.yaml
     /*@Test
     void rateLimiterRejects101stRequestIn1Second(){
@@ -169,4 +206,5 @@ public class ChargingIntegrationTest {
         return new CdrRequest(UUID.randomUUID(), "acme", "9876543000",
                 UsageType.VOICE, new BigDecimal("60"), Instant.now(), Instant.now());
     }
+
 }

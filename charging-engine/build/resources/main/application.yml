@@ -72,7 +72,7 @@ resilience4j:
   circuitbreaker:
     instances:
       subscriberLookup:
-        sliding-window-size: 100
+        sliding-window-size: 10
         minimum-number-of-calls: 5
         failure-rate-threshold: 50
         wait-duration-in-open-state: 30s
@@ -94,7 +94,7 @@ resilience4j:
   ratelimiter:
     instances:
       chargingEndpoint:
-        limit-for-period: 10
+        limit-for-period: 100
         limit-refresh-period: 1s
         timeout-duration: 0s
         register-health-indicator: true
