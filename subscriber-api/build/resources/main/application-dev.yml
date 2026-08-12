@@ -4,6 +4,13 @@ spring:
     url: jdbc:postgresql://localhost:5433/telcoedge?sslmode=disable
     username: telcoedge
     password: telcoedge_dev
+    hikari:
+      pool-name: subscriber-api-pool
+      maximum-pool-size: 10
+      minimum-idle: 2
+      connection-timeout: 3000
+      idle-timeout: 600000
+      max-lifetime: 1800000
 
   jpa:
     show-sql: true

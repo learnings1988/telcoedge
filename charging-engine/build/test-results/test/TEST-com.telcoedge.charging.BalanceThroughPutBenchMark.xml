@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.telcoedge.charging.BalanceThroughPutBenchMark" tests="1" skipped="0" failures="0" errors="0" timestamp="2026-08-12T03:39:52.909Z" hostname="LAPTOP-AJ4PV88L" time="0.378">
+  <properties/>
+  <testcase name="compareAllThreeImplementations()" classname="com.telcoedge.charging.BalanceThroughPutBenchMark" time="0.377"/>
+  <system-out><![CDATA[
+=== Balance Deduction throughput Benchmark ===
+Threads: 10 | ops/Thread: 100000 | Total: 1000000
+--------------------------------------------------------
+--------------------------------------------------------
+Synchronized:    25,641,026 ops/sec    (39 ms)
+Atomic:     3,546,099 ops/sec    (282 ms)
+Lock:    27,027,027 ops/sec    (37 ms)
+--------------------------------------------------------
+CAS VS Synchonized: 7.2x slower synchronized wins
+Lock VS Synchonized: 1.1x faster Lock wins
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

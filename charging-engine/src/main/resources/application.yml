@@ -1,4 +1,6 @@
 spring:
+  application:
+    name: charging-engine
   threads:
     virtual:
       enabled: true
@@ -6,6 +8,14 @@ spring:
     url: jdbc:postgresql://localhost:5433/telcoedge
     username: telcoedge
     password: telcoedge_dev
+    hikari:
+      pool-name: charging-engine-pool
+      max-size: 20
+      minimum-idle: 5
+      connection-timeout: 3000
+      idle-timeout: 600000
+      max-lifetime: 1800000
+      leak-detection-threshold: 10000
   jpa:
     hibernate:
       ddl-auto: validate
@@ -38,10 +48,10 @@ server:
 logging:
   level:
     root: INFO
-    com.telcoedge: DEBUG
-    org.hibernate.SQL: DEBUG
-    org.hibernate.stat: DEBUG
-    org.hibernate.orm.jdbc.bind: TRACE
+    #com.telcoedge: DEBUG
+    #org.hibernate.SQL: DEBUG
+    #org.hibernate.stat: DEBUG
+    #org.hibernate.orm.jdbc.bind: TRACE
 
 management:
   endpoints:
