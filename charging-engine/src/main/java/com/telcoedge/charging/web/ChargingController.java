@@ -4,6 +4,8 @@ package com.telcoedge.charging.web;
 import com.telcoedge.charging.ChargingService;
 import com.telcoedge.charging.OptimisticLockRetry;
 import com.telcoedge.charging.dto.UsageHistoryDto;
+import com.telcoedge.charging.event.CdrEvent;
+import com.telcoedge.charging.event.CdrEventPublisher;
 import com.telcoedge.domain.Cdr;
 import com.telcoedge.domain.ChargeResult;
 import io.github.resilience4j.ratelimiter.annotation.RateLimiter;
@@ -27,11 +29,14 @@ import java.time.ZoneOffset;
 public class ChargingController {
 
     private final ChargingService chargingService;
+    private final CdrEventPublisher cdrPublisher;
 
     private Logger log = LoggerFactory.getLogger(ChargingController.class);
 
-    public ChargingController(ChargingService chargingService) {
+    public ChargingController(ChargingService chargingService,
+                              CdrEventPublisher cdrPublisher) {
         this.chargingService = chargingService;
+        this.cdrPublisher = cdrPublisher;
     }
 
     @RateLimiter(name = "chargingEndpoint", fallbackMethod = "rateLimitFallback")
@@ -41,6 +46,9 @@ public class ChargingController {
             var ignored2 = MDC.putCloseable("msisdn" , request.msisdn())) {
 
             ChargeResult result = chargingService.process(request.toCdr());
+
+            cdrPublisher.publish(CdrEvent.fromCdr(request.toCdr()));
+
             return ResponseEntity.ok(result);
         }
     }

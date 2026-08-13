@@ -18,6 +18,7 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-aop")
     implementation("org.springframework.boot:spring-boot-starter-cache")
     implementation("com.github.ben-manes.caffeine:caffeine")
+    implementation("org.springframework.kafka:spring-kafka")
     runtimeOnly("org.postgresql:postgresql")
 
     testImplementation("org.springframework.boot:spring-boot-starter-test:3.3.4")
@@ -26,6 +27,7 @@ dependencies {
     testImplementation("org.testcontainers:testcontainers")
     testImplementation("org.testcontainers:junit-jupiter")
     testImplementation("org.openjdk.jmh:jmh-core:1.37")
+    testImplementation("org.springframework.kafka:spring-kafka-test")
     testAnnotationProcessor("org.openjdk.jmh:jmh-generator-annprocess:1.37")
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 

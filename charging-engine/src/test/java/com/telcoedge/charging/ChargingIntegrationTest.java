@@ -106,13 +106,13 @@ public class ChargingIntegrationTest {
 
     private CdrRequest createCdr(){
         return new CdrRequest(UUID.randomUUID(), "acme", "9876543000",
-                UsageType.VOICE, new BigDecimal("60"), Instant.now(), Instant.now());
+                UsageType.VOICE, new BigDecimal("60"), Instant.now().minusSeconds(60), Instant.now());
     }
 
     @Test
     void responseIncludesCorrelationId(){
         CdrRequest request = new CdrRequest(UUID.randomUUID(), "acme", "9876543000",
-                UsageType.VOICE, new BigDecimal("60"), Instant.now(), Instant.now());
+                UsageType.VOICE, new BigDecimal("60"), Instant.now().minusSeconds(60), Instant.now());
 
         ResponseEntity<String> response = restTemplate.postForEntity("/api/v1/charging/cdr",
                 request, String.class);

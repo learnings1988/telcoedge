@@ -17,6 +17,6 @@ public record CdrRequest(UUID eventId,
 
     public Cdr toCdr(){
         return new Cdr(eventId, operatorId, msisdn, usageType, quantity,
-                startTime, endTime);
+                startTime, Instant.now());
     }
 }

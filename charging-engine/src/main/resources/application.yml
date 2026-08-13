@@ -33,6 +33,15 @@ spring:
           events:
             log:
               LOG_QUERIES_SLOWER_THAN_MS: 25
+  kafka:
+    bootstrap-servers: localhost:9092
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+      acks: all
+      properties:
+        spring.json.add.type.headers: true
+
     open_in_view: false
   lifecycle:
     timeout-per-shutdown-phase: 25s
@@ -47,7 +56,7 @@ server:
 
 logging:
   level:
-    root: INFO
+    root: DEBUG
     #com.telcoedge: DEBUG
     #org.hibernate.SQL: DEBUG
     #org.hibernate.stat: DEBUG
