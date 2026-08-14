@@ -2,6 +2,7 @@ package com.telcoedge.charging;
 
 
 import com.github.benmanes.caffeine.cache.stats.CacheStats;
+import com.telcoedge.charging.event.CdrEventPublisher;
 import com.telcoedge.charging.persistence.TariffRateView;
 import com.telcoedge.charging.web.CdrRequest;
 import com.telcoedge.domain.Cdr;
@@ -13,6 +14,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeEach;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.boot.testcontainers.service.connection.ServiceConnection;
 import org.springframework.cache.Cache;
@@ -41,7 +43,9 @@ import static org.assertj.core.api.Assertions.assertThat;
                 "management.endpoints.web.exposure.include=health,info,metrics,prometheus" // Ensures exposure exposure
         }
 )
+
 @Testcontainers
+@MockBean(CdrEventPublisher.class)
 public class ChargingIntegrationTest {
 
     @Container
