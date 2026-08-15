@@ -47,8 +47,6 @@ public class ChargingController {
 
             ChargeResult result = chargingService.process(request.toCdr());
 
-            cdrPublisher.publish(CdrEvent.fromCdr(request.toCdr()));
-
             return ResponseEntity.ok(result);
         }
     }

@@ -118,4 +118,9 @@ resilience4j:
         timeout-duration: 0s
         register-health-indicator: true
 
-
+telcoedge:
+  outbox:
+    poller:
+      enabled: true
+      fixed-delay-ms: 1000
+      batch-size: 50

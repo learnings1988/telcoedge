@@ -1,5 +1,6 @@
 package com.telcoedge.charging;
 
+import com.telcoedge.charging.event.OutboxWriter;
 import com.telcoedge.charging.persistence.*;
 import com.telcoedge.domain.Cdr;
 import com.telcoedge.domain.ChargeResult;
@@ -41,6 +42,7 @@ public class ChargingService {
     private final MeterRegistry meterRegistry;
     private final Timer processingTimer;
     private final SubscriberPlanRepository subscriberPlanRepository;
+    private final OutboxWriter outboxWriter;
 
     public ChargingService(RatingEngine ratingEngine, BalanceRepository balanceRepository,
                            UsageEventRepository usageEventRepository,
@@ -48,7 +50,8 @@ public class ChargingService {
                            TariffRatesLookupService tariffRatesLookupService,
                            SubscriberLookup subscriberLookup,
                            MeterRegistry meterRegistry,
-                           SubscriberPlanRepository subscriberPlanRepository) {
+                           SubscriberPlanRepository subscriberPlanRepository,
+                           OutboxWriter outboxWriter) {
         this.ratingEngine = ratingEngine;
         this.balanceRepository = balanceRepository;
         this.usageEventRepository = usageEventRepository;
@@ -57,6 +60,7 @@ public class ChargingService {
         this.subscriberLookup = subscriberLookup;
         this.meterRegistry = meterRegistry;
         this.subscriberPlanRepository = subscriberPlanRepository;
+        this.outboxWriter = outboxWriter;
         this.processingTimer = Timer.builder("cdr.processing.duration")
                 .description("Time to process a single cdr")
                 .publishPercentiles(0.5,0.95,0.99)
@@ -104,6 +108,7 @@ public class ChargingService {
         IdempotencyKeyEntity key = new IdempotencyKeyEntity(cdr.eventId(), "CHARGED");
 
         idempotencyKeyRepository.save(key);
+        outboxWriter.enqueueCharged(cdr);
 
         return buildResult(cdr, chargeAmount, balance.getAmount(), ChargeStatus.CHARGED);
     }
