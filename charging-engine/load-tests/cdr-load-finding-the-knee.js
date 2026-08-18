@@ -6,7 +6,7 @@ import { Counter } from 'k6/metrics';
 const BASE_URL = __ENV.BASE_URL || "http://localhost:8081"
 
 const KNOWN_STATUSES = ['CHARGED', 'DUPLICATE', 'INSUFFICIENT_BALANCE', 'SUBSCRIBER_NOT_FOUND',
-'NO_PLAN_FOUND', 'NO_RATE_FOUND', 'HTTP_429','HTTP_500','HTTP_503','UNPARSEABLE_BODY','OTHER',];
+    'NO_PLAN_FOUND', 'NO_RATE_FOUND', 'HTTP_429','HTTP_500','HTTP_503','UNPARSEABLE_BODY','OTHER',];
 
 const counters = {};
 
@@ -17,13 +17,17 @@ for(const s of KNOWN_STATUSES){
 
 export const options = {
     scenarios: {
-        steady: {
-            executor: 'constant-arrival-rate',
-            rate: 825,
+        findTheKnee: {
+            executor: 'ramping-arrival-rate',
+            startRate: 700,
             timeUnit: '1s',
-            duration: '45s',
             preAllocatedVUs: 200,
             maxVUs: 6000,
+            stages:[
+                {duration: '45s', target: 800},
+                {duration: '45s', target: 900},
+                {duration: '45s', target: 1000},
+            ],
         },
     },
     thresholds: {

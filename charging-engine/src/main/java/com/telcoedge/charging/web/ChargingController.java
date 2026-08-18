@@ -8,6 +8,7 @@ import com.telcoedge.charging.event.CdrEvent;
 import com.telcoedge.charging.event.CdrEventPublisher;
 import com.telcoedge.domain.Cdr;
 import com.telcoedge.domain.ChargeResult;
+import io.github.resilience4j.ratelimiter.RequestNotPermitted;
 import io.github.resilience4j.ratelimiter.annotation.RateLimiter;
 import org.apache.coyote.Response;
 import org.slf4j.Logger;
@@ -65,7 +66,7 @@ public class ChargingController {
     }
 
     private  ResponseEntity<ChargeResult> rateLimitFallback(@RequestBody CdrRequest request,
-                                                            Exception ex){
+                                                            RequestNotPermitted ex){
         log.warn("Rate limit exceeded for CDR {}", request.eventId());
         return ResponseEntity.status(HttpStatus.TOO_MANY_REQUESTS).build();
     }
