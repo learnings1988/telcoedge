@@ -4,6 +4,9 @@
     <content url="file://$MODULE_DIR$/../../../charging-engine/build/generated/sources/annotationProcessor/java/test">
       <sourceFolder url="file://$MODULE_DIR$/../../../charging-engine/build/generated/sources/annotationProcessor/java/test" isTestSource="true" generated="true" />
     </content>
+    <content url="file://$MODULE_DIR$/../../../charging-engine/src/test" dumb="true">
+      <sourceFolder url="file://$MODULE_DIR$/../../../charging-engine/src/test/resources" type="java-test-resource" />
+    </content>
   </component>
   <component name="FacetManager">
     <facet type="web" name="Web">

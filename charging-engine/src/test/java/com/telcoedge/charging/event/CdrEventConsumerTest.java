@@ -14,6 +14,7 @@ import org.springframework.boot.autoconfigure.jdbc.DataSourceTransactionManagerA
 import org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaAutoConfiguration;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.kafka.test.context.EmbeddedKafka;
@@ -78,7 +79,7 @@ public class CdrEventConsumerTest {
         assertThat(consumer.processedCount()).isEqualTo(1);
     }
 
-    @SpringBootConfiguration
+    @Configuration
     @EnableAutoConfiguration(exclude ={
             DataSourceAutoConfiguration.class,
             DataSourceTransactionManagerAutoConfiguration.class,

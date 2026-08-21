@@ -30,6 +30,7 @@ dependencies {
     testImplementation("org.springframework.kafka:spring-kafka-test")
     testAnnotationProcessor("org.openjdk.jmh:jmh-generator-annprocess:1.37")
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
+    testImplementation("org.testcontainers:kafka")
 
     tasks.named<org.springframework.boot.gradle.tasks.run.BootRun>("bootRun"){
         jvmArgs("--enable-preview")
